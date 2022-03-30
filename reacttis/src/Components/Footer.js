@@ -13,7 +13,7 @@ class Footer extends React.Component {
                     <li><a href="" target="_BLANK"><i className="fab fa-instagram"></i></a></li>
                     <li><a href="" target="_BLANK"><i className="fab fa-twitter"></i></a></li>
                 </ul>
-                <h6 className="text-light">Powered by Munay</h6> 
+                <h6 className="text-light">Power by Munay</h6> 
             </div>
         </footer>
         );

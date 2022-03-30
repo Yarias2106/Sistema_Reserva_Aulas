@@ -1,5 +1,6 @@
 .foot{
-    margin-top: 2%; padding-bottom: 1%; background-color: #111; padding-top: 1.5%; color: #fff;
+    margin-top: 2%; padding-bottom: 0.8%; background-color: #111; padding-top: 1.2%; color: #fff;
+    
 }
 
 .socials{
@@ -19,7 +20,7 @@
     transition: color .3s ease;
 }
 .socials a:hover{
-    color: #111;
+    color: rgb(116, 111, 111);
 
 }
 
