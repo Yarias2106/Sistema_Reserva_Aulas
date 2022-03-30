@@ -8,6 +8,8 @@ body {
 
   background-image: url('./img/fondo1.jpg');
   background-size: cover;
+  background: -webkit-linear-gradient(to right, #1F3890, #162053, #431031, #6C194F);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #1F3890, #162053, #431031, #6C194F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 code {

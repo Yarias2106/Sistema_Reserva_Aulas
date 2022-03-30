@@ -4,37 +4,52 @@
 }
 
 .margT{
-    margin-top: 8%;
+    margin-top: 5.5%;
+   
 }
 
 .colorTitulo{
-    font-family: 'Lobster', cursive;
-    font-size: 4rem;
-    color: #127086;
+    font-family: 'Antic', sans-serif;
+    font-family: 'Caveat', cursive;
+    font-family: 'Miriam Libre', sans-serif;
+    font-size: 3rem;
+    color: #f5f9f9;
 }
 
 .colorP{
-    color: #15717F;
+    color: #000000;
     letter-spacing: 0.15rem;
     word-spacing: 5px;
     line-height: 1.7rem;
+    color: #b2b6c7;
+    font-weight: bold; 
 }
 
 .textInp{
     border-radius: 30px;
     padding: 10px;
-    border: 2px solid #127086;
-    background-color: #EAF3F6;
+    border: 2px solid #6374bd;
+    background-color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .btnCol{
-    background-color: #127086;
+    background-color: #636FA4;
     color: white;
     border-radius: 30px;
     padding: 10px;
-    border: 2px solid #127086;
+    border: 2px solid white;
 }
 
 .btnCol:hover{
     background-color: #EAF3F6;
+    border: 2px solid #636FA4;
+}
+
+.imagen{
+    width: 65%;
+    height: 50%;
+} 
+.test{
+    padding: 0;
 }
