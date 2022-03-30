@@ -10,13 +10,13 @@ class LoginForm extends React.Component {
                     <form className="row">
                         
                         <div className="col-12">
-                            <h1 className="pb-lg-3 text-start">
+                            <h1 className="pb-lg-3 text-start colorTitulo">
                                 Bienvenido al gestor de reserva de áulas Munay
                             </h1>
                         </div>
 
                         <div className="col-12">
-                            <p className="pb-lg-1 mt-4 mb-4 text-start">
+                            <p className="pb-lg-1 mt-4 mb-4 text-start colorP">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit maxime sapiente quia labore architecto, ducimus voluptates cupiditate assumenda, ea fuga ipsa, sit dolores asperiores porro molestias reiciendis beatae doloremque earum.
                             </p>
                         
@@ -24,13 +24,13 @@ class LoginForm extends React.Component {
 
                         <div className='row'>
                         <div className="col-md-12 col-lg-6 col-sm-12 col-xl-5 mb-3">
-                            <input type="text" className="form-control" id="inputCity" placeholder="Email" />
+                            <input type="text" className="form-control textInp" id="inputCity" placeholder="Email" />
                         </div>
                         <div className="col-md-12 col-lg-6 col-sm-12 col-xl-4 mb-3">
-                            <input type="text" className="form-control" id="inputCity" placeholder="Contraseña" />
+                            <input type="text" className="form-control textInp" id="inputCity" placeholder="Contraseña" />
                         </div>
                         <div className="col-lg-12 col-xl-3">
-                            <button type="submit" className="btn btn-primary w-75">Sign in</button>
+                            <button type="submit" className="btn w-75 btnCol">Sign in</button>
                         </div>
                         </div>
 
@@ -38,7 +38,6 @@ class LoginForm extends React.Component {
                 </div>
 
                 <div className="col-md-6 ps-0 mt-5 pe-lg-5">
-                    <img src="https://2.bp.blogspot.com/-7bnKQTNTRHw/XD63xN1nPDI/AAAAAAAAACU/kuZ2njsUnlsAvTt2AaSHYBH2DrClddrRwCLcBGAs/s1600/principal.jpg"  className='umssPort' alt="" />
                 </div>
             </div>
         );
