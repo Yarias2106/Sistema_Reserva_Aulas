@@ -6,3 +6,35 @@
 .margT{
     margin-top: 8%;
 }
+
+.colorTitulo{
+    font-family: 'Lobster', cursive;
+    font-size: 4rem;
+    color: #127086;
+}
+
+.colorP{
+    color: #15717F;
+    letter-spacing: 0.15rem;
+    word-spacing: 5px;
+    line-height: 1.7rem;
+}
+
+.textInp{
+    border-radius: 30px;
+    padding: 10px;
+    border: 2px solid #127086;
+    background-color: #EAF3F6;
+}
+
+.btnCol{
+    background-color: #127086;
+    color: white;
+    border-radius: 30px;
+    padding: 10px;
+    border: 2px solid #127086;
+}
+
+.btnCol:hover{
+    background-color: #EAF3F6;
+}
