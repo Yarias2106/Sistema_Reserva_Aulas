@@ -6,15 +6,15 @@ import '../css/nav.css'
 class Navigation extends React.Component {
     render() {
         return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light py-0 navColor">
-            <div className="container-fluid  ">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light py-0 ">
+            <div className="container-fluid  navColor">
 
             <a className="navbar-brand" href="#">
                     <img src={logo} alt="Logo" className="img-fluid logou" />
             </a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
             </button>
             
                 <div className="collapse navbar-collapse ms-lg-3" id="navbarTogglerDemo03">
