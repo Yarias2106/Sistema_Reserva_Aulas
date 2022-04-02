@@ -80,13 +80,24 @@ WSGI_APPLICATION = 'Munay.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'munaydb_asignaulas',
+#         'USER' : 'munaydb_harold',
+#         'PASSWORD' : 'munay1024',
+#         'HOST' : 'mysql-munaydb.alwaysdata.net',
+#         'PORT' : ''
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'munaydb_asignaulas',
-        'USER' : 'munaydb_harold',
-        'PASSWORD' : 'munay1024',
-        'HOST' : 'mysql-munaydb.alwaysdata.net',
+        'NAME': 'munaydb',
+        'USER' : 'root',
+        'PASSWORD' : 'admin',
+        'HOST' : 'localhost',
         'PORT' : ''
     }
 }
