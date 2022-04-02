@@ -13,19 +13,18 @@ from django.contrib.auth.models import User
 from unicodedata import normalize
 
 def loginPropio(request):
-    try:
-        print(request.user.username)
-        return redirect('/VistaDocente/')
-    except:
-        if request.method=="POST":
-            correo=request.POST.get('email','')
-            passwod=request.POST.get('contraseña','')
-            if(Docente.objects.filter(contraseña=passwod).exists() and Docente.objects.filter(email=correo).exists()):
-                usuario = authenticate(username=correo, password=passwod)
-                if usuario is not None:
-                    login(request, usuario)
-                    return redirect("/VistaDocente/")
-
+    # try:
+    #     print(request.user.username)
+    #     return redirect('/VistaDocente/')
+    # except:
+    if request.method=="POST":
+        correo=request.POST.get('email','')
+        passwod=request.POST.get('contraseña','')
+        if(Docente.objects.filter(contraseña=passwod).exists() and Docente.objects.filter(email=correo).exists()):
+            usuario = authenticate(username=correo, password=passwod)
+            if usuario is not None:
+                login(request, usuario)
+                return redirect("/VistaDocente/")
     return render(request,"login.html")
 
 @login_required(login_url='/login/')
