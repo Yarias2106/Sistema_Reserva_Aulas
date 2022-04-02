@@ -1,0 +1,142 @@
+
+body{
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Roboto', Oxygen,
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;        
+}       
+
+.navbar{
+    background-color: #073642;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  
+}
+
+.UserIcon{
+    color: #fff;
+    font-size: 30px;
+}
+
+.UserName{
+    color: aliceblue;
+    text-decoration: none;
+    padding-left: 5px;
+    padding-top: 3px;
+}
+
+.CerrarSesion{
+    color: #05416b;
+    background-color: #f9f9fa;
+    border-radius: 20px;
+    padding: 0 15px;
+    height:32px;
+    font-size:14px;
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+transform: scale(1.1);
+}
+
+/* Section Buttons */
+
+.section {
+  background-image: url(../img/principal.jpg);
+  background-size:cover;
+  background-repeat: no-repeat;
+  padding-top: 250px;
+  padding-bottom: 170px;
+}
+  .section .Caja {
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 0 40px 0;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 5px 26px 0 rgba(68, 88, 144, 0.14);
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .section .Caja:hover{
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.02);
+  }
+
+  .section .Iconos img{
+    margin: 0 auto 20px auto;
+    padding-top: 17px;
+    width: 200px;
+    height: 210px;
+  }
+  
+  .BtnReservar, .BtnMiReserva{
+      background-color: #ffffff;
+      border-radius: 15px;
+      padding: 4 15px;
+      color: #CB3066;
+      font-size:16px;
+      transition: all 0.3s ease-in-out;
+  }
+
+  .BtnReservar:hover, .BtnMiReserva:hover {
+    transform: scale(1.1);
+    color: #073642;
+    }
+
+
+  /*--------------------------------------------------------------
+# Bienvenida Section
+--------------------------------------------------------------*/
+#Bienvenida {
+    height: 30vh;
+    position: relative;
+  }
+ 
+  #Bienvenida .Bienvenida-container {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+  #Bienvenida h1 {
+    margin: 30px 0 10px 0;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 56px;
+    color: rgb(30, 2, 32);
+  }
+
+  @media (max-width: 768px) {
+    #Bienvenida h1 {
+      font-size: 28px;
+      line-height: 36px;
+    }
+  }
+
+  #Bienvenida h2 {
+    color: rgb(8, 0, 50);
+    margin-bottom: 50px;
+    font-size: 16px;
+  }
+  @media (max-width: 768px) {
+    #Bienvenida h2 {
+      font-size: 14px;
+      line-height: 24px;
+      margin-bottom: 30px;
+    }
+  }
+
+  /*--------------------------------------------------------------
+  # End Bienvenida Section
+  --------------------------------------------------------------*/
+  
