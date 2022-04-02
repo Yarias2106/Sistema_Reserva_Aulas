@@ -38,6 +38,8 @@ def inicio_Doc(request):
 
     return render(request,"inicio_Doc.html")
 
+def VistaDocente(request):
+    return render(request,"VistaDocente.html")
 
         # correo=request.POST.get('email','')
         # contraseña=request.POST.get('contraseña','')

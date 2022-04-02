@@ -43,7 +43,7 @@ transform: scale(1.1);
 /* Section Buttons */
 
 .section {
-  background-image: url(../img/principal.jpg);
+  background-image: url(../imagenes/principal.jpg);
   background-size:cover;
   background-repeat: no-repeat;
   padding-top: 250px;
