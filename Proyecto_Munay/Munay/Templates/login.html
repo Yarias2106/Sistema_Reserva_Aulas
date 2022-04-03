@@ -63,8 +63,21 @@
                 
                 </div>
 
-                <form action="" method="POST" class="row">
-                    {% csrf_token %}                       
+                <form action="/login/" method="POST" class="row">
+                    {% csrf_token %}     
+                    
+                    <div class="form-group mx-sm-4 mt-5">
+                        {% if messages %}
+                            <div class="ventana row ">
+                            <ul class="messages">   
+                            {% for message in messages %}
+                                <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                            </ul>
+                            </div>
+                        {% endif %}
+
+
                     <div class="col-md-12 col-lg-6 col-sm-12 col-xl-5 mb-3">
                         <input type="email" class="form-control textInp" id="email" name="email"placeholder="Email"/>
                     </div>
