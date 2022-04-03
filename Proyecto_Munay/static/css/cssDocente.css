@@ -1,8 +1,4 @@
 
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 body{
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Roboto', Oxygen,
@@ -11,50 +7,11 @@ body{
                 -moz-osx-font-smoothing: grayscale;        
 }       
 
-<<<<<<< HEAD
-.navbar{
-    background-color: #073642;
-    padding-top: 15px;
-    padding-bottom: 15px;
-  
-}
-
-.UserIcon{
-    color: #fff;
-    font-size: 30px;
-}
-
-.UserName{
-    color: aliceblue;
-    text-decoration: none;
-    padding-left: 5px;
-    padding-top: 3px;
-}
-
-.CerrarSesion{
-    color: #05416b;
-    background-color: #f9f9fa;
-    border-radius: 20px;
-    padding: 0 15px;
-    height:32px;
-    font-size:14px;
-    transition: all 0.2s ease-in-out;
-}
-
-button:hover {
-transform: scale(1.1);
-}
-=======
->>>>>>> master
 
 /* Section Buttons */
 
 .section {
-<<<<<<< HEAD
-  background-image: url(../img/principal.jpg);
-=======
   background-image: url(../imagenes/principal.jpg);
->>>>>>> master
   background-size:cover;
   background-repeat: no-repeat;
   padding-top: 250px;
@@ -151,14 +108,6 @@ transform: scale(1.1);
   # End Bienvenida Section
   --------------------------------------------------------------*/
   
-<<<<<<< HEAD
-
-
-
-
-  
-
-=======
 .navColor{
     background-image: radial-gradient( circle farthest-corner at 18.7% 37.8%,  rgba(250,250,250,1) 0%, rgba(225,234,238,1) 90% );
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.57);
@@ -175,4 +124,3 @@ transform: scale(1.1);
   padding: 8px 8px 8px 0;
   margin-bottom: 8px;
 }
->>>>>>> master
