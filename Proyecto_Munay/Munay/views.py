@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User
 from unicodedata import normalize
+from django.contrib import messages
 
 def loginPropio(request):
     # try:
@@ -20,11 +21,29 @@ def loginPropio(request):
     if request.method=="POST":
         correo=request.POST.get('email','')
         passwod=request.POST.get('contraseña','')
-        if(Docente.objects.filter(contraseña=passwod).exists() and Docente.objects.filter(email=correo).exists()):
-            usuario = authenticate(username=correo, password=passwod)
-            if usuario is not None:
-                login(request, usuario)
-                return redirect("/VistaDocente/")
+        res= redirect("/login/")
+        
+        if len(correo)==0:
+                mensaje(request,"Porfavor ingrese su correo")
+                return res
+
+        if len(passwod)==0:
+                mensaje(request,"Porfavor ingrese una contraseña")
+                return res        
+
+        if( Docente.objects.filter(email=correo).exists()):
+            if(Docente.objects.filter(contraseña=passwod).exists()):
+                  usuario = authenticate(request, username=correo, password=passwod)
+                  if usuario is not None:
+                    login(request, usuario)
+                    return redirect("/VistaDocente/")
+            else:
+                mensaje(request,"Error: contraseña incorrecta")
+                return res
+        else:
+            mensaje(request,"Error: Usuario no registrado")
+            return res 
+
     return render(request,"login.html")
 
 @login_required(login_url='/login/')
@@ -53,3 +72,7 @@ def salir(request):
 # usuario.save()
 # var=User.objects.get(username="test")
 # print(var.password)
+
+
+def mensaje(req,mensajeError):  
+    messages.add_message(request=req, level=messages.WARNING, message = mensajeError)
