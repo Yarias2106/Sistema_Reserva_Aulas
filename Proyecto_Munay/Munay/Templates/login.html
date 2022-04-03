@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" href="{% static '/css/stilos.css' %}">
 </head>
-<body class="degradeMain">
+<body class="degradeMain d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg navbar-light bg-light py-0">
         <div class="container-fluid  navColor">
 
@@ -32,13 +32,13 @@
         
             <div class="collapse navbar-collapse ms-lg-3" id="navbarTogglerDemo03">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
+                        <li class="nav-item nav-justified">
                             <a class="nav-link active  pe-2" aria-current="page" href="#">Inicio</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item nav-justified">
                             <a class="nav-link active pe-2" href="#">Acerca de </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item nav-justified">
                             <a class="nav-link active  pe-2" href="#">Contactanos </a>
                         </li>
                     </ul>
@@ -46,7 +46,7 @@
         </div>
     </nav>
 
-    <div class="row g-0 align-items-center margT">
+    <div class="row g-0 align-items-center margT mb-4">
         <div class="col-md-7 px-lg-5 px-md-5 px-sm-5 px-5">
             <div class="row">
                 
@@ -63,8 +63,21 @@
                 
                 </div>
 
-                <form action="" method="POST" class="row">
-                    {% csrf_token %}                       
+                <form action="/login/" method="POST" class="row">
+                    {% csrf_token %}     
+                    
+                    <div class="form-group mx-sm-4 mt-5">
+                        {% if messages %}
+                            <div class="ventana row ">
+                            <ul class="messages">   
+                            {% for message in messages %}
+                                <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                            </ul>
+                            </div>
+                        {% endif %}
+
+
                     <div class="col-md-12 col-lg-6 col-sm-12 col-xl-5 mb-3">
                         <input type="email" class="form-control textInp" id="email" name="email"placeholder="Email"/>
                     </div>
@@ -80,12 +93,12 @@
             </div>
         </div>
 
-        <div class="col-md-5 col-sm-12 col-12 ps-0 mt-5 pe-lg-5">
-            <img src="https://ed.team/images/utils/semana-de-la-tecnologia/grafico.png" alt="" class='imagen'></img>
+        <div class="col-md-5 col-sm-12 col-12 ps-0 mt-5">
+            <img src="https://ed.team/images/utils/semana-de-la-tecnologia/grafico.png" alt="" class='imagen ml-5'></img>
         </div>
     </div>
 
-    <footer class='foot'>
+    <footer class='footColor mt-auto'>
         <div class="footer-content">
             <ul class="socials">
             

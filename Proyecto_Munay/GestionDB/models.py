@@ -5,10 +5,9 @@ class Docente(models.Model):
     # El id de Docente se genera automaticamente
     nombre_Docente = models.CharField(max_length=50)
     apellido_Docente = models.CharField(max_length=50)
-    telefono_Docente = models.CharField(max_length=8)
     email = models.CharField(max_length=80)
     contraseña = models.CharField(max_length=50)
-
+    
     def __str__(self):
         return self.email
 
@@ -29,7 +28,6 @@ class Aula(models.Model):
     Cod_Reserva= models.ForeignKey(Reserva,on_delete=CASCADE,null=True)
     Cant_Estudiante = models.IntegerField()
 
-
     def __str__(self):
         return self.Cant_Estudiante
 
@@ -37,15 +35,13 @@ class Materia(models.Model):
      # El id de Materia se genera automaticamente
     Nombre = models.CharField(max_length=64)
 
-
     def __str__(self):
         return self.Nombre
 
 class Grupo(models.Model):
-     # El id de aula se genera automaticamente
+     # El id de grupo se genera automaticamente
     Cod_Materia= models.ForeignKey(Materia,on_delete=CASCADE,null=True)
     Numero_Grupo = models.CharField(max_length=32)
-
 
     def __str__(self):
         return self.Numero_Grupo

@@ -11,43 +11,68 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User
 from unicodedata import normalize
+from django.contrib import messages
 
 def loginPropio(request):
+    # try:
+    #     print(request.user.username)
+    #     return redirect('/VistaDocente/')
+    # except:
     if request.method=="POST":
         correo=request.POST.get('email','')
         passwod=request.POST.get('contraseña','')
-        if(Docente.objects.filter(contraseña=passwod).exists() and Docente.objects.filter(email=correo).exists()):
-            usuario = authenticate(username=correo, password=passwod)
-            if usuario is not None:
-                print("si entro aqui papu si entro")
-                print("si entro aqui papu si entro")
-                print("si entro aqui papu si entro")
-                print("si entro aqui papu si entro")
-                print("si entro aqui papu si entro")
-                login(request, usuario)
-                return redirect("/inicio_Doc/")
+        res= redirect("/login/")
+        
+        if len(correo)==0:
+                mensaje(request,"Porfavor ingrese su correo")
+                return res
+
+        if len(passwod)==0:
+                mensaje(request,"Porfavor ingrese una contraseña")
+                return res        
+
+        if( Docente.objects.filter(email=correo).exists()):
+            if(Docente.objects.filter(contraseña=passwod).exists()):
+                  usuario = authenticate(request, username=correo, password=passwod)
+                  if usuario is not None:
+                    login(request, usuario)
+                    return redirect("/VistaDocente/")
+            else:
+                mensaje(request,"Error: contraseña incorrecta")
+                return res
+        else:
+            mensaje(request,"Error: Usuario no registrado")
+            return res 
 
     return render(request,"login.html")
 
-
 @login_required(login_url='/login/')
-def inicio_Doc(request): 
-    if request.method=="POST":
-        logout(request)
-        return redirect("/login/")
+def VistaDocente(request):
+    return render(request,"VistaDocente.html")
 
-    return render(request,"inicio_Doc.html")
+def salir(request):
+    logout(request)
+    return redirect("/login/")
+
+# @login_required(login_url='/login/')
+# def inicio_Doc(request): 
+#     if request.method=="POST":
+#         logout(request)
+#         return redirect("/login/")
+#     return render(request,"inicio_Doc.html")
+
+# correo=request.POST.get('email','')
+# contraseña=request.POST.get('contraseña','')
+# variable = Docente.objects.get(contraseña="lorem")
+# variable1 = Docente.objects.filter(contraseña="lorem")
+# print(variable1[0].telefono_Docente)
+# estudiante = Docente(nombre_Docente="rosemary",apellido_Docente="bascopes",telefono_Docente="76543210",email="elmail@okas",contraseña="123456789")
+# estudiante.save(
+# usuario = User.objects.create_user(username = "test",email = "correo",password="7d8Zggtt", first_name = "primarNombre")
+# usuario.save()
+# var=User.objects.get(username="test")
+# print(var.password)
 
 
-        # correo=request.POST.get('email','')
-        # contraseña=request.POST.get('contraseña','')
-        # variable = Docente.objects.get(contraseña="lorem")
-        # variable1 = Docente.objects.filter(contraseña="lorem")
-        # print(variable1[0].telefono_Docente)
-        # estudiante = Docente(nombre_Docente="rosemary",apellido_Docente="bascopes",telefono_Docente="76543210",email="elmail@okas",contraseña="123456789")
-        # estudiante.save()
-
-        # usuario = User.objects.create_user(username = "test",email = "correo",password="7d8Zggtt", first_name = "primarNombre")
-        # usuario.save()
-        # var=User.objects.get(username="test")
-        # print(var.password)
+def mensaje(req,mensajeError):  
+    messages.add_message(request=req, level=messages.WARNING, message = mensajeError)
