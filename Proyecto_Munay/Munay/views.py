@@ -18,31 +18,34 @@ def loginPropio(request):
     #     print(request.user.username)
     #     return redirect('/VistaDocente/')
     # except:
-    if request.method=="POST":
-        correo=request.POST.get('email','')
-        passwod=request.POST.get('contraseña','')
-        res= redirect("/login/")
-        
-        if len(correo)==0:
-                mensaje(request,"Porfavor ingrese su correo")
-                return res
+    if(len(request.user.username)>0):
+        return redirect('/VistaDocente/')
+    else:
+        if request.method=="POST":
+            correo=request.POST.get('email','')
+            passwod=request.POST.get('contraseña','')
+            res= redirect("/login/")
+            
+            if len(correo)==0:
+                    mensaje(request,"Porfavor ingrese su correo")
+                    return res
 
-        if len(passwod)==0:
-                mensaje(request,"Porfavor ingrese una contraseña")
-                return res        
+            if len(passwod)==0:
+                    mensaje(request,"Porfavor ingrese una contraseña")
+                    return res        
 
-        if( Docente.objects.filter(email=correo).exists()):
-            if(Docente.objects.filter(contraseña=passwod).exists()):
-                  usuario = authenticate(request, username=correo, password=passwod)
-                  if usuario is not None:
-                    login(request, usuario)
-                    return redirect("/VistaDocente/")
+            if( Docente.objects.filter(email=correo).exists()):
+                if(Docente.objects.filter(contraseña=passwod).exists()):
+                    usuario = authenticate(request, username=correo, password=passwod)
+                    if usuario is not None:
+                        login(request, usuario)
+                        return redirect("/VistaDocente/")
+                else:
+                    mensaje(request,"Error: contraseña incorrecta")
+                    return res
             else:
-                mensaje(request,"Error: contraseña incorrecta")
-                return res
-        else:
-            mensaje(request,"Error: Usuario no registrado")
-            return res 
+                mensaje(request,"Error: Usuario no registrado")
+                return res 
 
     return render(request,"login.html")
 
