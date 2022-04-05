@@ -33,23 +33,24 @@ class Aula(models.Model):
 
 class Materia(models.Model):
      # El id de Materia se genera automaticamente
-    Nombre = models.CharField(max_length=64)
+    Nombre = models.CharField(max_length=60)
+    Carrera = models.CharField(max_length=60)
 
     def __str__(self):
         return self.Nombre
 
+# class Grupo(models.Model):
+#      # El id de grupo se genera automaticamente
+#     Cod_Materia= models.ForeignKey(Materia,on_delete=CASCADE,null=True)
+#     Numero_Grupo = models.CharField(max_length=32)
+
+#     def __str__(self):
+#         return self.Numero_Grupo
+
 class Grupo(models.Model):
-     # El id de grupo se genera automaticamente
+     # El id de Grupo se genera automaticamente
     Cod_Materia= models.ForeignKey(Materia,on_delete=CASCADE,null=True)
-    Numero_Grupo = models.CharField(max_length=32)
-
-    def __str__(self):
-        return self.Numero_Grupo
-
-class Dicta(models.Model):
-     # El id de aula se genera automaticamente
-    Cod_Materia= models.ForeignKey(Materia,on_delete=CASCADE,null=True)
-    Cod_Grupo= models.ForeignKey(Grupo,on_delete=CASCADE,null=True)
+    # Cod_Grupo= models.ForeignKey(Grupo,on_delete=CASCADE,null=True)
     Cod_Docente = models.ForeignKey(Docente,on_delete=CASCADE,null=True)
     
     def __str__(self):

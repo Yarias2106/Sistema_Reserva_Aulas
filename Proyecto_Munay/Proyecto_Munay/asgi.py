@@ -1,5 +1,5 @@
 """
-ASGI config for Munay project.
+ASGI config for Proyecto_Munay project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Munay.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Proyecto_Munay.settings')
 
 application = get_asgi_application()
