@@ -18,9 +18,9 @@ def loginPropio(request):
     #     print(request.user.username)
     #     return redirect('/VistaDocente/')
     # except:
-    if(len(request.user.username)>0):
-        return redirect('/VistaDocente/')
-    else:
+    #if(len(request.user.username)>0):
+    #   return redirect('/VistaDocente/')
+    #else:
         if request.method=="POST":
             correo=request.POST.get('email','')
             passwod=request.POST.get('contraseña','')
@@ -47,7 +47,7 @@ def loginPropio(request):
                 mensaje(request,"Error: Usuario no registrado")
                 return res 
 
-    return render(request,"login.html")
+        return render(request,"login.html")
 
 @login_required(login_url='/login/')
 def VistaDocente(request):
