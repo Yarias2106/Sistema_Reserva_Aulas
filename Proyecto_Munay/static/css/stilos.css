@@ -122,3 +122,11 @@
      margin-left: 10px;
    }
  }
+
+ .alertaCol{
+   list-style-type: none;
+ }
+
+ .espAlert{
+   padding-right: 16px;
+ }
