@@ -79,44 +79,6 @@
     height: 50%;
  } 
 
- .footColor{
-    margin-top: 2%;
-    padding-bottom: 0.8%;
-    background-color: #111;
-    padding-top: 1.2%;
-    color: #fff;
- }
- 
- .socials{
-    list-style: none;
-    display: flex;
-    padding-left: 0%;
- }
- .socials li{
-    margin: 0 10px;
- }
- .socials a{
-    text-decoration: none;
-    color: #fff;
- }
- .socials a i{
-    font-size: 1rem;
-    transition: color .3s ease;
- }
- .socials a:hover{
-    color: rgb(116, 111, 111);
- 
- }
- 
- .footer-content{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
- }
-
  @media (max-width: 430px) {
    .imgPad {
      margin-left: 10px;
