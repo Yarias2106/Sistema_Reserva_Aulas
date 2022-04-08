@@ -105,7 +105,10 @@
  }
  .socials a:hover{
     color: rgb(116, 111, 111);
- 
+ }
+
+ .SocialsE{
+    font-size: 13px;
  }
  
  .footer-content{

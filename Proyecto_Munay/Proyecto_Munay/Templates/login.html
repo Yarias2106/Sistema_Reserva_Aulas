@@ -17,6 +17,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="{% static '/css/stilos.css' %}">
+    <link rel="stylesheet" href="{% static '/css/efectofooter.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script type="text/javascript">
@@ -130,7 +131,7 @@
                 <li><a href="" target="_BLANK"><i class="fab fa-instagram"></i></a></li>
                 <li><a href="" target="_BLANK"><i class="fab fa-twitter"></i></a></li>
             </ul>
-            <h6 class="text-light">Power by Munay</h6> 
+            <span class="txt anim-text-flow">MUNAY ©2022</span>
         </div>
     </footer>
 
@@ -151,5 +152,13 @@
     integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" 
     crossorigin="anonymous"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $('.txt').html(function(i, html) {
+            var chars = $.trim(html).split("");
+            return '<span>' + chars.join('</span><span>') + '</span>';
+        });
+    </script>
 </body>
 </html>
