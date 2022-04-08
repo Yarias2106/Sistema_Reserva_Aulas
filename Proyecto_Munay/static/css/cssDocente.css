@@ -1,162 +1,167 @@
-
 body{
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Roboto', Oxygen,
-                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;        
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Roboto', Oxygen,
+              'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'josefin', sans-serif;
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;        
 }       
 
 
 /* Section Buttons */
 
 .section {
-  background-image: url(../imagenes/principal.jpg);
-  background-size:cover;
-  background-repeat: no-repeat;
-  padding-top: 250px;
-  padding-bottom: 170px;
+background-image: url(../imagenes/principal.jpg);
+background-size:cover;
+background-repeat: no-repeat;
+padding-top: 250px;
+padding-bottom: 170px;
 }
-  .section .Caja {
-    padding: 30px;
-    position: relative;
-    overflow: hidden;
-    margin: 0 30px 40px 30px;
-    background: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 5px 26px 0 rgba(68, 88, 144, 0.14);
-    border-radius: 20px;
-    text-align: center;
-    transition: all 0.2s ease-in-out;
+.section .Caja {
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 30px 40px 30px;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 5px 26px 0 rgba(68, 88, 144, 0.14);
+  border-radius: 20px;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.section .Caja:hover{
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.02);
+}
+
+.section .Iconos img{
+  margin: 0 auto 20px auto;
+  padding-top: 17px;
+  width: 200px;
+  height: 210px;
+}
+
+.BtnReservar, .BtnMiReserva{
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 4 15px;
+    color: #CB3066;
+    font-size:16px;
+    transition: all 0.3s ease-in-out;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: Bold;
+    font-size: 20px;
+}
+
+.BtnReservar:hover, .BtnMiReserva:hover {
+  transform: scale(1.1);
+  color: #073642;
   }
 
-  .section .Caja:hover{
-    background: rgba(255, 255, 255, 0.5);
-    transform: scale(1.02);
-  }
 
-  .section .Iconos img{
-    margin: 0 auto 20px auto;
-    padding-top: 17px;
-    width: 200px;
-    height: 210px;
-  }
-  
-  .BtnReservar, .BtnMiReserva{
-      background-color: #ffffff;
-      border-radius: 15px;
-      padding: 4 15px;
-      color: #CB3066;
-      font-size:16px;
-      transition: all 0.3s ease-in-out;
-  }
-
-  .BtnReservar:hover, .BtnMiReserva:hover {
-    transform: scale(1.1);
-    color: #073642;
-    }
-
-
-  /*--------------------------------------------------------------
+/*--------------------------------------------------------------
 # Bienvenida Section
 --------------------------------------------------------------*/
 #Bienvenida {
-    height: 20vh;
-    position: relative;
-  }
- 
-  #Bienvenida .Bienvenida-container {
-    position: absolute;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-  }
+  height: 20vh;
+  position: relative;
+}
+
+#Bienvenida .Bienvenida-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+#Bienvenida h1 {
+  margin: 10px 0 10px 0;
+  font-size: 45px;
+  font-family: 'Grand Hotel', cursive;
+  line-height: 56px;
+  color: rgb(250, 250, 250);
+}
+
+@media (max-width: 768px) {
   #Bienvenida h1 {
-    margin: 10px 0 10px 0;
-    font-size: 36px;
-    font-weight: 600;
-    line-height: 56px;
-    color: rgb(250, 250, 250);
+    font-size: 28px;
+    line-height: 36px;
+    
   }
+}
 
-  @media (max-width: 768px) {
-    #Bienvenida h1 {
-      font-size: 28px;
-      line-height: 36px;
-    }
-  }
-
+#Bienvenida h2 {
+  color: rgb(236, 236, 236);
+  margin-bottom: 25px;
+  font-size: 15px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: Bold;
+}
+@media (max-width: 768px) {
   #Bienvenida h2 {
-    color: rgb(236, 236, 236);
-    margin-bottom: 25px;
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 30px;
   }
-  @media (max-width: 768px) {
-    #Bienvenida h2 {
-      font-size: 14px;
-      line-height: 24px;
-      margin-bottom: 30px;
-    }
-  }
+}
 
-  /*--------------------------------------------------------------
-  # End Bienvenida Section
-  --------------------------------------------------------------*/
-  
+/*--------------------------------------------------------------
+# End Bienvenida Section
+--------------------------------------------------------------*/
+
 .navColor{
-    background-image: radial-gradient( circle farthest-corner at 18.7% 37.8%,  rgba(250,250,250,1) 0%, rgba(225,234,238,1) 90% );
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.57);
+  background-image: radial-gradient( circle farthest-corner at 18.7% 37.8%,  rgba(250,250,250,1) 0%, rgba(225,234,238,1) 90% );
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.57);
 }
 
 .logou{
-  width: 65px;
-  height: 65px;
+width: 65px;
+height: 65px;
 }
 
 .btnCerrar{
-  color: black;
-  text-decoration: none;
-  padding: 8px 8px 8px 0;
-  margin-bottom: 8px;
+color: black;
+text-decoration: none;
+padding: 8px 8px 8px 0;
+margin-bottom: 8px;
 }
 
 .footColor{
-  margin-top: 2%;
-  padding-bottom: 0.8%;
-  background-color: #111;
-  padding-top: 1.2%;
-  color: #fff;
+margin-top: 2%;
+padding-bottom: 0.8%;
+background-color: #111;
+padding-top: 1.2%;
+color: #fff;
 }
 
 .footer-content{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+text-align: center;
+font-family: Arial, Helvetica, sans-serif;
 }
 
 .socials{
-  list-style: none;
-  display: flex;
-  padding-left: 0%;
+list-style: none;
+display: flex;
+padding-left: 0%;
 }
 .socials li{
-  margin: 0 10px;
+margin: 0 10px;
 }
 .socials a{
-  text-decoration: none;
-  color: #fff;
+text-decoration: none;
+color: #fff;
 }
 .socials a i{
-  font-size: 1rem;
-  transition: color .3s ease;
+font-size: 1rem;
+transition: color .3s ease;
 }
 .socials a:hover{
-  color: rgb(116, 111, 111);
+color: rgb(116, 111, 111);
 
 }
