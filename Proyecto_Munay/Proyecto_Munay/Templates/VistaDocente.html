@@ -47,11 +47,26 @@
                               <a class="nav-link active  pe-2 mx-3" href="#">Contáctanos </a>
                           </li>
                       </ul>
-                      <div class="mb-2">
-                        <center><a href="/salir/" class="btnCerrar">Cerrar Sesión</a></center>
-                      </div>
+                      
+                      <center><div class="mb-0 "> 
+                        <center>{%if user.is_authenticated %}
+                      
+                                <li class="nav-item dropdown" style="list-style:none">
+                                  <a class="nav-link dropdown-toggle btnCerrar" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{request.user.username}}
+                                  </a>
+                                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <center><a class="dropdown-item " href="/salir/">Cerrar Sesión</a></center>
+                                    
+                                  </div>
+                                </li>
+                              
+                            
+                                 {%endif%}</center>
+                            </div>
+                     </center>
               </div>
-        </div>
+        
       </nav>
     
       <section class="section">
@@ -80,33 +95,42 @@
 
     <!-- Bienvenida Section -->
 
+    <section id="Bienvenida">
+      <div class="Bienvenida-container">
+        <h1>¡Bienvenido!</h1>
+        <h2 class="col-sm-8 col-lg-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, illo porro illum error nostrum magnam debitis sequi ipsa eaque, perspiciatis, consequatur explicabo. Corporis voluptatibus excepturi nihil voluptates unde alias consequatur. </h2>
+      </div>
+    </section>
     
       <!-- End Bienvenida Section -->
       
       <footer class='footColor mt-auto'>
-        <section id="Bienvenida">
-          <div class="Bienvenida-container">
-            <h1>¡Bienvenido!</h1>
-            <h2 class="col-sm-8 col-lg-6"></h2>
-          </div>
-        </section>
         <div class="footer-content">
-            <ul class="socials">
-                <b class="SocialsE">Otros sitios de interes:</b>
-                <li><a href="http://www.umss.edu.bo" title="Universidad Mayor de San Simón" class="SocialsE"> UMSS </a></li>
-                <span>|</span>
-                <li><a href="http://websiss.umss.edu.bo" title="Sistema de información San Simón" class="SocialsE"> WebSISS</a></li>
-                <span>|</span>
-                <li><a href="http://www.fcyt.umss.edu.bo" title= "Facultad de Ciencias y Tecnología" class="SocialsE">FCyT</a></li>
-                <span>|</span>
-                <li><a href="https://www.facebook.com/memiumss" title="Programa MEMI" class="SocialsE"> MEMI </a></li>
-                <span>|</span>
-                <li><a href="http://enlinea.umss.edu.bo" title="Moodle en Informática & Sistemas" class="SocialsE">Programas Virtuales</a></li>
-                <span>|</span>
-                <li><a href="http://www.scesi.org" title = "Sociedad Científica de estudiantes de Sistemas e Informática" class="SocialsE">SCESI</a></li>
-            </ul>
-            <span class="txt anim-text-flow">MUNAY ©2022</span>
-        </div>
+          <ul class="socials">
+            <b class="SocialsE">Otros sitios de interes:</b>
+            <li><a href="http://www.umss.edu.bo" title="Universidad Mayor de San Simón" class="SocialsE"> UMSS </a></li>
+            <span>|</span>
+            <li><a href="http://websiss.umss.edu.bo" title="Sistema de información San Simón" class="SocialsE"> WebSISS</a></li>
+            <span>|</span>
+            <li><a href="http://www.fcyt.umss.edu.bo" title= "Facultad de Ciencias y Tecnología" class="SocialsE">FCyT</a></li>
+            <span>|</span>
+            <li><a href="https://www.facebook.com/memiumss" title="Programa MEMI" class="SocialsE"> MEMI </a></li>
+            <span>|</span>
+            <li><a href="http://enlinea.umss.edu.bo" title="Moodle en Informática & Sistemas" class="SocialsE">Programas Virtuales</a></li>
+            <span>|</span>
+            <li><a href="http://www.scesi.org" title = "Sociedad Científica de estudiantes de Sistemas e Informática" class="SocialsE">SCESI</a></li>
+        </ul>
+        <ul class="socials mb-0">
+        
+            <li><a href="" target="_BLANK"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="" target="_BLANK"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="" target="_BLANK"><i class="fab fa-twitter"></i></a></li>
+            <span> | </span>
+            <div class="LogoMunay mx-2">
+                <img src="{% static '/imagenes/Logo.png' %}" alt="LogoMunay"/>
+            </div>
+            <span class="txt anim-text-flow pt-1">MUNAY ©2022</span>
+        </ul>
     </footer>
 
 <!-- JavaScript Bundle with Popper -->

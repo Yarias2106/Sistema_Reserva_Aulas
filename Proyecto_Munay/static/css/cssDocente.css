@@ -64,6 +64,7 @@ padding-bottom: 170px;
 #Bienvenida {
   height: 20vh;
   position: relative;
+  background: #111;
 }
 
 #Bienvenida .Bienvenida-container {
@@ -88,7 +89,6 @@ padding-bottom: 170px;
   #Bienvenida h1 {
     font-size: 28px;
     line-height: 36px;
-    
   }
 }
 
