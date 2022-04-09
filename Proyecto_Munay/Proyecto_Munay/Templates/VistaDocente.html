@@ -24,50 +24,50 @@
 </head>
 
 <body>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light py-0">
-        <div class="container-fluid  navColor">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light py-0">
+    <div class="container-fluid  navColor">
 
-          <a class="navbar-brand" href="#">
-                  <img src="{% static '/imagenes/descarga.jpg' %}" alt="Logo" class="img-fluid logou" />
-          </a>
+      <a class="navbar-brand" href="#">
+              <img src="{% static '/imagenes/descarga.jpg' %}" alt="Logo" class="img-fluid logou" />
+      </a>
 
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          
-              <div class="collapse navbar-collapse ms-lg-3 justify-content-center" id="navbarTogglerDemo03">
-                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                          <li class="nav-item nav-justified">
-                              <a class="nav-link active  pe-2 mx-3" aria-current="page" href="#">Inicio</a>
-                          </li>
-                          <li class="nav-item nav-justified">
-                              <a class="nav-link active pe-2 mx-3" href="#">Acerca de </a>
-                          </li>
-                          <li class="nav-item nav-justified">
-                              <a class="nav-link active  pe-2 mx-3" href="#">Contáctanos </a>
-                          </li>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      
+          <div class="collapse navbar-collapse ms-lg-3 justify-content-center" id="navbarTogglerDemo03">
+                  <ul class="navbar-nav me-auto mb-lg-0">
+                      <li class="nav-item nav-justified">
+                          <a class="nav-link active  pe-2 mx-3" aria-current="page" href="#">Inicio</a>
+                      </li>
+                      <li class="nav-item nav-justified">
+                          <a class="nav-link active pe-2 mx-3" href="#">Acerca de </a>
+                      </li>
+                      <li class="nav-item nav-justified">
+                          <a class="nav-link active  pe-2 mx-3" href="#">Contáctanos </a>
+                      </li>
+                  </ul>
+                  <ul class="navbar-nav mb-2 mb-lg-0">
+                  <div class="mb-0 "> 
+                    {%if user.is_authenticated %}
+                  
+                    <center><li class="nav-item dropdown" style="list-style:none">
+                              <a class="nav-link dropdown-toggle btnCerrar" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{nombre}}
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <center><a class="dropdown-item " href="/salir/">Cerrar Sesión</a></center>
+                                
+                              </div>
+                            </li></center>
+                          
+                        
+                             {%endif%}
+                        </div>
                       </ul>
-                      
-                      <center><div class="mb-0 "> 
-                        <center>{%if user.is_authenticated %}
-                      
-                                <li class="nav-item dropdown" style="list-style:none">
-                                  <a class="nav-link dropdown-toggle btnCerrar" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{nombre}}
-                                  </a>
-                                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <center><a class="dropdown-item " href="/salir/">Cerrar Sesión</a></center>
-                                    
-                                  </div>
-                                </li>
-                              
-                            
-                                 {%endif%}</center>
-                            </div>
-                     </center>
-              </div>
-        
-      </nav>
+          </div>
+    </div>
+  </nav>
     
       <section class="section">
         <div class="container ">
@@ -75,7 +75,7 @@
             <div class="col-md-6 col-lg-6  ">
               <div class="Caja">
                 <div class="Iconos">
-                    <img src="{% static '/imagenes/Reservar.png' %}" alt="Reservar">
+                    <img src="{% static '/imagenes/Reservar1.png' %}" alt="Reservar">
                 </div>
                 <button type="button" class="btn BtnReservar">Realizar reserva</button>
               </div>
@@ -84,7 +84,7 @@
             <div class="col-md-6 col-lg-6  ">
               <div class="Caja">
                 <div class="Iconos">
-                    <img src="{% static '/imagenes/MiReserva.png' %}" alt="MiReserva">
+                    <img src="{% static '/imagenes/MiReserva1.png' %}" alt="MiReserva">
                 </div>
                 <button type="button" class="btn BtnMiReserva">Mis reservas</button>
               </div>
@@ -98,7 +98,7 @@
     <section id="Bienvenida">
       <div class="Bienvenida-container">
         <h1>¡Bienvenido!</h1>
-        <h2 class="col-sm-8 col-lg-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, illo porro illum error nostrum magnam debitis sequi ipsa eaque, perspiciatis, consequatur explicabo. Corporis voluptatibus excepturi nihil voluptates unde alias consequatur. </h2>
+        <h2 class="col-10 col-sm-8 col-lg-6">Ahora puedes acceder a tus reservas en cualquier momento, de forma más cómoda, desde cualquier dispositivo, ya sea para realizar una reserva de aula o visualizar tus reservas.</h2>
       </div>
     </section>
     

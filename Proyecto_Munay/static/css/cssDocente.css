@@ -10,26 +10,50 @@ body{
 /* Section Buttons */
 
 .section {
-background-image: url(../imagenes/principal.jpg);
-background-size:cover;
-background-repeat: no-repeat;
-padding-top: 250px;
-padding-bottom: 170px;
-}
+  background: linear-gradient(to right, #1f379056, #16205376, #4310318a, #6c194f86), url(../imagenes/principal.jpg);
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  padding-top: 250px;
+  padding-bottom: 170px;
+  
+  }
+  
+  /* .section::before {
+    content: "";
+    width: 100%;
+    min-height: 100vh;
+    position:absolute;
+    background: -webkit-linear-gradient(to right, #1F3890, #162053, #431031, #6C194F);   Chrome 10-25, Safari 5.1-6 
+    background: linear-gradient(to right, #1F3890, #162053, #431031, #6C194F);  W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ 
+    top: 75px;
+    left: 0;
+    opacity: 0.4;
+    }
+   */
+    
 .section .Caja {
   padding: 30px;
   position: relative;
   overflow: hidden;
   margin: 0 30px 40px 30px;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(22, 101, 111, 0.7);
   box-shadow: 0 5px 26px 0 rgba(68, 88, 144, 0.14);
   border-radius: 20px;
   text-align: center;
   transition: all 0.2s ease-in-out;
 }
 
+@media (max-width: 768px) {
+  .section .Caja{
+  margin: 0 15px 20px 15px;
+  padding: 15px;
+  }
+}
+
 .section .Caja:hover{
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(32, 186, 203, 0.5);
   transform: scale(1.02);
 }
 
@@ -40,16 +64,30 @@ padding-bottom: 170px;
   height: 210px;
 }
 
+@media (max-width: 768px) {
+  .section .Iconos img{
+  padding-top: 5px;
+  width: 100px;
+  height: 110px;
+  }
+}
+
 .BtnReservar, .BtnMiReserva{
-    background-color: #ffffff;
-    border-radius: 15px;
-    padding: 4 15px;
-    color: #CB3066;
-    font-size:16px;
-    transition: all 0.3s ease-in-out;
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: Bold;
-    font-size: 20px;
+  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(253,203,50,1) 0%, rgba(244,56,98,1) 100.2% );
+  background-image: linear-gradient( 109.6deg,  rgba(255,194,48,1) 11.2%, rgba(255,124,0,1) 100.2% );
+  color: rgb(41, 41, 41);
+  background-image: linear-gradient( 112.7deg,  rgba(253,185,83,1) 11.4%, rgba(255,138,0,1) 70.2% );
+  border-radius: 10px;
+  padding: 5px;
+  border: 2px solid rgb(255, 255, 255);
+}
+
+@media (max-width: 768px) {
+  .BtnReservar, .BtnMiReserva{
+    padding: 0 5px;
+    font-size: 14px;
+
+  }
 }
 
 .BtnReservar:hover, .BtnMiReserva:hover {
@@ -62,9 +100,15 @@ padding-bottom: 170px;
 # Bienvenida Section
 --------------------------------------------------------------*/
 #Bienvenida {
-  height: 20vh;
+  height: 15vh;
   position: relative;
   background: #111;
+}
+
+@media (max-width: 768px) {
+  #Bienvenida {
+    height: 13vh;
+  }
 }
 
 #Bienvenida .Bienvenida-container {
@@ -93,17 +137,17 @@ padding-bottom: 170px;
 }
 
 #Bienvenida h2 {
-  color: rgb(236, 236, 236);
-  margin-bottom: 25px;
+  color: rgb(241, 241, 241);
+  margin-bottom: 10px;
   font-size: 15px;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: Bold;
 }
 @media (max-width: 768px) {
   #Bienvenida h2 {
-    font-size: 14px;
-    line-height: 24px;
-    margin-bottom: 30px;
+    font-size: 11px;
+    line-height: 13px;
+    margin-bottom: 2px;
   }
 }
 
@@ -148,11 +192,22 @@ font-family: Arial, Helvetica, sans-serif;
 .socials{
 list-style: none;
 display: flex;
+align-items: center;
 padding-left: 0%;
 }
 .socials li{
 margin: 0 10px;
+
 }
+
+@media (max-width: 768px) {
+  .socials li {
+    margin:0 4px;
+    display: flex;
+    align-items: center;  
+  }
+}
+
 .socials a{
 text-decoration: none;
 color: #fff;
