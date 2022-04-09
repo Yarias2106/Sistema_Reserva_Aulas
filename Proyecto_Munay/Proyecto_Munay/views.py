@@ -39,7 +39,11 @@ def loginPropio(request):
                     usuario = authenticate(request, username=correo, password=passwod)
                     if usuario is not None:
                         login(request, usuario)
-                        return redirect("/VistaDocente/")
+                        nombre = (Docente.objects.get(email=correo)).nombre_Docente
+                        apellido = (Docente.objects.get(email=correo)).apellido_Docente
+                        nombreCompleto=nombre+" "+apellido
+                        contexto={'nombre':nombreCompleto}
+                        return render(request,"VistaDocente.html",contexto)
                 else:
                     mensaje(request,"Error: contraseña incorrecta")
                     return res
