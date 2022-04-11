@@ -26,12 +26,16 @@ def loginPropio(request):
             passwod=request.POST.get('contraseña','')
             res= redirect("/login/")
             
+            if len(correo)==0 and len(passwod)==0:
+                    mensaje(request,"Por favor ingrese todos los campos")
+                    return res
+
             if len(correo)==0:
-                    mensaje(request,"Porfavor ingrese su correo")
+                    mensaje(request,"Por favor ingrese su correo electrónico")
                     return res
 
             if len(passwod)==0:
-                    mensaje(request,"Porfavor ingrese una contraseña")
+                    mensaje(request,"Por favor ingrese una contraseña")
                     return res        
 
             if( Docente.objects.filter(email=correo).exists()):
