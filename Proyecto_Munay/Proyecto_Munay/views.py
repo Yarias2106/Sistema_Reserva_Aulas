@@ -18,9 +18,9 @@ def loginPropio(request):
     #     print(request.user.username)
     #     return redirect('/VistaDocente/')
     # except:
-    #if(len(request.user.username)>0):
-    #   return redirect('/VistaDocente/')
-    #else:
+    if(len(request.user.username)>0):
+       return redirect('/VistaDocente/')
+    else:
         if request.method=="POST":
             correo=request.POST.get('email','')
             passwod=request.POST.get('contraseña','')
@@ -43,11 +43,7 @@ def loginPropio(request):
                     usuario = authenticate(request, username=correo, password=passwod)
                     if usuario is not None:
                         login(request, usuario)
-                        nombre = (Docente.objects.get(email=correo)).nombre_Docente
-                        apellido = (Docente.objects.get(email=correo)).apellido_Docente
-                        nombreCompleto=nombre+" "+apellido
-                        contexto={'nombre':nombreCompleto}
-                        return render(request,"VistaDocente.html",contexto)
+                        return redirect('/VistaDocente/')
                 else:
                     mensaje(request,"Error: contraseña incorrecta")
                     return res
@@ -59,6 +55,11 @@ def loginPropio(request):
 
 @login_required(login_url='/login/')
 def VistaDocente(request):
+    nombre = (Docente.objects.get(email=request.user.username)).nombre_Docente
+    apellido = (Docente.objects.get(email=request.user.username)).apellido_Docente
+    nombreCompleto=nombre+" "+apellido
+    contexto={'nombre':nombreCompleto}
+    return render(request,"VistaDocente.html",contexto)
     return render(request,"VistaDocente.html")
 
 def salir(request):
