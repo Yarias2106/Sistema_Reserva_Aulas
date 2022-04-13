@@ -66,6 +66,11 @@ def salir(request):
     logout(request)
     return redirect("/login/")
 
+@login_required(login_url='/login/')
+def Reserva(request):
+    return render(request, "FormularioReserva.html")
+
+
 # @login_required(login_url='/login/')
 # def inicio_Doc(request): 
 #     if request.method=="POST":

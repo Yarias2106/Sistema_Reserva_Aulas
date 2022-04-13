@@ -1,0 +1,19 @@
+body{
+  background: linear-gradient(to right, #1f379056, #16205376, #4310318a, #6c194f86), url(../imagenes/principal.jpg);
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+
+}
+
+.BodyFont{
+  margin: 250px 0;
+}
+
+.container{
+  background: rgba(22, 101, 111, 0.7);
+  box-shadow: 0 5px 26px 0 rgba(68, 88, 144, 0.14);
+  border-radius: 20px;
+
+}

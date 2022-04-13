@@ -1,0 +1,70 @@
+{% extends 'BaseHeaderFooter.html' %}
+
+ {% block title %}
+    FormularioReserva
+ {% endblock %}
+
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static '/css/FormularioReserva.css' %}">
+<section class="BodyFont">
+  <div class="container">
+    <form class="row g-3">
+      <div class="col-md-4">
+        <label for="inputState" class="form-label">Materia:</label>
+        <select id="inputState" class="form-select">
+          <option selected>Programación</option>
+          <option>Elementos de la programación</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label for="inputState" class="form-label">Grupo:</label>
+        <select id="inputState" class="form-select">
+          <option selected>1</option>
+          <option>2</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label for="inputPassword4" class="form-label">Cantidad de estudiantes</label>
+        <input type="password" class="form-control" id="inputPassword4">
+      </div>
+     
+      <div class="col-md-4">
+        <label for="inputState" class="form-label">Horario:</label>
+        <select id="inputState" class="form-select">
+          <option selected>06:45</option>
+          <option>08:15</option>
+          <option>09:45</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label for="inputState" class="form-label">Periodo:</label>
+        <select id="inputState" class="form-select">
+          <option selected>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="validationTextarea" class="form-label">Motivo:</label>
+        <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required></textarea>
+        <div class="invalid-feedback">
+          
+        </div>
+      </div>
+
+      
+      <div class="col-12">
+        <center><button type="submit" class="btn btn-primary">Solicitar reserva</button></center>
+      </div>
+    </form>
+  </div>
+</section>
+
+{% endblock %}

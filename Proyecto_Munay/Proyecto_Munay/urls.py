@@ -16,12 +16,13 @@ Including another URLconf
 from pydoc import visiblename
 from django.contrib import admin
 from django.urls import path
-from Proyecto_Munay.views import loginPropio,VistaDocente,salir
+from Proyecto_Munay.views import loginPropio,VistaDocente,salir,Reserva
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/',loginPropio),
     path('VistaDocente/',VistaDocente),
-    path('salir/',salir)
+    path('salir/',salir),
+    path('Reserva/',Reserva)
 ]

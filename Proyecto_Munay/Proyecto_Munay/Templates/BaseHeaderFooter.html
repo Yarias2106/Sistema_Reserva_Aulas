@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+  {% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    {% block title %}   
+        
+    {% endblock %}
+  </title>
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+  <script type="text/javascript" src="Js/prefixfree.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static '/css/stilos.css' %}">
+  <link rel="stylesheet" href="{% static '/css/cssDocente.css' %}">
+  <link rel="stylesheet" href="{% static '/css/efectofooter.css' %}">
+  
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+        setTimeout(function() {
+            $(".ventana").fadeOut(1500);
+        },2000);
+     
+        // setTimeout(function() {
+        //     $(".content2").fadeIn(1500);
+        // },6000);
+        });
+      </script>
+</head>
+<body>
+
+<!-- BASE NAV -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light py-0">
+    <div class="container-fluid  navColor">
+
+      <a class="navbar-brand" style="cursor: default;" href="#">
+              <img src="{% static '/imagenes/descarga.jpg' %}" alt="Logo" class="img-fluid logou" />
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      
+          <div class="collapse navbar-collapse ms-lg-3 justify-content-center" id="navbarTogglerDemo03">
+                  <ul class="navbar-nav me-auto mb-lg-0">
+                      <li class="nav-item nav-justified">
+                          <a class="nav-link active  pe-2 mx-3" aria-current="page" href="#">Inicio</a>
+                      </li>
+                      <li class="nav-item nav-justified">
+                          <a class="nav-link active pe-2 mx-3" href="#">Acerca de </a>
+                      </li>
+                      <li class="nav-item nav-justified">
+                          <a class="nav-link active  pe-2 mx-3" href="#">Contáctanos </a>
+                      </li>
+                  </ul>
+                  <ul class="navbar-nav mb-2 mb-lg-0">
+                  <div class="mb-0 "> 
+                    {%if user.is_authenticated %}
+                  
+                    <center><li class="nav-item dropdown" style="list-style:none">
+                              <a class="nav-link dropdown-toggle btnCerrar" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{nombre}}
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <center><a class="dropdown-item " href="/salir/">Cerrar Sesión</a></center>
+                                
+                              </div>
+                            </li></center>
+                             {%endif%}
+                        </div>
+                      </ul>
+          </div>
+    </div>
+  </nav>
+
+<!-- END BASE NAV -->
+
+
+{% block content %}
+
+{% endblock %}
+
+<!-- BASE FOOTER -->
+
+<footer class='footColor mt-auto'>
+  <div class="footer-content">
+    <ul class="socials">
+      <b class="SocialsE">Otros sitios de interés:</b>
+      <li><a href="http://www.umss.edu.bo" title="Universidad Mayor de San Simón" class="SocialsE"> UMSS </a></li>
+      <span>|</span>
+      <li><a href="http://websiss.umss.edu.bo" title="Sistema de información San Simón" class="SocialsE"> WebSISS</a></li>
+      <span>|</span>
+      <li><a href="http://www.fcyt.umss.edu.bo" title= "Facultad de Ciencias y Tecnología" class="SocialsE">FCyT</a></li>
+      <span>|</span>
+      <li><a href="https://www.facebook.com/memiumss" title="Programa MEMI" class="SocialsE"> MEMI </a></li>
+      <span>|</span>
+      <li><a href="http://enlinea.umss.edu.bo" title="Moodle en Informática & Sistemas" class="SocialsE">Programas Virtuales</a></li>
+      <span>|</span>
+      <li><a href="http://www.scesi.org" title = "Sociedad Científica de estudiantes de Sistemas e Informática" class="SocialsE">SCESI</a></li>
+  </ul>
+  <ul class="socials mb-0">
+  
+      <li><a href="" target="_BLANK"><i class="fab fa-facebook-f"></i></a></li>
+      <li><a href="" target="_BLANK"><i class="fab fa-instagram"></i></a></li>
+      <li><a href="" target="_BLANK"><i class="fab fa-twitter"></i></a></li>
+      <span> | </span>
+      <div class="LogoMunay mx-2">
+          <img src="{% static '/imagenes/Logo.png' %}" alt="LogoMunay"/>
+      </div>
+      <span class="txt anim-text-flow pt-1">MUNAY ©2022</span>
+  </ul>
+</footer>
+
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+    crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" 
+    integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" 
+    crossorigin="anonymous"></script>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" 
+    integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" 
+    crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- script para footer -->
+    <script type="text/javascript">
+      $('.txt').html(function(i, html) {
+          var chars = $.trim(html).split("");
+          return '<span>' + chars.join('</span><span>') + '</span>';
+      });
+    </script>
+
+
+</body>
+</html>
