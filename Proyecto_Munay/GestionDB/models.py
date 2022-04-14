@@ -1,3 +1,4 @@
+from operator import truediv
 from django.db import models
 from django.db.models.deletion import CASCADE
 # Create your models here.
@@ -11,25 +12,28 @@ class Docente(models.Model):
     def __str__(self):
         return self.email
 
-class Reserva(models.Model):
-     # El id de REserva se genera automaticamente
-    Cod_Docente= models.ForeignKey(Docente,on_delete=CASCADE,null=True)
-    cant_Periodos = models.IntegerField()
-    fecha_Reserva = models.TimeField()
-    Fecha_Solicitud_Res = models.TimeField()
-    motivo = models.CharField(max_length=256)
-    cant_Estudiantes=models.IntegerField()
-
-    def __str__(self):
-        return self.motivo
-
 class Aula(models.Model):
-     # El id de aula se genera automaticamente
-    Cod_Reserva= models.ForeignKey(Reserva,on_delete=CASCADE,null=True)
+    # El id de aula se genera automaticamente
+    # Cod_Reserva= models.ForeignKey(Reserva,on_delete=CASCADE,null=True)
     Cant_Estudiante = models.IntegerField()
 
     def __str__(self):
         return self.Cant_Estudiante
+
+
+class Reserva(models.Model):
+     # El id de Reserva se genera automaticamente
+    Cod_Docente= models.ForeignKey(Docente,on_delete=CASCADE,null=True)
+    Cod_Aula = models.ForeignKey(Aula,on_delete=CASCADE,null=True)
+    cant_Periodos = models.IntegerField()
+    fecha_Reserva = models.TimeField()
+    Fecha_Solicitud_Res = models.TimeField()
+    motivo = models.CharField(max_length=256)
+    Cant_Est_Sol=models.IntegerField()
+
+    def __str__(self):
+        return self.motivo
+
 
 class Materia(models.Model):
      # El id de Materia se genera automaticamente
@@ -52,6 +56,7 @@ class Grupo(models.Model):
     Cod_Materia= models.ForeignKey(Materia,on_delete=CASCADE,null=True)
     # Cod_Grupo= models.ForeignKey(Grupo,on_delete=CASCADE,null=True)
     Cod_Docente = models.ForeignKey(Docente,on_delete=CASCADE,null=True)
+    Cant_Inscritos = models.IntegerField(null=True)
     
     def __str__(self):
         return self.Cod_Docente
