@@ -20,7 +20,7 @@
     <form class="row g-3 p-4">
       <div class="col-md-4">
         <label for="inputState" class="form-label text-white">Materia:</label>
-        <select id="inputState" class="form-select">
+        <select id="inputState" class="form-select" name="Materia">
           <option selected>Programación</option>
           <option>Elementos de la programación</option>
         </select>
@@ -28,7 +28,7 @@
 
       <div class="col-md-2">
         <label for="inputState" class="form-label text-white">Grupo:</label>
-        <select id="inputState" class="form-select">
+        <select id="inputState" class="form-select" name="Grupo">
           <option selected>1</option>
           <option>2</option>
         </select>
@@ -36,16 +36,16 @@
 
       <div class="col-md-4">
         <label for="input-label" class="form-label text-white">Cantidad de estudiantes </label>
-        <input type="label" placeholder="N° Estudiantes" class="form-control"  required>
+        <input type="label" placeholder="N° Estudiantes" class="form-control" id="Cestudiantes" name="Cestudiantes"  required>
       </div>
     
     
       <div class="col-sm-4">
         <label for="input-label" class="form-label text-white">Fecha:</label>
-        <div class="input-group date" id="datepicker">
-            <input type="text" class="form-control">
+        <div class="input-group date pick" id="datepicker">
+            <input type="text" class="form-control" id="Fecha" name="Fecha">
             <span class="input-group-append">
-                <span class="input-group-text bg-white">
+                <span class="input-group-text bg-white" style="height: 38px;">
                     <i class="fa fa-calendar"></i>
                 </span>
             </span>
@@ -56,7 +56,7 @@
    
       <div class="col-md-2">
         <label for="inputState" class="form-label text-white">Horario:</label>
-        <select id="inputState" class="form-select">
+        <select id="inputState" class="form-select" name="Horario">
           <option selected>06:45</option>
           <option>08:15</option>
           <option>09:45</option>
@@ -65,7 +65,7 @@
 
       <div class="col-md-2">
         <label for="inputState" class="form-label text-white">Periodo:</label>
-        <select id="inputState" class="form-select">
+        <select id="inputState" class="form-select" name="Periodo">
           <option selected>1</option>
           <option>2</option>
           <option>3</option>
@@ -75,7 +75,7 @@
 
       <div class="mb-3">
         <label for="validationTextarea" class="form-label text-white">Motivo:</label>
-        <textarea class="form-control" placeholder="Ingrese el motivo de su reserva" required></textarea>
+        <textarea class="form-control" placeholder="Ingrese el motivo de su reserva" id="Motivo" name="Motivo" required></textarea>
         <div class="invalid-feedback">
           
         </div>
