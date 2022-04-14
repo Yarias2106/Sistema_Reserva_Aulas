@@ -68,7 +68,11 @@ def salir(request):
 
 @login_required(login_url='/login/')
 def Reserva(request):
-    return render(request, "FormularioReserva.html")
+    nombre = (Docente.objects.get(email=request.user.username)).nombre_Docente
+    apellido = (Docente.objects.get(email=request.user.username)).apellido_Docente
+    nombreCompleto=nombre+" "+apellido
+    contexto={'nombre':nombreCompleto}
+    return render(request, "FormularioReserva.html",contexto)
 
 
 # @login_required(login_url='/login/')

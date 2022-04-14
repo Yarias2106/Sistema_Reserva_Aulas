@@ -58,15 +58,50 @@
                             <a class="nav-link active  pe-2 mx-3" aria-current="page" href="#">Inicio</a>
                         </li>
                         <li class="nav-item nav-justified">
-                            <a class="nav-link active pe-2 mx-3" href="#">Acerca de </a>
+                            <a class="nav-link active pe-2 mx-3" href="#" data-toggle="modal" data-target="#exampleModalCenter1">Acerca de </a>
                         </li>
                         <li class="nav-item nav-justified">
-                            <a class="nav-link active  pe-2 mx-3" href="#">Contáctanos </a>
+                            <a class="nav-link active  pe-2 mx-3" href="#" data-toggle="modal" data-target="#exampleModalCenter2">Contáctanos </a>
                         </li>
                     </ul>
             </div>
         </div>
     </nav>
+
+
+    <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Acerca de</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p> En Munay Technologies S.R.L, nos gusta lo que hacemos. Aportamos nuestra pasión a nuestro trabajo todos los días ofreciendo soluciones y superando las expectativas de nuestros clientes </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+      <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle2" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Contáctanos</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <center><p> <strong> E-mail: </strong> MunayTech@gmail.com  <br> <strong> Teléfono: </strong> +591 61612234</p></center>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
     <div class="row g-0 align-items-center margT mb-4">
         <div class="col-md-7 px-lg-5 px-md-5 px-sm-5 px-5">
@@ -125,6 +160,8 @@
             <center><img src="{% static '/imagenes/grafico.png' %}" alt="" class='imagen ml-5'></img></center>
         </div>
     </div>
+
+    
 
     <footer class='footColor mt-auto pb-0'>
         <div class="footer-content mt-2">
