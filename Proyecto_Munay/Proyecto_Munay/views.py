@@ -5,7 +5,7 @@ from django.shortcuts import render,redirect
 from django.template import Template,context
 from django.http import request, HttpResponse
 from django.template.loader import get_template
-from GestionDB.models import Docente
+from GestionDB.models import Docente, Grupo
 from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
@@ -70,10 +70,21 @@ def salir(request):
 def Reserva(request):
     nombre = (Docente.objects.get(email=request.user.username)).nombre_Docente
     apellido = (Docente.objects.get(email=request.user.username)).apellido_Docente
+    Cod_Doc= (Docente.objects.get(email=request.user.username)).id
     nombreCompleto=nombre+" "+apellido
-    contexto={'nombre':nombreCompleto}
-    return render(request, "FormularioReserva.html",contexto)
+    Tupla_Grupo = Grupo.objects.filter(Cod_Docente=Cod_Doc)
+    Lista_Mat = []
+    for elemento in Tupla_Grupo:
+        Lista_Mat.append(elemento.Cod_Materia)
+    contexto={
+        'nombre':nombreCompleto,
+        'Tupla_Grupo' :Tupla_Grupo
+        }
 
+    # test = Grupo.objects.filter(Cod_Materia="Calculo 1")
+    # print(test.id)
+    return render(request, "FormularioReserva.html",contexto)
+    
 
 # @login_required(login_url='/login/')
 # def inicio_Doc(request): 
