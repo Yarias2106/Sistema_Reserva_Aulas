@@ -83,8 +83,8 @@ def Reserva(request):
 
     contexto={
         'nombre':nombreCompleto,
-        'Tupla_Grupo' :Tupla_Grupo
-        
+        'Tupla_Grupo' :Tupla_Grupo,
+        'tuplita' : Tupla_Grupo
         }
     print(Tupla_Grupo[0].Cod_Materia)
     # Lista = []

@@ -12,20 +12,27 @@
   // console.log("hola andres si funciona")
   document.getElementById("alumno").value="hola";
   const test = document.getElementById("selector").value;
- 
+ console.log(test);
   const $select = document.getElementById("Grupi");
 
-  const agregar = () => {
+  // const agregar = () => {
 
-      // const option = document.createElement('option');
-      // const valor = new Date().getTime();
-      // option.value = valor;
-      // option.text = valor;
-      // $select.appendChild(option);
-      };
-  agregar();
-  
+  //     // const option = document.createElement('option');
+  //     // const valor = new Date().getTime();
+  //     // option.value = valor;
+  //     // option.text = valor;
+  //     // $select.appendChild(option);
+  //     };
+  // agregar();
+  const ident = 7;
+  var datos = [
+    "{%for item in Tupla_Grupo%}{%if item.id == "ident" %}{{item.id}},{%endif%}{%endfor%}"
+  ];
+  console.log(datos);
+
   }
+  
+  
 </script>
 
 
