@@ -12,6 +12,9 @@ from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User
 from unicodedata import normalize
 from django.contrib import messages
+# from django.utils import simplejson
+import json
+from json import dumps
 
 def loginPropio(request):
     # try:
@@ -75,11 +78,21 @@ def Reserva(request):
     Tupla_Grupo = Grupo.objects.filter(Cod_Docente=Cod_Doc)
     Lista_Mat = []
     for elemento in Tupla_Grupo:
-        Lista_Mat.append(elemento.Cod_Materia)
+        Lista_Mat.append(elemento)
+    
+
     contexto={
         'nombre':nombreCompleto,
         'Tupla_Grupo' :Tupla_Grupo
+        
         }
+    print(Tupla_Grupo[0].Cod_Materia)
+    # Lista = []
+    # for dato in Tupla_Grupo:
+    #     if (str(dato.Cod_Materia) == "Calculo 1"):
+    #         print('ressssssssssssssssssssssssssssssssssssssssssssssssssssssssssss')
+    #         print(dato.Cod_Materia)
+    #         print(dato.id)
 
     # test = Grupo.objects.filter(Cod_Materia="Calculo 1")
     # print(test.id)
