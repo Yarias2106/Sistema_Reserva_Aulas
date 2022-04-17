@@ -9,29 +9,38 @@
 <script>
   function cambiar()
   {
-  // console.log("hola andres si funciona")
-  document.getElementById("alumno").value="hola";
-  const test = document.getElementById("selector").value;
- console.log(test);
+  let test = document.getElementById("selector").value;
   const $select = document.getElementById("Grupi");
-
-  // const agregar = () => {
-
-  //     // const option = document.createElement('option');
-  //     // const valor = new Date().getTime();
-  //     // option.value = valor;
-  //     // option.text = valor;
-  //     // $select.appendChild(option);
-  //     };
-  // agregar();
-  const ident = 7;
-  var datos = [
-    "{%for item in Tupla_Grupo%}{%if item.id == "ident" %}{{item.id}},{%endif%}{%endfor%}"
-  ];
-  console.log(datos);
-
+  const datos =  "{%for item in Tupla_Grupo%}{{item.id}},{{item.Cod_Materia}}:{%endfor%}";
+  const dividido = datos.split(':');
+  for (let i = $select.options.length; i >= 0; i--) {
+    $select.remove(i);
   }
-  
+  $select.innerHTML="<option disabled selected>Seleccione un Grupo</option>"
+  for( i in dividido){
+    if(dividido[i].indexOf(test)>= 0){
+    const option = document.createElement('option');
+    const valor = dividido[i][0];
+    option.value = dividido[i][0];
+    option.text = dividido[i][0];
+    $select.appendChild(option);
+    };
+  }
+  };
+  function cambiado(){
+    let test = document.getElementById("selector").value;
+    let text = document.getElementById("Grupi").value;
+    const datos =  "{%for item in Tupla_Grupo%}{{item.Cant_Inscritos}},{{item.id}},{{item.Cod_Materia}}:{%endfor%}";
+    const dividido = datos.split(':');
+
+    for( i in dividido){
+      if(dividido[i].indexOf(test)>= 0 && dividido[i].indexOf(text)>= 0){
+        const cantidad = dividido[i].split(",");
+        document.getElementById("alumno").value=cantidad[0];
+      };
+  }
+    
+  };
   
 </script>
 
@@ -49,18 +58,18 @@
         <label for="inputState" class="form-label text-white">Materia:</label>
         <select id="selector" class="form-select" name="Materia" onchange=cambiar()>
           <option disabled selected>Selecione la Materia</option>
-          {% for nombre in Tupla_Grupo %}
-          <option>{{nombre.Cod_Materia}}</option>
+          {% for nombre in tuplita %}
+          <option>{{nombre}}</option>
           {% endfor %}
         </select>
         
       </div>
 
       <div class="col-md-2">
-        <label for="inputState" class="form-label text-white">Grupo:</label>
-        <select id="Grupi" class="form-select">
-          <!-- <option selected id="">1</option> -->
-          
+        <label for="inputState" class="form-label text-white" >Grupo:</label>
+        <select id="Grupi" class="form-select" name="Grupo" onchange=cambiado()>
+          <option disabled selected>Seleccione un Grupo</option>
+
         </select>
       </div>
 
