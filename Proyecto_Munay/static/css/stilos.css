@@ -164,3 +164,90 @@
    width: 25px;
    height: 25px;
  }
+
+ /* MODAL */
+
+.modal-header{
+   border-bottom: 1.3px solid rgba(152, 236, 255, 0.1);
+}
+
+.modal-dialog{
+      position: relative;
+      max-width: 600px;
+      width: 100%;
+      min-height: max-content;
+      margin: 35vh auto;
+      box-shadow: 0 0 80px rgba(0, 0, 0, 1), 0 0 0 16px rgba(152, 236, 255, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      scroll-behavior: smooth;
+      display: flex;
+      transition: 0.3s;
+}
+
+ .modal-content{
+      background-size: cover;
+      height: 100%;
+      width: 100%;
+      flex-shrink: 0;
+      color: #fff;
+      background-position: center;
+      position: relative;
+      display: flex;
+      
+      background: linear-gradient(
+        251deg,
+        #00b8ff52 -53%,
+        rgba(255, 255, 255, 0) 65%
+      );
+      
+      backdrop-filter: blur(30px);
+ }
+
+ .close{
+    border-radius: 10px;
+    background: linear-gradient(
+        251deg,
+        #00b8ff52 -53%,
+        rgba(255, 255, 255, 0) 65%
+      );
+      box-shadow: 0 0 3px rgba(0, 0, 0, 1), 0 0 0 3px rgba(152, 236, 255, 0.1);
+      border-style: none;
+      color: #EAF3F6;
+ }
+
+ .modal-body{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+ }
+
+ /* FIN MODAL */
+
+ /* ICONO EYE PASSWORD */
+
+.CampoContraseña{
+   position: relative;
+}
+
+
+ .IconEye {
+   
+   position: absolute;
+   right: 8%;
+   top: 28%;
+   transform: translateY(-15%);
+   color: #030303;
+   font-size: 20px;
+   opacity: 0.4;
+   cursor: pointer;
+   font-family: 'Material icons';
+}
+
+.IconEye:hover{
+   transition: 0.9s;
+   opacity: 0.9;
+   color: #158a99;
+}
+
+/* FIN EYE PASSWORD */
