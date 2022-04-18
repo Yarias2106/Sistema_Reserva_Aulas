@@ -53,7 +53,7 @@ class Materia(models.Model):
 
 class Grupo(models.Model):
      # El id de Grupo se genera automaticamente
-    Cod_Grupo= models.IntegerField(null=True)
+    Cod_Grupo= models.CharField(max_length=60,null=True)
     Cod_Materia= models.ForeignKey(Materia,on_delete=CASCADE,null=True)
     Cod_Docente = models.ForeignKey(Docente,on_delete=CASCADE,null=True)
     Cant_Inscritos = models.IntegerField(null=True)
