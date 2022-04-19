@@ -1,4 +1,5 @@
 from operator import truediv
+from pyexpat import model
 from django.db import models
 from django.db.models.deletion import CASCADE
 # Create your models here.
@@ -15,10 +16,11 @@ class Docente(models.Model):
 class Aula(models.Model):
     # El id de aula se genera automaticamente
     # Cod_Reserva= models.ForeignKey(Reserva,on_delete=CASCADE,null=True)
+    Cod_Aula = models.CharField(max_length=60,null=True)
     Cant_Estudiante = models.IntegerField()
 
     def __str__(self):
-        return self.Cant_Estudiante
+        return self.Cod_Aula
 
 
 class Reserva(models.Model):
