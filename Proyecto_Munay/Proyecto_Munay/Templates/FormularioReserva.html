@@ -59,9 +59,10 @@
 <link rel="stylesheet" href="{% static '/css/FormularioReserva.css' %}">
 
 <section class="BodyFont mx-4">
-  <div class="container formReserva">
-    <form class="row g-3 p-4">
-      <div class="col-md-4">
+  <div class="container formReserva col-md-7">
+    <form action="/validar/" method="POST" class="row g-3 p-4">
+      {% csrf_token %} 
+      <div class="col-md-9">
         <label for="inputState" class="form-label text-white">Materia:</label>
         <select id="selector" class="form-select" name="Materia" onchange=cambiar()>
           <option disabled selected>Selecione la Materia</option>
@@ -72,7 +73,7 @@
         
       </div>
 
-      <div class="col-md-2">
+      <div class="col-md-3">
         <label for="inputState" class="form-label text-white" >Grupo:</label>
         <select id="Grupi" class="form-select" name="Grupo" onchange=cambiado()>
           <option disabled selected>Seleccione un Grupo</option>
@@ -80,27 +81,20 @@
         </select>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-3">
         <label for="input-label" class="form-label text-white">Cantidad de estudiantes </label>
-        <input type="text" id="alumno" placeholder="N° Estudiantes" class="form-control" readonly>
+        <input type="text" id="alumno" name="alumno" placeholder="N° Estudiantes" class="form-control" readonly>
       </div>
     
     
-      <div class="col-sm-4">
+      <div class="col-sm-3">
         <label for="input-label" class="form-label text-white">Fecha:</label>
-        <div class="input-group date pick" id="datepicker">
-            <input type="text" class="form-control" id="Fecha" name="Fecha">
-            <span class="input-group-append">
-                <span class="input-group-text bg-white" style="height: 38px;">
-                    <i class="fa fa-calendar"></i>
-                </span>
-            </span>
-        </div>
+        <input type="date" name="Fecha" id="Fecha" class="form-control">
     </div>
 
 
    
-      <div class="col-md-2">
+      <div class="col-md-3">
         <label for="inputState" class="form-label text-white">Horario:</label>
         <select id="inputState" class="form-select" name="Horario">
           <option selected>06:45</option>
@@ -111,7 +105,7 @@
         </select>
       </div>
 
-      <div class="col-md-2">
+      <div class="col-md-3">
         <label for="inputState" class="form-label text-white">Periodo:</label>
         <select id="inputState" class="form-select" name="Periodo">
           <option selected>1</option>

@@ -58,9 +58,8 @@ def loginPropio(request):
 
 @login_required(login_url='/login/')
 def VistaDocente(request):
-    nombre = (Docente.objects.get(email=request.user.username)).nombre_Docente
-    apellido = (Docente.objects.get(email=request.user.username)).apellido_Docente
-    nombreCompleto=nombre+" "+apellido
+    
+    nombreCompleto=nombreApp(request)
     contexto={'nombre':nombreCompleto}
     return render(request,"VistaDocente.html",contexto)
     return render(request,"VistaDocente.html")
@@ -69,40 +68,58 @@ def salir(request):
     logout(request)
     return redirect("/login/")
 
-@login_required(login_url='/login/')
-def Reserva(request):
+def nombreApp(request):
     nombre = (Docente.objects.get(email=request.user.username)).nombre_Docente
     apellido = (Docente.objects.get(email=request.user.username)).apellido_Docente
+    
+    return nombre+" "+apellido
+
+@login_required(login_url='/login/')
+def Reserva(request):
+    nombreCompleto=nombreApp(request)
     Cod_Doc= (Docente.objects.get(email=request.user.username)).id
-    nombreCompleto=nombre+" "+apellido
     Tupla_Grupo = Grupo.objects.filter(Cod_Docente=Cod_Doc)
+
     Lista_Mat = []
     for elemento in Tupla_Grupo:
         mat = (elemento.Cod_Materia.Nombre).strip()
-        if(mat) not in Lista_Mat:
-            
+        if(mat) not in Lista_Mat:           
             Lista_Mat.append(mat)
-    
-    
 
     contexto={
         'nombre':nombreCompleto,
         'Tupla_Grupo' :Tupla_Grupo,
         'tuplita' : Lista_Mat
         }
-    # print(Tupla_Grupo[0].Cod_Materia)
-    # print(Tupla_Grupo[0].Cant_Inscritos)
-    # Lista = []
-    # for dato in Tupla_Grupo:
-    #     if (str(dato.Cod_Materia) == "Calculo 1"):
-    #         print('ressssssssssssssssssssssssssssssssssssssssssssssssssssssssssss')
-    #         print(dato.Cod_Materia)
-    #         print(dato.id)
-
-    # test = Grupo.objects.filter(Cod_Materia="Calculo 1")
-    # print(test.id)
     return render(request, "FormularioReserva.html",contexto)
     
+def validar(request):
+    
+    if request.method=="POST":
+        Motivo=request.POST.get('Motivo','')
+        Materia=request.POST.get('Materia','')
+        Grupo=request.POST.get('Grupo','')
+        Alumno=request.POST.get('alumno','')
+        Fecha=request.POST.get('Fecha','')
+        Horario=request.POST.get('Horario','')
+        CantPeriodos=request.POST.get('Periodo','') 
+        mensaje(request,"Por favor que te pasa :v")
+        
+
+    return redirect("/Reserva/")
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # @login_required(login_url='/login/')
 # def inicio_Doc(request): 
