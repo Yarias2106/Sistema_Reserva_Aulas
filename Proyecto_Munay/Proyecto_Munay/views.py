@@ -103,8 +103,6 @@ def validar(request):
         Fecha=request.POST.get('Fecha','')
         Horario=request.POST.get('Horario','')
         CantPeriodos=request.POST.get('Periodo','') 
-        mensaje(request,"Por favor que te pasa :v")
-        
 
     return redirect("/Reserva/")
 

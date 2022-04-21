@@ -9,39 +9,39 @@
 <script>
   function cambiar()
   {
+  document.getElementById("alumno").value="";
   let test = document.getElementById("selector").value;
   const $select = document.getElementById("Grupi");
-  const datos =  "{%for item in Tupla_Grupo%}{{item.Cod_Grupo}},{{item.Cod_Materia}}:{%endfor%}";
+  const datos =  `{%for item in Tupla_Grupo%}{{item.Cod_Grupo}},{{item.Cod_Materia}}:{%endfor%}`;
   // const div = datos.split(':');
   let data = datos.split(':');
   const dataArr = new Set(data);
   let dividido = [...dataArr];
-  document.getElementById("alumno").value="";
-  
+
   for (let i = $select.options.length; i >= 0; i--) {
     $select.remove(i);
   }
   $select.innerHTML="<option disabled selected>Seleccione un Grupo</option>"
   for( i in dividido){
-    if(dividido[i].indexOf(test)>= 0){
+    if(dividido[i].includes(test)){
     const option = document.createElement('option');
-    aux = dividido[i].split(",");
+    id_Grupo = dividido[i].split(",");
     
-    const valor = aux[0]
-    option.value = aux[0]
-    option.text = aux[0]
+    const valor = id_Grupo[0]
+    option.value = id_Grupo[0]
+    option.text = id_Grupo[0]
     $select.appendChild(option);
     };
   }
   };
   function cambiado(){
-    let test = document.getElementById("selector").value;
-    let text = document.getElementById("Grupi").value;
+    let MateriaSelect = document.getElementById("selector").value;
+    let GrupoSelect = document.getElementById("Grupi").value;
     const datos =  "{%for item in Tupla_Grupo%}{{item.Cant_Inscritos}},{{item.Cod_Grupo}},{{item.Cod_Materia}}:{%endfor%}";
     const dividido = datos.split(':');
 
     for( i in dividido){
-      if(dividido[i].indexOf(test)>= 0 && dividido[i].indexOf(text)>= 0){
+      if(dividido[i].includes(MateriaSelect) && dividido[i].includes(GrupoSelect)){
         const cantidad = dividido[i].split(",");
         document.getElementById("alumno").value=cantidad[0];
       };
