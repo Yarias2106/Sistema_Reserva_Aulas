@@ -11,8 +11,13 @@
   {
   let test = document.getElementById("selector").value;
   const $select = document.getElementById("Grupi");
-  const datos =  "{%for item in Tupla_Grupo%}{{item.id}},{{item.Cod_Materia}}:{%endfor%}";
-  const dividido = datos.split(':');
+  const datos =  "{%for item in Tupla_Grupo%}{{item.Cod_Grupo}},{{item.Cod_Materia}}:{%endfor%}";
+  // const div = datos.split(':');
+  let data = datos.split(':');
+  const dataArr = new Set(data);
+  let dividido = [...dataArr];
+
+  
   for (let i = $select.options.length; i >= 0; i--) {
     $select.remove(i);
   }
@@ -20,9 +25,11 @@
   for( i in dividido){
     if(dividido[i].indexOf(test)>= 0){
     const option = document.createElement('option');
-    const valor = dividido[i][0];
-    option.value = dividido[i][0];
-    option.text = dividido[i][0];
+    aux = dividido[i].split(",");
+    
+    const valor = aux[0]
+    option.value = aux[0]
+    option.text = aux[0]
     $select.appendChild(option);
     };
   }
@@ -30,7 +37,7 @@
   function cambiado(){
     let test = document.getElementById("selector").value;
     let text = document.getElementById("Grupi").value;
-    const datos =  "{%for item in Tupla_Grupo%}{{item.Cant_Inscritos}},{{item.id}},{{item.Cod_Materia}}:{%endfor%}";
+    const datos =  "{%for item in Tupla_Grupo%}{{item.Cant_Inscritos}},{{item.Cod_Grupo}},{{item.Cod_Materia}}:{%endfor%}";
     const dividido = datos.split(':');
 
     for( i in dividido){
