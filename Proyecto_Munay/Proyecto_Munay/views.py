@@ -78,9 +78,11 @@ def Reserva(request):
     Tupla_Grupo = Grupo.objects.filter(Cod_Docente=Cod_Doc)
     Lista_Mat = []
     for elemento in Tupla_Grupo:
-        if((elemento.Cod_Materia) not in Lista_Mat):
-            Lista_Mat.append(elemento.Cod_Materia)
-
+        mat = (elemento.Cod_Materia.Nombre).strip()
+        if(mat) not in Lista_Mat:
+            
+            Lista_Mat.append(mat)
+    
     
 
     contexto={
@@ -88,8 +90,8 @@ def Reserva(request):
         'Tupla_Grupo' :Tupla_Grupo,
         'tuplita' : Lista_Mat
         }
-    print(Tupla_Grupo[0].Cod_Materia)
-    print(Tupla_Grupo[0].Cant_Inscritos)
+    # print(Tupla_Grupo[0].Cod_Materia)
+    # print(Tupla_Grupo[0].Cant_Inscritos)
     # Lista = []
     # for dato in Tupla_Grupo:
     #     if (str(dato.Cod_Materia) == "Calculo 1"):
