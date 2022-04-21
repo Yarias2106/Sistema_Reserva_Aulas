@@ -16,7 +16,7 @@
   let data = datos.split(':');
   const dataArr = new Set(data);
   let dividido = [...dataArr];
-
+  document.getElementById("alumno").value="";
   
   for (let i = $select.options.length; i >= 0; i--) {
     $select.remove(i);
@@ -82,7 +82,7 @@
 
       <div class="col-md-4">
         <label for="input-label" class="form-label text-white">Cantidad de estudiantes </label>
-        <input type="text" id="alumno" placeholder="N° Estudiantes" class="form-control">
+        <input type="text" id="alumno" placeholder="N° Estudiantes" class="form-control" readonly>
       </div>
     
     
@@ -105,7 +105,9 @@
         <select id="inputState" class="form-select" name="Horario">
           <option selected>06:45</option>
           <option>08:15</option>
-          <option>09:45</option>
+          <option>09:45</option><option>11:15</option><option>12:45</option>
+          <option>14:15</option><option>15:45</option><option>17:15</option>
+          <option>18:45</option><option>20:15</option>
         </select>
       </div>
 
@@ -114,8 +116,7 @@
         <select id="inputState" class="form-select" name="Periodo">
           <option selected>1</option>
           <option>2</option>
-          <option>3</option>
-          <option>4</option>
+          
         </select>
       </div>
 
