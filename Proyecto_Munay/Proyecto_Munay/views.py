@@ -95,15 +95,47 @@ def Reserva(request):
     
 def validar(request):
     
+    redireccion = "/Reserva/"
     if request.method=="POST":
         Motivo=request.POST.get('Motivo','')
+        Motivo=Motivo.strip()
+        auxiliar_descripcion =Motivo.upper()
+        if(len(Motivo)>300):
+                messages.add_message(request=request, level=messages.WARNING, message = "EL motivo de reserva es muy grande")
+                return redirect(redireccion)
+        if(len(Motivo)<10):
+                messages.add_message(request=request, level=messages.WARNING, message = "El motivo de reserva es muy corto")
+                return redirect(redireccion)
+
+        encontre1 = False
+        contador1 =0
+        n1=''
+        while(contador1<len(auxiliar_descripcion)-2 and not encontre1):
+                codigoDescripcion = (ord(auxiliar_descripcion[contador1]))
+                if not(codigoDescripcion>47 and codigoDescripcion<59):
+                    if auxiliar_descripcion[contador1]==auxiliar_descripcion[contador1+1] and auxiliar_descripcion[contador1]==auxiliar_descripcion[contador1+2] :
+                        n1 =Motivo[contador1]
+                        encontre1 = True
+                contador1 += 1
+        if(encontre1):
+                messages.add_message(request=request, level=messages.WARNING, message = "El carácter '" + n1 + "' no debería repetirse tantas veces en la descripción")
+                return redirect(redireccion) 
+
         Materia=request.POST.get('Materia','')
+        if(len(Materia)==0):
+                messages.add_message(request=request, level=messages.WARNING, message = "Por favor seleccione una Materia")
+                return redirect(redireccion)
         Grupo=request.POST.get('Grupo','')
+        if(len(Grupo)==0):
+                messages.add_message(request=request, level=messages.WARNING, message = "Por favor seleccione un Grupo")
+                return redirect(redireccion)
         Alumno=request.POST.get('alumno','')
         Fecha=request.POST.get('Fecha','')
         Horario=request.POST.get('Horario','')
         CantPeriodos=request.POST.get('Periodo','') 
 
+        print("todo nice")
+ 
     return redirect("/Reserva/")
 
 

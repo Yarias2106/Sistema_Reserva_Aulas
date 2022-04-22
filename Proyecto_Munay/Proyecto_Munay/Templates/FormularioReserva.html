@@ -6,6 +6,19 @@
 
 {% block content %}
 {% load static %}
+<head>
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+        setTimeout(function() {
+            $(".ventana").fadeOut(1500);
+        },2000);
+        });
+  </script>
+
+
+
+</head>
 <script>
   function cambiar()
   {
@@ -59,6 +72,21 @@
 <link rel="stylesheet" href="{% static '/css/FormularioReserva.css' %}">
 
 <section class="BodyFont mx-4">
+
+  <div class="form-group mt-3 col-md-12 col-lg-12 col-xl-12">
+    <div>
+    {% if messages %}
+        <div class="ventana row ">
+        <ul class="messages pe-xl-5 pe-lg-4 pe-md-4 pe-4">   
+        {% for message in messages %}
+            <center><li{% if message.tags %} class="alert alert-{{ message.tags }} alert-danger alert-dismissible fade show alertaCol"{% endif %} role="alert" >{{ message }}</li></center>
+        {% endfor %}
+        </ul>
+        </div>
+    {% endif %}
+    </div>
+  </div>  
+
   <div class="container formReserva col-md-7">
     <form action="/validar/" method="POST" class="row g-3 p-4">
       {% csrf_token %} 
