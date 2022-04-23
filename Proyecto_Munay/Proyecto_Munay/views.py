@@ -134,7 +134,7 @@ def validar(request):
         Horario=request.POST.get('Horario','')
         CantPeriodos=request.POST.get('Periodo','') 
 
-        print("todo nice")
+        messages.add_message(request=request, level=messages.WARNING, message = "Solitud realizada corectamente")
  
     return redirect("/Reserva/")
 
