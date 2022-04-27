@@ -1,11 +1,12 @@
 
+# from curses import savetty
 import email
 from django import http
 from django.shortcuts import render,redirect
 from django.template import Template,context
 from django.http import request, HttpResponse
 from django.template.loader import get_template
-from GestionDB.models import Docente, Grupo
+from GestionDB.models import Docente, Grupo, Reserva, Materia
 from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
@@ -13,8 +14,10 @@ from django.contrib.auth.models import User
 from unicodedata import normalize
 from django.contrib import messages
 # from django.utils import simplejson
-import json
+# import json
 from json import dumps
+from GestionDB import models
+from datetime import datetime
 
 def loginPropio(request):
     # try:
@@ -97,45 +100,63 @@ def validar(request):
     
     redireccion = "/Reserva/"
     if request.method=="POST":
+        Materia=request.POST.get('Materia','')
+        Grupo=request.POST.get('Grupo','')
+        Alumno=request.POST.get('alumno','')
+        Fecha=request.POST.get('Fecha','')
+        Horario=request.POST.get('Horario','')
+        CantPeriodos=request.POST.get('Periodo','')
         Motivo=request.POST.get('Motivo','')
         Motivo=Motivo.strip()
+        
         auxiliar_descripcion =Motivo.upper()
         if(len(Motivo)>300):
-                messages.add_message(request=request, level=messages.WARNING, message = "EL motivo de reserva es muy grande")
-                return redirect(redireccion)
+            messages.add_message(request=request, level=messages.WARNING, message = "EL motivo de reserva esmuy grande")
+            return redirect(redireccion)
         if(len(Motivo)<10):
-                messages.add_message(request=request, level=messages.WARNING, message = "El motivo de reserva es muy corto")
-                return redirect(redireccion)
+            messages.add_message(request=request, level=messages.WARNING, message = "El motivo de reserva esmuy corto")
+            return redirect(redireccion)
 
         encontre1 = False
         contador1 =0
         n1=''
         while(contador1<len(auxiliar_descripcion)-2 and not encontre1):
-                codigoDescripcion = (ord(auxiliar_descripcion[contador1]))
-                if not(codigoDescripcion>47 and codigoDescripcion<59):
-                    if auxiliar_descripcion[contador1]==auxiliar_descripcion[contador1+1] and auxiliar_descripcion[contador1]==auxiliar_descripcion[contador1+2] :
-                        n1 =Motivo[contador1]
-                        encontre1 = True
-                contador1 += 1
+            codigoDescripcion = (ord(auxiliar_descripcion[contador1]))
+            if not(codigoDescripcion>47 and codigoDescripcion<59):
+                if auxiliar_descripcion[contador1]==auxiliar_descripcion[contador1+1] and auxiliar_descripcion[contador1]==auxiliar_descripcion[contador1+2] :
+                    n1 =Motivo[contador1]
+                    encontre1 = True
+            contador1 += 1
         if(encontre1):
-                messages.add_message(request=request, level=messages.WARNING, message = "El carácter '" + n1 + "' no debería repetirse tantas veces en la descripción")
-                return redirect(redireccion) 
+            messages.add_message(request=request, level=messages.WARNING, message = "El carácter '" + n1 + "'no debería repetirse tantas veces en la descripción")
+            return redirect(redireccion) 
 
-        Materia=request.POST.get('Materia','')
+        
         if(len(Materia)==0):
-                messages.add_message(request=request, level=messages.WARNING, message = "Por favor seleccione una Materia")
-                return redirect(redireccion)
-        Grupo=request.POST.get('Grupo','')
+            messages.add_message(request=request, level=messages.WARNING, message = "Por favor seleccione unaMateria")
+            return redirect(redireccion)
+        
         if(len(Grupo)==0):
-                messages.add_message(request=request, level=messages.WARNING, message = "Por favor seleccione un Grupo")
-                return redirect(redireccion)
-        Alumno=request.POST.get('alumno','')
-        Fecha=request.POST.get('Fecha','')
-        Horario=request.POST.get('Horario','')
-        CantPeriodos=request.POST.get('Periodo','') 
-
+            messages.add_message(request=request, level=messages.WARNING, message = "Por favor seleccione unGrupo")
+            return redirect(redireccion)
+        
         messages.add_message(request=request, level=messages.WARNING, message = "Solitud realizada corectamente")
- 
+        # datetime.today().strftime('%Y-%m-%d'),
+        now=datetime.now()
+        Cod_Doc= (Docente.objects.get(email=request.user.username)).id
+        Save_Reserva = models.Reserva.objects.create(
+            cant_Periodos = CantPeriodos,
+            Hora_Reserva = Horario,
+            Fecha_Solicitud_Res = now.date(),
+            motivo = Motivo,
+            Cant_Est_Sol = Alumno,
+            Cod_Docente_id = Cod_Doc,
+            Cod_Aula_id = 1,
+            Fecha_Reserva = Fecha,
+            Hora_Solicitud_Res = now.time()
+            )
+        Save_Reserva.save()
+        
     return redirect("/Reserva/")
 
 

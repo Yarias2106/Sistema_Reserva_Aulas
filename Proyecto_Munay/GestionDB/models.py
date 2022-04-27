@@ -1,5 +1,6 @@
 from operator import truediv
 from pyexpat import model
+from statistics import mode
 from django.db import models
 from django.db.models.deletion import CASCADE
 # Create your models here.
@@ -28,8 +29,10 @@ class Reserva(models.Model):
     Cod_Docente= models.ForeignKey(Docente,on_delete=CASCADE,null=True)
     Cod_Aula = models.ForeignKey(Aula,on_delete=CASCADE,null=True)
     cant_Periodos = models.IntegerField()
-    fecha_Reserva = models.TimeField()
-    Fecha_Solicitud_Res = models.TimeField()
+    Fecha_Reserva = models.DateField(null=True)
+    Hora_Reserva = models.TimeField()
+    Fecha_Solicitud_Res = models.DateField()
+    Hora_Solicitud_Res = models.TimeField(null=True)
     motivo = models.CharField(max_length=256)
     Cant_Est_Sol=models.IntegerField()
 
