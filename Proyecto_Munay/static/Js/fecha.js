@@ -1,3 +1,4 @@
+
 let date = new Date();
 
 let day = date.getDate();
@@ -6,14 +7,12 @@ let year = date.getFullYear();
 let monthMax;
 let yearMax;
 let dayMax;
-
 if(month < 10){
   date = `${year}-0${month}-${day}`;
 }else{
   date = `${year}-${month}-${day}`;
 }
 
-document.getElementById('Fecha').value = date;
 document.getElementById('Fecha').min = date;
 
 let dateMax = new Date();
@@ -54,8 +53,8 @@ let dateMax = new Date();
 
 if(monthMax < 10){
     dateMax = `${yearMax}-0${monthMax}-${dayMax}`;
-  }else{
+}else{
     dateMax = `${yearMax}-${monthMax}-${dayMax}`;
-  }
+}
 
-  document.getElementById('Fecha').max = dateMax;
+document.getElementById('Fecha').max = dateMax;
