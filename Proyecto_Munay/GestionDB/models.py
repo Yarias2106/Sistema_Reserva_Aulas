@@ -1,4 +1,5 @@
 from operator import truediv
+from pickle import TRUE
 from pyexpat import model
 from statistics import mode
 from django.db import models
@@ -19,6 +20,7 @@ class Aula(models.Model):
     # Cod_Reserva= models.ForeignKey(Reserva,on_delete=CASCADE,null=True)
     Cod_Aula = models.CharField(max_length=60,null=True)
     Cant_Estudiante = models.IntegerField()
+    Tipo_Aula = models.CharField(max_length=60,null=True)
 
     def __str__(self):
         return self.Cod_Aula
