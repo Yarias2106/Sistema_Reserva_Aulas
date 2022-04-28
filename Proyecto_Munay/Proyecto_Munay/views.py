@@ -111,10 +111,10 @@ def validar(request):
         
         auxiliar_descripcion =Motivo.upper()
         if(len(Motivo)>300):
-            messages.add_message(request=request, level=messages.WARNING, message = "EL motivo de reserva esmuy grande")
+            messages.add_message(request=request, level=messages.WARNING, message = "El motivo de reserva es muy largo")
             return redirect(redireccion)
         if(len(Motivo)<10):
-            messages.add_message(request=request, level=messages.WARNING, message = "El motivo de reserva esmuy corto")
+            messages.add_message(request=request, level=messages.WARNING, message = "El motivo de reserva es muy corto")
             return redirect(redireccion)
 
         encontre1 = False
@@ -133,14 +133,14 @@ def validar(request):
 
         
         if(len(Materia)==0):
-            messages.add_message(request=request, level=messages.WARNING, message = "Por favor seleccione unaMateria")
+            messages.add_message(request=request, level=messages.WARNING, message = "Por favor seleccione una Materia")
             return redirect(redireccion)
         
         if(len(Grupo)==0):
-            messages.add_message(request=request, level=messages.WARNING, message = "Por favor seleccione unGrupo")
+            messages.add_message(request=request, level=messages.WARNING, message = "Por favor seleccione un Grupo")
             return redirect(redireccion)
         
-        messages.add_message(request=request, level=messages.WARNING, message = "Solitud realizada corectamente")
+        messages.add_message(request=request, level=messages.WARNING, message = "Solicitud realizada correctamente")
         # datetime.today().strftime('%Y-%m-%d'),
         now=datetime.now()
         Cod_Doc= (Docente.objects.get(email=request.user.username)).id
