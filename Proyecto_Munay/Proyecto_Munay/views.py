@@ -98,7 +98,7 @@ def Reserva(request):
     
 def validar(request):
     
-    redireccion = "/Reserva/"
+    Reserva = "/Reserva/"
     if request.method=="POST":
         Materia=request.POST.get('Materia','')
         Grupo=request.POST.get('Grupo','')
@@ -108,14 +108,23 @@ def validar(request):
         CantPeriodos=request.POST.get('Periodo','')
         Motivo=request.POST.get('Motivo','')
         Motivo=Motivo.strip()
+        contexto = {
+            'Materia' : Materia,
+            'Grupo' : Grupo,
+            'Alumno' : Alumno,
+            'Fecha' : Fecha,
+            'Horario' : Horario,
+            'CantPeriodos' : CantPeriodos,
+            'Motivo' : Motivo
+        }
         
         auxiliar_descripcion =Motivo.upper()
         if(len(Motivo)>300):
-            messages.add_message(request=request, level=messages.WARNING, message = "El motivo de reserva es muy largo")
-            return redirect(redireccion)
+            mensaje(request,"El motivo de reserva es muy largo")
+            return redirect(Reserva)
         if(len(Motivo)<10):
-            messages.add_message(request=request, level=messages.WARNING, message = "El motivo de reserva es muy corto")
-            return redirect(redireccion)
+            mensaje(request,"El motivo de reserva es muy corto")
+            return redirect(Reserva)
 
         encontre1 = False
         contador1 =0
@@ -128,48 +137,39 @@ def validar(request):
                     encontre1 = True
             contador1 += 1
         if(encontre1):
-            messages.add_message(request=request, level=messages.WARNING, message = "El carácter '" + n1 + "'no debería repetirse tantas veces en la descripción")
-            return redirect(redireccion) 
+            mensaje(request,"El carácter '" + n1 + "'no debería repetirse tantas veces en la descripción")
+            return redirect(Reserva) 
 
         
         if(len(Materia)==0):
-            messages.add_message(request=request, level=messages.WARNING, message = "Por favor seleccione una Materia")
-            return redirect(redireccion)
+            mensaje(request,"Por favor seleccione una Materia")
+            return redirect(Reserva)
         
         if(len(Grupo)==0):
-            messages.add_message(request=request, level=messages.WARNING, message = "Por favor seleccione un Grupo")
-            return redirect(redireccion)
+            mensaje(request,"Por favor seleccione un Grupo")
+            return redirect(Reserva)
         
-        messages.add_message(request=request, level=messages.WARNING, message = "Solicitud realizada correctamente")
+        mensaje(request,"Solicitud realizada correctamente")
         # datetime.today().strftime('%Y-%m-%d'),
-        now=datetime.now()
-        Cod_Doc= (Docente.objects.get(email=request.user.username)).id
-        Save_Reserva = models.Reserva.objects.create(
-            cant_Periodos = CantPeriodos,
-            Hora_Reserva = Horario,
-            Fecha_Solicitud_Res = now.date(),
-            motivo = Motivo,
-            Cant_Est_Sol = Alumno,
-            Cod_Docente_id = Cod_Doc,
-            Cod_Aula_id = 1,
-            Fecha_Reserva = Fecha,
-            Hora_Solicitud_Res = now.time()
-            )
-        Save_Reserva.save()
+        # now=datetime.now()
+        # Cod_Doc= (Docente.objects.get(email=request.user.username)).id
+        # Save_Reserva = models.Reserva.objects.create(
+        #     cant_Periodos = CantPeriodos,
+        #     Hora_Reserva = Horario,
+        #     Fecha_Solicitud_Res = now.date(),
+        #     motivo = Motivo,
+        #     Cant_Est_Sol = Alumno,
+        #     Cod_Docente_id = Cod_Doc,
+        #     Cod_Aula_id = 1,
+        #     Fecha_Reserva = Fecha,
+        #     Hora_Solicitud_Res = now.time()
+        #     )
+        # Save_Reserva.save()
         
     return redirect("/Reserva/")
 
-
-
-
-
-
-
-
-
-
-
-
+def mensaje(req,mensajeError):  
+    messages.add_message(request=req, level=messages.WARNING, message = mensajeError)
 
 
 # @login_required(login_url='/login/')
@@ -192,5 +192,3 @@ def validar(request):
 # print(var.password)
 
 
-def mensaje(req,mensajeError):  
-    messages.add_message(request=req, level=messages.WARNING, message = mensajeError)
