@@ -8,6 +8,7 @@
 {% load static %}
 
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
       setTimeout(function() {
@@ -68,12 +69,23 @@
       let Periodo = document.getElementById("Periodo").value;
         if (MateriaSelect===""||GrupoSelect ===""||alumno===""||Fecha ===""||Horario===""||Periodo===""){return true}
         if (Motivo === "") {
-            resultado.innerText = "El campo Motivo no puede estar Vacio"; 
+            //resultado.innerText = "El campo Motivo no puede estar Vacio"; 
+            swal("Error","El campo Motivo no puede estar Vacio","error",{button:"Entendido"});
             return false  
-        } else {
-            if(Motivo.length < 10){resultado.innerText = "El Motivo es muy corto"; return false};
-            if(Motivo.length > 300){resultado.innerText = "El Motivo es muy largo"; return false}else{
-              return true;
+         } else {
+            if(Motivo.length < 10){
+              //resultado.innerText = "El Motivo es muy corto"; 
+            swal("Error","El motivo es muy corto","error",{button:"Entendido"})
+            return false};
+
+            if(Motivo.length > 300){
+            //resultado.innerText = "El Motivo es muy largo";
+            swal("Error","El Motivo es muy largo","error",{button:"Entendido"})
+            return false
+          } else{
+            swal({title:"Solicitud exitosa",icon:"success",button:"Entendido"})
+            return false
+            //return true;
             }
         }
       
@@ -88,7 +100,7 @@
   <div class="container formReserva col-md-7">
 
 
-    <div class="form-group mt-3 col-md-12 col-lg-12 col-xl-12">
+  <div class="form-group mt-3 col-md-12 col-lg-12 col-xl-12">
       <div>
       {% if messages %}
           <div class="ventana row ">
@@ -101,6 +113,7 @@
       {% endif %}
       </div>
     </div>  
+
     <form action="/validar/" method="POST" class="row g-3 p-4">
       {% csrf_token %} 
       <div class="col-md-9">
@@ -160,10 +173,8 @@
 
       <div class="mb-3">
         <label for="validationTextarea" class="form-label text-white">Motivo:</label>
-        <textarea class="form-control" placeholder="Describa el motivo de su reserva" id="Motivo" name="Motivo" required></textarea>
-        <div class="alert alert-danger" role="alert" id="help">
-          Los mensajes aparceceran aqui!!!
-        </div>
+        <textarea class="form-control" placeholder="Describa el motivo de su reserva" id="Motivo" name="Motivo"></textarea>
+       
         <div class="invalid-feedback">
           
         </div>
