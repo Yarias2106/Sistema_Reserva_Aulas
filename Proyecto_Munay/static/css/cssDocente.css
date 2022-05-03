@@ -1,22 +1,20 @@
 body{
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Roboto', Oxygen,
-              'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'josefin', sans-serif;
-              -webkit-font-smoothing: antialiased;
-              -moz-osx-font-smoothing: grayscale;        
+  background: linear-gradient(to right, #1f379056, #16205376, #4310318a, #6c194f86), url(../imagenes/principal.jpg);
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;    
 }       
 
 
 /* Section Buttons */
 
 .section {
-  background: linear-gradient(to right, #1f379056, #16205376, #4310318a, #6c194f86), url(../imagenes/principal.jpg);
-  background-size:cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  padding-top: 250px;
-  padding-bottom: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
   
   }
   
@@ -71,6 +69,22 @@ body{
   height: 110px;
   }
 }
+
+.IconosAmbiente img{
+  margin: 0 auto 20px auto;
+  padding-top: 17px;
+  width: 200px;
+  height: 210px;
+}
+
+@media (max-width: 768px) {
+  .IconosAmbiente img{
+  padding-top: 5px;
+  width: 100px;
+  height: 110px;
+  }
+}
+
 
 .BtnReservar, .BtnMiReserva{
   background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(253,203,50,1) 0%, rgba(244,56,98,1) 100.2% );

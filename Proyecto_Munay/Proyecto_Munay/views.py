@@ -96,6 +96,25 @@ def Reserva(request):
         }
     return render(request, "FormularioReserva.html",contexto)
     
+@login_required(login_url='/login/')
+def Ambiente(request):
+
+    nombreCompleto=nombreApp(request)
+
+    contexto={
+        'nombre':nombreCompleto,}
+    return render(request, "FormularioAmbiente.html",contexto)
+
+@login_required(login_url='/login/')
+def ReservaExitosa(request):
+
+    nombreCompleto=nombreApp(request)
+
+    contexto={
+        'nombre':nombreCompleto,}
+    return render(request, "ReservaExitosa.html",contexto)
+
+
 def validar(request):
     
     Reserva = "/Reserva/"
