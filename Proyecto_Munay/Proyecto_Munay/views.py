@@ -6,7 +6,7 @@ from django.shortcuts import render,redirect
 from django.template import Template,context
 from django.http import request, HttpResponse
 from django.template.loader import get_template
-from GestionDB.models import Docente, Grupo, Reserva, Materia
+from GestionDB.models import Docente, Grupo, Reserva, Materia, Aula
 from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
@@ -78,7 +78,7 @@ def nombreApp(request):
     return nombre+" "+apellido
 
 @login_required(login_url='/login/')
-def Reserva(request):
+def Reserva_(request):
     nombreCompleto=nombreApp(request)
     Cod_Doc= (Docente.objects.get(email=request.user.username)).id
     Tupla_Grupo = Grupo.objects.filter(Cod_Docente=Cod_Doc)
@@ -127,48 +127,34 @@ def validar(request):
         CantPeriodos=request.POST.get('Periodo','')
         Motivo=request.POST.get('Motivo','')
         Motivo=Motivo.strip()
-        contexto = {
-            'Materia' : Materia,
-            'Grupo' : Grupo,
-            'Alumno' : Alumno,
-            'Fecha' : Fecha,
-            'Horario' : Horario,
-            'CantPeriodos' : CantPeriodos,
-            'Motivo' : Motivo
+        # contexto = {
+        #     'Materia' : Materia,
+        #     'Grupo' : Grupo,
+        #     'Alumno' : Alumno,
+        #     'Fecha' : Fecha,
+        #     'Horario' : Horario,
+        #     'CantPeriodos' : CantPeriodos,
+        #     'Motivo' : Motivo
+        # }
+        Ambientes_aula = Aula.objects.filter(Cant_Estudiante__gte=Alumno).filter(Tipo_Aula="AUC").order_by("Cant_Estudiante")
+        Ambientes_lab = Aula.objects.filter(Cant_Estudiante__gte=Alumno).filter(Tipo_Aula="LAB").order_by("Cant_Estudiante")
+        Ambientes_aud = Aula.objects.filter(Cant_Estudiante__gte=Alumno).filter(Tipo_Aula="AUD").order_by("Cant_Estudiante")
+   
+        aula=buscarAmbienteDisponible(Ambientes_aula,Fecha,Horario)
+        lab=buscarAmbienteDisponible(Ambientes_lab,Fecha,Horario)
+        aud=buscarAmbienteDisponible(Ambientes_aud,Fecha,Horario)
+     
+        #print("aula elegida es " + str(aula))
+        #print("laboratorio elegido es " + str(lab))
+        #print("auditorio elegido es " + str(aud) )
+        nombreCompleto=nombreApp(request)
+        contexto ={
+            'nombre':nombreCompleto,
+            'Aula' : aula,
+            'Laboratorio' : lab,
+            'Auditorio' : aud,
+
         }
-        
-        auxiliar_descripcion =Motivo.upper()
-        if(len(Motivo)>300):
-            mensaje(request,"El motivo de reserva es muy largo")
-            return redirect(Reserva)
-        if(len(Motivo)<10):
-            mensaje(request,"El motivo de reserva es muy corto")
-            return redirect(Reserva)
-
-        encontre1 = False
-        contador1 =0
-        n1=''
-        while(contador1<len(auxiliar_descripcion)-2 and not encontre1):
-            codigoDescripcion = (ord(auxiliar_descripcion[contador1]))
-            if not(codigoDescripcion>47 and codigoDescripcion<59):
-                if auxiliar_descripcion[contador1]==auxiliar_descripcion[contador1+1] and auxiliar_descripcion[contador1]==auxiliar_descripcion[contador1+2] :
-                    n1 =Motivo[contador1]
-                    encontre1 = True
-            contador1 += 1
-        if(encontre1):
-            mensaje(request,"El carácter '" + n1 + "'no debería repetirse tantas veces en la descripción")
-            return redirect(Reserva) 
-
-        
-        if(len(Materia)==0):
-            mensaje(request,"Por favor seleccione una Materia")
-            return redirect(Reserva)
-        
-        if(len(Grupo)==0):
-            mensaje(request,"Por favor seleccione un Grupo")
-            return redirect(Reserva)
-        
-        mensaje(request,"Solicitud realizada correctamente")
         # datetime.today().strftime('%Y-%m-%d'),
         # now=datetime.now()
         # Cod_Doc= (Docente.objects.get(email=request.user.username)).id
@@ -184,8 +170,25 @@ def validar(request):
         #     Hora_Solicitud_Res = now.time()
         #     )
         # Save_Reserva.save()
+    return render(request, "FormularioAmbiente.html",contexto)     
+    #return redirect("/Reserva/")
+
+def buscarAmbienteDisponible(Ambientes,Fecha,Horario):
+   print("funcionBuscar")
+   ambiente_elegido="No encontre"
+
+   for i in Ambientes:
+     id_Aula = i.id
+     print("id_Aula" + str(id_Aula))
+     ocupado = Reserva.objects.filter(Fecha_Reserva=Fecha).filter(Hora_Reserva=Horario).filter(Cod_Aula=id_Aula)
+     print(len(ocupado))
+     if (len(ocupado)==0):
+        print("ingresando a if")
+        ambiente_elegido=i.Cod_Aula
+        print(ambiente_elegido)
+        break
         
-    return redirect("/Reserva/")
+   return ambiente_elegido
 
 def mensaje(req,mensajeError):  
     messages.add_message(request=req, level=messages.WARNING, message = mensajeError)
