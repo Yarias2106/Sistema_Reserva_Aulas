@@ -16,7 +16,7 @@ Including another URLconf
 from pydoc import visiblename
 from django.contrib import admin
 from django.urls import path
-from Proyecto_Munay.views import loginPropio,VistaDocente,salir,Reserva_,validar,Ambiente,ReservaExitosa
+from Proyecto_Munay.views import loginPropio,VistaDocente,salir,Reserva_,validar,Ambiente,ReservaExitosa,pruebita
 
 
 urlpatterns = [
@@ -25,7 +25,8 @@ urlpatterns = [
     path('VistaDocente/',VistaDocente),
     path('salir/',salir),
     path('Reserva/',Reserva_),
-    path('Ambiente',Ambiente),
-    path('ReservaExitosa',ReservaExitosa),
-    path('validar/',validar)
+    path('Ambiente/',Ambiente),
+    path('ReservaExitosa/',ReservaExitosa),
+    path('validar/',validar),
+    path('pruebita/', pruebita, name='pruebita'),
 ]

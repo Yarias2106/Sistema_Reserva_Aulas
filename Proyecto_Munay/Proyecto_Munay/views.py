@@ -1,5 +1,6 @@
 
 # from curses import savetty
+from cmath import inf
 import email
 from django import http
 from django.shortcuts import render,redirect
@@ -18,6 +19,7 @@ from django.contrib import messages
 from json import dumps
 from GestionDB import models
 from datetime import datetime
+
 
 def loginPropio(request):
     # try:
@@ -62,7 +64,7 @@ def loginPropio(request):
 @login_required(login_url='/login/')
 def VistaDocente(request):
     
-    nombreCompleto=nombreApp(request)
+    nombreCompleto=nombreUsuario(request)
     contexto={'nombre':nombreCompleto}
     return render(request,"VistaDocente.html",contexto)
     return render(request,"VistaDocente.html")
@@ -71,7 +73,7 @@ def salir(request):
     logout(request)
     return redirect("/login/")
 
-def nombreApp(request):
+def nombreUsuario(request):
     nombre = (Docente.objects.get(email=request.user.username)).nombre_Docente
     apellido = (Docente.objects.get(email=request.user.username)).apellido_Docente
     
@@ -79,7 +81,7 @@ def nombreApp(request):
 
 @login_required(login_url='/login/')
 def Reserva_(request):
-    nombreCompleto=nombreApp(request)
+    nombreCompleto=nombreUsuario(request)
     Cod_Doc= (Docente.objects.get(email=request.user.username)).id
     Tupla_Grupo = Grupo.objects.filter(Cod_Docente=Cod_Doc)
 
@@ -99,7 +101,7 @@ def Reserva_(request):
 @login_required(login_url='/login/')
 def Ambiente(request):
 
-    nombreCompleto=nombreApp(request)
+    nombreCompleto=nombreUsuario(request)
 
     contexto={
         'nombre':nombreCompleto,}
@@ -108,10 +110,14 @@ def Ambiente(request):
 @login_required(login_url='/login/')
 def ReservaExitosa(request):
 
-    nombreCompleto=nombreApp(request)
-
+    nombreCompleto=nombreUsuario(request)
+    Cod_Doc= (Docente.objects.get(email=request.user.username)).id
+    informe = Reserva.objects.filter(Cod_Docente_id=Cod_Doc).order_by("-id")
     contexto={
-        'nombre':nombreCompleto,}
+        'Motivo': informe[0].motivo
+        }
+    print(informe[0].motivo)
+    
     return render(request, "ReservaExitosa.html",contexto)
 
 
@@ -127,15 +133,7 @@ def validar(request):
         CantPeriodos=request.POST.get('Periodo','')
         Motivo=request.POST.get('Motivo','')
         Motivo=Motivo.strip()
-        # contexto = {
-        #     'Materia' : Materia,
-        #     'Grupo' : Grupo,
-        #     'Alumno' : Alumno,
-        #     'Fecha' : Fecha,
-        #     'Horario' : Horario,
-        #     'CantPeriodos' : CantPeriodos,
-        #     'Motivo' : Motivo
-        # }
+
         Ambientes_aula = Aula.objects.filter(Cant_Estudiante__gte=Alumno).filter(Tipo_Aula="AUC").order_by("Cant_Estudiante")
         Ambientes_lab = Aula.objects.filter(Cant_Estudiante__gte=Alumno).filter(Tipo_Aula="LAB").order_by("Cant_Estudiante")
         Ambientes_aud = Aula.objects.filter(Cant_Estudiante__gte=Alumno).filter(Tipo_Aula="AUD").order_by("Cant_Estudiante")
@@ -147,31 +145,56 @@ def validar(request):
         #print("aula elegida es " + str(aula))
         #print("laboratorio elegido es " + str(lab))
         #print("auditorio elegido es " + str(aud) )
-        nombreCompleto=nombreApp(request)
+        nombreCompleto=nombreUsuario(request)
         contexto ={
             'nombre':nombreCompleto,
             'Aula' : aula,
             'Laboratorio' : lab,
             'Auditorio' : aud,
-
+            'Materia' : Materia,
+            'Grupo' : Grupo,
+            'Alumno' : Alumno,
+            'Fecha' : Fecha,
+            'Horario' : Horario,
+            'CantPeriodos' : CantPeriodos,
+            'Motivo' : Motivo
         }
-        # datetime.today().strftime('%Y-%m-%d'),
-        # now=datetime.now()
-        # Cod_Doc= (Docente.objects.get(email=request.user.username)).id
-        # Save_Reserva = models.Reserva.objects.create(
-        #     cant_Periodos = CantPeriodos,
-        #     Hora_Reserva = Horario,
-        #     Fecha_Solicitud_Res = now.date(),
-        #     motivo = Motivo,
-        #     Cant_Est_Sol = Alumno,
-        #     Cod_Docente_id = Cod_Doc,
-        #     Cod_Aula_id = 1,
-        #     Fecha_Reserva = Fecha,
-        #     Hora_Solicitud_Res = now.time()
-        #     )
-        # Save_Reserva.save()
     return render(request, "FormularioAmbiente.html",contexto)     
     #return redirect("/Reserva/")
+def pruebita(request):
+    
+    aula = request.GET.get('Aula', None)
+    Laboratorio = request.GET.get('Laboratorio', None)
+    Auditorio = request.GET.get('Auditorio', None)
+
+    Materia = request.GET.get('Materia', None)
+    Grupo = request.GET.get('Grupo', None)
+    Alumno = request.GET.get('Alumno', None)
+    Fecha = request.GET.get('Fecha', None)
+    Horario = request.GET.get('Horario', None)
+    CantPeriodos = request.GET.get('CantPeriodos', None)
+    Motivo = request.GET.get('Motivo', None)
+
+    datetime.today().strftime('%Y-%m-%d'),
+    now=datetime.now()
+    Cod_Doc= (Docente.objects.get(email=request.user.username)).id
+    Codigo_Aula = (Aula.objects.get(Cod_Aula=Laboratorio)).id
+
+    Save_Reserva = models.Reserva.objects.create(
+        cant_Periodos = CantPeriodos,
+        Hora_Reserva = Horario,
+        Fecha_Solicitud_Res = now.date(),
+        motivo = Motivo,
+        Cant_Est_Sol = Alumno,
+        Cod_Docente_id = Cod_Doc,
+        Cod_Aula_id = Codigo_Aula,
+        Fecha_Reserva = Fecha,
+        Hora_Solicitud_Res = now.time()
+    )
+    Save_Reserva.save()
+    
+    contexto = {'Motivo' : Motivo}
+    return render(request,"ReservaExitosa.html",contexto)
 
 def buscarAmbienteDisponible(Ambientes,Fecha,Horario):
    print("funcionBuscar")
