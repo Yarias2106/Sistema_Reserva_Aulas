@@ -90,6 +90,24 @@
         }
       
     };
+
+    function ControlHortario(){
+       let horarioSelecionado = document.getElementById("Horario").value 
+       let elPeriodo = document.getElementById("Periodo")
+       if(horarioSelecionado === "20:15"){
+         
+         elPeriodo.innerHTML = `
+          <option disabled selected value="">Seleccione el periodo</option>
+          <option>1</option>
+         `
+       }else{
+          elPeriodo.innerHTML = `
+          <option disabled selected value="">Seleccione el periodo</option>
+          <option>1</option>
+          <option>2</option>
+         `
+       }
+    };
 </script>
 
 <link rel="stylesheet" href="{% static '/css/FormularioReserva.css' %}">
@@ -151,7 +169,7 @@
    
       <div class="col-md-3">
         <label for="inputState" class="form-label text-white">Horario:</label>
-        <select id="Horario" class="form-select" required name="Horario">
+        <select id="Horario" class="form-select" required name="Horario" onchange=ControlHortario()>
           <option disabled selected value="">Seleccione el horario</option>
           <option>06:45</option>
           <option>08:15</option>

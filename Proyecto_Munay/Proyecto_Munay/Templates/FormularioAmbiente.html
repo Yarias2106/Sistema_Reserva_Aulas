@@ -9,7 +9,12 @@
 
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <script>
-
+  let Ambiente = "";
+  function getAmbiente( tipoAmbiente ){
+    // document.querySelector(".tipoAmbiente").value = tipoAmbiente; 
+    Ambiente = tipoAmbiente;
+    console.log(Ambiente)
+  };
   function test(){
     console.log("Si esta entrando a la funcion     adsfadfadf");
     let Aula =("{{Aula}}");
@@ -53,7 +58,8 @@
       <form action="/ReservaExitosa/">
         <div class="row justify-content-center text-center">
           {% if Aula != "No encontre" %}
-          <div class="col-sm-3 m-3">
+          <!-- <input type="hidden" name="Ambiente" class="tipoAmbiente"> -->
+          <div class="col-sm-3 m-3" onclick="getAmbiente('Aula')">
             <div class="card">
               <div class="card-body">
                 <h4>Aula</h4>
@@ -66,7 +72,7 @@
           {% endif %}
     
           {% if Laboratorio != "No encontre" %}
-            <div class="col-sm-3 m-3">
+            <div class="col-sm-3 m-3" onclick="getAmbiente('Laboratorio')">
               <div class="card">
                 <div class="card-body">
                   <h4>Laboratorio</h4>
@@ -75,11 +81,11 @@
                 <div class="card-img-top"></div>
                   <img src="{% static '/imagenes/prueba2.jpg' %}"  alt="">
                 </div>
-              </div>
+            </div>
             {% endif %}
     
             {% if Auditorio != "No encontre" %}
-              <div class="col-sm-3 m-3">
+              <div class="col-sm-3 m-3" onclick="getAmbiente('Auditorio')">
                 <div class="card">
                   <div class="card-body">
                     <h4>Auditorio</h4>
