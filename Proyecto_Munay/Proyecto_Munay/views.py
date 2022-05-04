@@ -139,9 +139,9 @@ def validar(request):
         Ambientes_lab = Aula.objects.filter(Cant_Estudiante__gte=Alumno).filter(Tipo_Aula="LAB").order_by("Cant_Estudiante")
         Ambientes_aud = Aula.objects.filter(Cant_Estudiante__gte=Alumno).filter(Tipo_Aula="AUD").order_by("Cant_Estudiante")
    
-        aula=buscarAmbienteDisponible(Ambientes_aula,Fecha,Horario)
-        lab=buscarAmbienteDisponible(Ambientes_lab,Fecha,Horario)
-        aud=buscarAmbienteDisponible(Ambientes_aud,Fecha,Horario)
+        aula=buscarAmbienteDisponible(Ambientes_aula,Fecha,Horario,CantPeriodos)
+        lab=buscarAmbienteDisponible(Ambientes_lab,Fecha,Horario,CantPeriodos)
+        aud=buscarAmbienteDisponible(Ambientes_aud,Fecha,Horario,CantPeriodos)
      
         #print("aula elegida es " + str(aula))
         #print("laboratorio elegido es " + str(lab))
@@ -204,11 +204,12 @@ def pruebita(request):
     contexto = {'Motivo' : Motivo}
     return render(request,"ReservaExitosa.html",contexto)
 
-def buscarAmbienteDisponible(Ambientes,Fecha,Horario):
+def buscarAmbienteDisponible(Ambientes,Fecha,Horario,CantPeriodos):
     print("funcionBuscar")
     ambiente_elegido="No encontre"
     horarios = ["06:45","08:15","09:45","11:15","12:45","14:15","15:45","17:15","18:45","20:15"]
     HorarioAnterior = ""
+    HorarioPosterior =""
     posPlus = 0
     print("antes de buscar horario anterior  :"+Horario)
     if( Horario in horarios and Horario != "06:45"):
@@ -216,6 +217,15 @@ def buscarAmbienteDisponible(Ambientes,Fecha,Horario):
         posPlus = pos+2
         HorarioAnterior = horarios[pos]
         print("horario anterior : "+HorarioAnterior)
+     
+    print("Cantidad de Periodos " + str(CantPeriodos))
+
+    if CantPeriodos=="2":
+        print("Ingresando if")
+        pos = horarios.index(Horario)+1
+        print("esta es la posicion de de horarios + 1 deberia ser 1?" + str(pos))
+        HorarioPosterior = horarios[pos]
+        print(HorarioPosterior)
     
 
     for i in Ambientes:
@@ -223,12 +233,13 @@ def buscarAmbienteDisponible(Ambientes,Fecha,Horario):
 
         ocupado = Reserva.objects.filter(Fecha_Reserva=Fecha).filter(Hora_Reserva=Horario).filter(Cod_Aula=id_Aula)
         ocupadoAux = ""
+        ocupadoAux2 = ""
         if(len(HorarioAnterior) != 0):
-           
-            ocupadoAux = Reserva.objects.filter(Fecha_Reserva=Fecha).filter(Hora_Reserva=HorarioAnterior).filter  (Cod_Aula=id_Aula).filter(cant_Periodos=2)
-        
-
-        if (len(ocupado)==0 and len(ocupadoAux) == 0):
+           ocupadoAux = Reserva.objects.filter(Fecha_Reserva=Fecha).filter(Hora_Reserva=HorarioAnterior).filter(Cod_Aula=id_Aula).filter(cant_Periodos=2)
+        if(len(HorarioPosterior)!=0):
+           ocupadoAux2 = Reserva.objects.filter(Fecha_Reserva=Fecha).filter(Hora_Reserva=HorarioPosterior).filter(Cod_Aula=id_Aula) 
+ 
+        if (len(ocupado)==0 and len(ocupadoAux) == 0 and len(ocupadoAux2) == 0):
            ambiente_elegido=i.Cod_Aula
            print(ambiente_elegido)
            break
