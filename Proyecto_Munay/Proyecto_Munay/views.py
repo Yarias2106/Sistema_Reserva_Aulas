@@ -2,6 +2,7 @@
 # from curses import savetty
 from cmath import inf
 import email
+from operator import le
 from django import http
 from django.shortcuts import render,redirect
 from django.template import Template,context
@@ -174,12 +175,19 @@ def pruebita(request):
     Horario = request.GET.get('Horario', None)
     CantPeriodos = request.GET.get('CantPeriodos', None)
     Motivo = request.GET.get('Motivo', None)
+    tipoAmbiente = request.GET.get('Ambiente', None)
 
+    filtroAmbiente = aula
+    if(tipoAmbiente == "Laboratorio"):
+        filtroAmbiente = Laboratorio
+    if(tipoAmbiente == "Auditorio"):
+        filtroAmbiente = Auditorio
+    
     datetime.today().strftime('%Y-%m-%d'),
     now=datetime.now()
     Cod_Doc= (Docente.objects.get(email=request.user.username)).id
-    Codigo_Aula = (Aula.objects.get(Cod_Aula=Laboratorio)).id
-
+    Codigo_Aula = (Aula.objects.get(Cod_Aula=filtroAmbiente)).id
+    
     Save_Reserva = models.Reserva.objects.create(
         cant_Periodos = CantPeriodos,
         Hora_Reserva = Horario,
@@ -197,21 +205,35 @@ def pruebita(request):
     return render(request,"ReservaExitosa.html",contexto)
 
 def buscarAmbienteDisponible(Ambientes,Fecha,Horario):
-   print("funcionBuscar")
-   ambiente_elegido="No encontre"
+    print("funcionBuscar")
+    ambiente_elegido="No encontre"
+    horarios = ["06:45","08:15","09:45","11:15","12:45","14:15","15:45","17:15","18:45","20:15"]
+    HorarioAnterior = ""
+    posPlus = 0
+    print("antes de buscar horario anterior  :"+Horario)
+    if( Horario in horarios and Horario != "06:45"):
+        pos = horarios.index(Horario)-1
+        posPlus = pos+2
+        HorarioAnterior = horarios[pos]
+        print("horario anterior : "+HorarioAnterior)
+    
 
-   for i in Ambientes:
-     id_Aula = i.id
-     print("id_Aula" + str(id_Aula))
-     ocupado = Reserva.objects.filter(Fecha_Reserva=Fecha).filter(Hora_Reserva=Horario).filter(Cod_Aula=id_Aula)
-     print(len(ocupado))
-     if (len(ocupado)==0):
-        print("ingresando a if")
-        ambiente_elegido=i.Cod_Aula
-        print(ambiente_elegido)
-        break
+    for i in Ambientes:
+        id_Aula = i.id
+
+        ocupado = Reserva.objects.filter(Fecha_Reserva=Fecha).filter(Hora_Reserva=Horario).filter(Cod_Aula=id_Aula)
+        ocupadoAux = ""
+        if(len(HorarioAnterior) != 0):
+           
+            ocupadoAux = Reserva.objects.filter(Fecha_Reserva=Fecha).filter(Hora_Reserva=HorarioAnterior).filter  (Cod_Aula=id_Aula).filter(cant_Periodos=2)
         
-   return ambiente_elegido
+
+        if (len(ocupado)==0 and len(ocupadoAux) == 0):
+           ambiente_elegido=i.Cod_Aula
+           print(ambiente_elegido)
+           break
+
+    return ambiente_elegido
 
 def mensaje(req,mensajeError):  
     messages.add_message(request=req, level=messages.WARNING, message = mensajeError)

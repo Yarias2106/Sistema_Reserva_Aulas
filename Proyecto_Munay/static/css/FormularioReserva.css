@@ -34,11 +34,11 @@ body{
   padding-left: 9px;
   padding-right: 9px;
 }
-/* .Carta :hover{
+.Carta :hover{
+  background-color: orange;
+}
+.Carta:focus{
+  background-color: orange;
   border-color: orange;
   box-shadow: 0px 0px 30px orange;
 }
-.Carta :focus{
-  border-color: orange;
-  box-shadow: 0px 0px 30px orange;
-} */
