@@ -68,7 +68,7 @@ def VistaDocente(request):
     nombreCompleto=nombreUsuario(request)
     contexto={'nombre':nombreCompleto}
     return render(request,"VistaDocente.html",contexto)
-    return render(request,"VistaDocente.html")
+    # return render(request,"VistaDocente.html")
 
 def salir(request):
     logout(request)
@@ -105,7 +105,8 @@ def Ambiente(request):
     nombreCompleto=nombreUsuario(request)
 
     contexto={
-        'nombre':nombreCompleto,}
+        'nombre':nombreCompleto,
+        }
     return render(request, "FormularioAmbiente.html",contexto)
 
 @login_required(login_url='/login/')
@@ -114,10 +115,9 @@ def ReservaExitosa(request):
     nombreCompleto=nombreUsuario(request)
     Cod_Doc= (Docente.objects.get(email=request.user.username)).id
     informe = Reserva.objects.filter(Cod_Docente_id=Cod_Doc).order_by("-id")
-    informe = Reserva.objects.filter(Cod_Docente_id=Cod_Doc).order_by("-id")
-    informe = Reserva.objects.filter(Cod_Docente_id=Cod_Doc).order_by("-id")
     contexto={
-        'Motivo': informe[0].motivo
+        'Motivo': informe[0].motivo,
+        'nombre':nombreCompleto
         }
     print(informe[0].motivo)
     
