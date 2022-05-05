@@ -114,6 +114,8 @@ def ReservaExitosa(request):
     nombreCompleto=nombreUsuario(request)
     Cod_Doc= (Docente.objects.get(email=request.user.username)).id
     informe = Reserva.objects.filter(Cod_Docente_id=Cod_Doc).order_by("-id")
+    informe = Reserva.objects.filter(Cod_Docente_id=Cod_Doc).order_by("-id")
+    informe = Reserva.objects.filter(Cod_Docente_id=Cod_Doc).order_by("-id")
     contexto={
         'Motivo': informe[0].motivo
         }
