@@ -13,7 +13,8 @@
   function getAmbiente( tipoAmbiente, elAmbiente ){
     document.querySelector(".tipoAmbiente").value = elAmbiente; 
     Ambiente = tipoAmbiente;
-    console.log(Ambiente)
+    console.log(Ambiente);
+    document.getElementById('res').disabled = false; 
   };
   function test(){
     console.log("Si esta entrando a la funcion     adsfadfadf");
@@ -66,9 +67,8 @@
               <div class="card-body">
                 <h4>Aula</h4>
                 <h5>{{Aula}}</h5>
+                <img src="{% static '/imagenes/aula.jpeg' %}" class="card-img-top"  alt="">
               </div>
-              <div class="card-img-top"></div>
-                <img src="{% static '/imagenes/aula.jpg' %}"  alt="">
               </div>
             </div>
           {% endif %}
@@ -79,9 +79,8 @@
                 <div class="card-body">
                   <h4>Laboratorio</h4>
                   <h5>{{Laboratorio}}</h5>
+                  <img src="{% static '/imagenes/laboratorio.jpeg' %}" class="card-img-top"  alt="">
                 </div>
-                <div class="card-img-top"></div>
-                  <img src="{% static '/imagenes/laboratorio.jpeg' %}"  alt="">
                 </div>
             </div>
             {% endif %}
@@ -92,21 +91,23 @@
                   <div class="card-body">
                     <h4>Auditorio</h4>
                     <h5>{{Auditorio}}</h5>
+                    <img src="{% static '/imagenes/auditorio.jpeg' %}" class="card-img-top"  alt="">
                   </div>
-                  <div class="card-img-top"></div>
-                    <img src="{% static '/imagenes/auditorio.jpg' %}"  alt="">
                   </div>
               </div>
              {% endif %}
-              <div>
-                <input type="submit" class="btn btn-secondary col-sm-3" value="Anterior" onclick=history.back()></input>
-                <form action="/ReservaExitosa/" method="POST">
+            
+              
+              <div class="d-flex justify-content-center">
+
+                <input type="submit" class="btn btn-secondary col-md-3 col-sm-3 mx-3" value="Anterior" onclick=history.back()></input>
+                <form action="/ReservaExitosa/" class="col-md-3 col-sm-3 mx-3">
                   <input type="hidden" name="Motivo" class="{{Motivo}}" value="{{Motivo}}">
                   <input type="hidden" name="Ambiente" class="tipoAmbiente">
-                  <input type="submit" class="btn btn-primary col-sm-3" value="Reservar" onclick=test()></input>
+                  <input type="submit" class="btn btn-primary col-12" id="res" value="Reservar" onclick=test() disabled></input>
                 </form>
               </div>
-        </div>
+            
       
     
   </div>
