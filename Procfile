@@ -1,1 +1,1 @@
-web: gunicorn Munay.wsgi
+web: gunicorn Proyecto_Munay.wsgi
