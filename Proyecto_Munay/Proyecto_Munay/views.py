@@ -115,9 +115,12 @@ def ReservaExitosa(request):
     nombreCompleto=nombreUsuario(request)
     Cod_Doc= (Docente.objects.get(email=request.user.username)).id
     informe = Reserva.objects.filter(Cod_Docente_id=Cod_Doc).order_by("-id")
+    Motivo=request.POST.get('Motivo','')
+    Ambiente=request.POST.get('Ambiente','')
     contexto={
-        'Motivo': informe[0].motivo,
-        'nombre':nombreCompleto
+        'Motivo': Motivo,
+        'nombre':nombreCompleto,
+        'Ambiente' : Ambiente
         }
     print(informe[0].motivo)
     
