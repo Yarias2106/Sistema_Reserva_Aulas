@@ -97,12 +97,18 @@
               </div>
              {% endif %}
             
-              
+             
               <div class="d-flex justify-content-center">
 
                 <input type="submit" class="btn btn-secondary col-md-3 col-sm-3 mx-3" value="Anterior" onclick=history.back()></input>
-                <form action="/ReservaExitosa/" class="col-md-3 col-sm-3 mx-3">
-                  <input type="hidden" name="Motivo" class="{{Motivo}}" value="{{Motivo}}">
+                <form action="/ReservaExitosa/" class="col-md-3 col-sm-3 mx-3" method="POST">
+                  <input type="hidden" name="Motivo" value="{{Motivo}}">
+                  <input type="hidden" name="Materia" value="{{Materia}}">
+                  <input type="hidden" name="Grupo" value="{{Grupo}}">
+                  <input type="hidden" name="Alumno" value="{{Alumno}}">
+                  <input type="hidden" name="Fecha" value="{{Fecha}}">
+                  <input type="hidden" name="Hora" value="{{Horario}}">
+                  <input type="hidden" name="CantPeriodos" value="{{CantPeriodos}}">
                   <input type="hidden" name="Ambiente" class="tipoAmbiente">
                   <input type="submit" class="btn btn-primary col-12" id="res" value="Reservar" onclick=test() disabled></input>
                 </form>

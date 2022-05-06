@@ -116,13 +116,31 @@ def ReservaExitosa(request):
     Cod_Doc= (Docente.objects.get(email=request.user.username)).id
     informe = Reserva.objects.filter(Cod_Docente_id=Cod_Doc).order_by("-id")
     Motivo=request.POST.get('Motivo','')
+    Materia = request.POST.get('Materia','')
+    Grupo = request.POST.get('Grupo','')
+    Alumno = request.POST.get('Alumno','')
+    Fecha = request.POST.get('Fecha','')
+    Horario = request.POST.get('Hora','')
+    CantPeriodos = request.POST.get('CantPeriodos','')
     Ambiente=request.POST.get('Ambiente','')
+    now=datetime.now()
+    Fecha_Solicitud_Res = now.date()
+    Hora_Solicitud_Res = now.time()
+    
     contexto={
         'Motivo': Motivo,
+        'Materia' : Materia,
+        'Grupo' : Grupo,
+        'Alumno' : Alumno,
+        'Fecha' : Fecha,
+        'Horario' : Horario,
+        'CantPeriodos' : CantPeriodos,
         'nombre':nombreCompleto,
-        'Ambiente' : Ambiente
+        'Ambiente' : Ambiente,
+        'FSol' : Fecha_Solicitud_Res,
+        'HSol' : Hora_Solicitud_Res
         }
-    print(informe[0].motivo)
+    # print(informe[0].motivo)
     
     return render(request, "ReservaExitosa.html",contexto)
 
