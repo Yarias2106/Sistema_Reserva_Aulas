@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'Proyecto_Munay.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'munaydb_asignaulas',
+        'NAME': 'munaydb_munay',
         'USER' : 'munaydb_harold',
         'PASSWORD' : 'munay1024',
         'HOST' : 'mysql-munaydb.alwaysdata.net',
