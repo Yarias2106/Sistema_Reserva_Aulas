@@ -18,8 +18,8 @@ class Docente(models.Model):
 class Aula(models.Model):
     # El id de aula se genera automaticamente
     # Cod_Reserva= models.ForeignKey(Reserva,on_delete=CASCADE,null=True)
-    Cod_Aula = models.CharField(max_length=60,null=True)
     Cant_Estudiante = models.IntegerField()
+    Cod_Aula = models.CharField(max_length=60,null=True)
     Tipo_Aula = models.CharField(max_length=60,null=True)
 
     def __str__(self):
@@ -60,10 +60,11 @@ class Materia(models.Model):
 
 class Grupo(models.Model):
      # El id de Grupo se genera automaticamente
-    Cod_Grupo= models.CharField(max_length=60,null=True)
-    Cod_Materia= models.ForeignKey(Materia,on_delete=CASCADE,null=True)
     Cod_Docente = models.ForeignKey(Docente,on_delete=CASCADE,null=True)
+    Cod_Materia= models.ForeignKey(Materia,on_delete=CASCADE,null=True)
     Cant_Inscritos = models.IntegerField(null=True)
+    Cod_Grupo= models.CharField(max_length=60,null=True)
+    
     
     def __str__(self):
         return self.Cod_Docente
