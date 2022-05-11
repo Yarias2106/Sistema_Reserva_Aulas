@@ -113,7 +113,9 @@
 <link rel="stylesheet" href="{% static '/css/FormularioReserva.css' %}">
 
 <section class="BodyFont mx-4">
-
+  <div class="container-sm progress mb-5 px-0">
+    <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%"></div>
+  </div>
 
   <div class="container formReserva col-md-7">
 
@@ -206,5 +208,6 @@
   </div>
 </section>
 <script src="{% static '/Js/fecha.js' %}"></script>
+<script src="{% static '/Js/fechaWeekend.js' %}"></script>
 {% endblock %}
 
