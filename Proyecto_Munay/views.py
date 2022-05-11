@@ -164,8 +164,12 @@ def validar(request):
    
         aula=buscarAmbienteDisponible(Ambientes_aula,Fecha,Horario,CantPeriodos)
         lab=buscarAmbienteDisponible(Ambientes_lab,Fecha,Horario,CantPeriodos)
-        aud=buscarAmbienteDisponible(Ambientes_aud,Fecha,Horario,CantPeriodos)
-     
+        alumno=int(Alumno)
+        cant_aud=Ambientes_aud[0].Cant_Estudiante/2
+        if(int(Alumno)>=cant_aud): 
+         aud=buscarAmbienteDisponible(Ambientes_aud,Fecha,Horario,CantPeriodos)
+        else:
+          aud="No encontre"  
         #print("aula elegida es " + str(aula))
         #print("laboratorio elegido es " + str(lab))
         #print("auditorio elegido es " + str(aud) )
