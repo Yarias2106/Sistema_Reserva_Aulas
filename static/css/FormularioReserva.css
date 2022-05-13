@@ -46,3 +46,7 @@ body{
 .progress {
   max-width: 40%;
 }
+
+.cajaAmbiente{
+  min-width: 15rem;
+}
