@@ -50,3 +50,12 @@ body{
 .cajaAmbiente{
   min-width: 15rem;
 }
+
+.CajaReservaE{
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  text-align: start;
+}

@@ -8,7 +8,7 @@ picker.addEventListener('input', function(e){
     alert('No se permite reservar domingos');
   }
 
-  let horarios = document.getElementById("Horario")
+  let horarios = document.getElementById("Horario");
 
   if([6].includes(day)){
       

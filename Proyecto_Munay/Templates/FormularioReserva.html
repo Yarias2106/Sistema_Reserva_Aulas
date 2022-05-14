@@ -114,6 +114,44 @@
       let valorCheck = document.getElementById("Crear").value;
       let crearJust = document.getElementById("justCreate");
 
+      let fchUrgencia = document.getElementById("Crear").value;
+
+      let date = new Date();
+      let dateN = new Date();
+
+      let day = date.getDate();
+      let month = date.getMonth() + 1;
+      let year = date.getFullYear();
+      let monthMax;
+      let yearMax;
+      let dayMax;
+
+
+      let horaA = date.getHours();
+      let ArregloOpciones = [6,8,9,11,12,14,15,17,18,20];
+      let ArregloHorarios = ["06:45","08:15","09:45","11:15","12:45","14:15","15:45","17:15","18:45","20:15"];
+
+      let horUrgencia = document.getElementById("Horario");
+
+
+
+      let fchForm = document.getElementById('Fecha');
+
+      if(month < 10){
+        date = `${year}-0${month}-${day}`;
+        dateN = `${year}-0${month}-${day+1}`;
+      }else{
+        date = `${year}-${month}-${day}`;
+        dateN = `${year}-${month}-${day+1}`;
+      }
+
+      for (let i = horUrgencia.options.length; i >= 0; i--) {
+        horUrgencia.remove(i);
+      }
+
+      horUrgencia.innerHTML = `
+          <option disabled selected value="">Seleccione el periodo</option>`;
+
       if(valorCheck === "Apagado"){
         document.getElementById("Crear").value = "Encendido"
         crearJust.innerHTML= `<label for="validationTextarea" class="form-label text-white">Justificativo:</label>
@@ -123,6 +161,27 @@
           
         </div>`;
         crearJust.className = "mb-3";
+        
+        console.log(date);
+
+        fchForm.min = date;
+        fchForm.max = date;
+        fchForm.value = date;
+
+        let posAr = -1;
+
+        for(pos in ArregloOpciones){
+          if(ArregloOpciones[pos] >= horaA){
+            posAr = pos;
+            break;
+          }
+        }
+
+        for(indx = posAr; indx<ArregloHorarios.length;indx++){
+          let opcionesU = document.createElement("option");
+          opcionesU.text = ArregloHorarios[indx];
+          horUrgencia.appendChild(opcionesU);
+        }
 
       }else{
         document.getElementById("Crear").value = "Apagado"
@@ -130,6 +189,61 @@
             crearJust.removeChild(crearJust.firstChild);
           }
         crearJust.className = "";
+        
+        fchForm.value = "";
+        fchForm.min = dateN;
+
+        let dateMax = new Date();
+
+         if(month =='01'){
+            if(year%4==0 && (year%100!=0 || year%400==0)){
+                if(day>=30){
+                    dayMax = 29;
+                }else{
+                    dayMax = day;
+                }
+            }else{
+                if(day>=29){
+                    dayMax = 28;
+                }else{
+                    dayMax = day;
+                }
+            }
+         }else{
+            if(month == '03' || month == '05' || month == '08' || month == '10'){
+                if(day==31){
+                    dayMax= 30;
+                }else{
+                    dayMax= day;
+                }
+            }else{
+                dayMax = day;
+            }
+         }
+       
+         if(month==12){
+            monthMax = 1;
+            yearMax = year + 1;     
+        }else{
+            monthMax = month + 1;
+            yearMax = year;
+        }
+
+        if(monthMax < 10){
+            dateMax = `${yearMax}-0${monthMax}-${dayMax}`;
+        }else{
+            dateMax = `${yearMax}-${monthMax}-${dayMax}`;
+        }
+
+        fchForm.max = dateMax;
+
+        horUrgencia.innerHTML = `
+        <option disabled selected value="">Seleccione el horario</option><option>06:45</option>
+        <option>08:15</option>
+        <option>09:45</option><option>11:15</option><option>12:45</option>
+        <option>14:15</option><option>15:45</option><option>17:15</option>
+        <option>18:45</option><option>20:15</option>`;
+
       }
 
     }
@@ -233,7 +347,7 @@
 
 
       <div class="form-check my-0 ms-2">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onchange=crearJustificativo()>
+        <input class="form-check-input" type="checkbox" value="" id="CheckUrgente" onchange=crearJustificativo()>
         <label class="form-check-label text-white" for="flexCheckDefault">
           Urgencia
         </label>
@@ -246,7 +360,9 @@
     </form>
   </div>
 </section>
-<script src="{% static '/Js/fecha.js' %}"></script>
+
 <script src="{% static '/Js/fechaWeekend.js' %}"></script>
+<script src="{% static '/Js/fecha.js' %}"></script>
+<script src="{% static '/Js/CasosUrgencia.js' %}"></script>
 {% endblock %}
 
