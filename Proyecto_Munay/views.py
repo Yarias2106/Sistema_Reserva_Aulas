@@ -203,6 +203,14 @@ def validar(request):
         }
     return render(request, "FormularioAmbiente.html",contexto)     
     #return redirect("/Reserva/")
+def Eliminar(request):
+    Codigo =  request.GET.get('Codigo', None)
+    print("este es el codigo espero no de bugs")
+    print(Codigo)
+    Tupla = Reserva.objects.get(id=Codigo)
+    Tupla.delete()
+    return redirect("/MisReservas/")
+
 def pruebita(request):
     
     aula = request.GET.get('Aula', None)
