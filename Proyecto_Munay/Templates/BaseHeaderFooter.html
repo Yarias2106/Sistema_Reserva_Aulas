@@ -187,7 +187,12 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script type="text/javascript">
-  $("#Eliminar").click(function(){
+  let valor=''
+  function test(dato){
+    valor=dato
+    
+  };
+ function eliminar(){
       Swal.fire({
       title: 'Eliminar Reserva?',
       //text: "You won't be able to revert this!",
@@ -199,6 +204,8 @@
       confirmButtonText: 'Eliminar'
     }).then((result) => {
       if (result.isConfirmed) {
+        console.log(valor)
+        
         Swal.fire(
           'Eliminado!',
           'Se eliminó la reserva',
@@ -206,11 +213,8 @@
         )
       }
     })
-});
+};
+
 </script>
-
-
-
-
 </body>
 </html>

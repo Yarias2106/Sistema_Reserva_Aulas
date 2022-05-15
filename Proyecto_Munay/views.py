@@ -147,9 +147,16 @@ def ReservaExitosa(request):
 @login_required(login_url='/login/')
 def MisReservas(request):
     nombreCompleto=nombreUsuario(request)
+    Cod_Doc= (Docente.objects.get(email=request.user.username)).id
+    tarjetas = (Reserva.objects.filter(Cod_Docente_id=Cod_Doc))
+
     contexto={
         'nombre':nombreCompleto,
+        'tarjetas' : tarjetas
     }
+    
+    # for tupla in tarjetas:
+    #     print(tupla.Cod_Aula_id)
     return render(request, "MiReservaDocente.html",contexto)
 
 def validar(request):
@@ -202,8 +209,8 @@ def pruebita(request):
     Laboratorio = request.GET.get('Laboratorio', None)
     Auditorio = request.GET.get('Auditorio', None)
 
-    Materia = request.GET.get('Materia', None)
-    Grupo = request.GET.get('Grupo', None)
+    Mate = request.GET.get('Materia', None)
+    Grupi = request.GET.get('Grupo', None)
     Alumno = request.GET.get('Alumno', None)
     Fecha = request.GET.get('Fecha', None)
     Horario = request.GET.get('Horario', None)
@@ -231,7 +238,10 @@ def pruebita(request):
         Cod_Docente_id = Cod_Doc,
         Cod_Aula_id = Codigo_Aula,
         Fecha_Reserva = Fecha,
-        Hora_Solicitud_Res = now.time()
+        Hora_Solicitud_Res = now.time(),
+        Materia = Mate,
+        Grupo = Grupi,
+        Cod_Ambiente = filtroAmbiente
     )
     Save_Reserva.save()
     

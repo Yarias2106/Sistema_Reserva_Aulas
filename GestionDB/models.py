@@ -37,7 +37,9 @@ class Reserva(models.Model):
     Hora_Solicitud_Res = models.TimeField(null=True)
     motivo = models.CharField(max_length=256)
     Cant_Est_Sol=models.IntegerField()
-
+    Materia = models.CharField(max_length=120,null=True)
+    Grupo = models.CharField(max_length=16,null=True)
+    Cod_Ambiente = models.CharField(max_length=60,null=True)
     def __str__(self):
         return self.motivo
 
