@@ -144,6 +144,13 @@ def ReservaExitosa(request):
     
     return render(request, "ReservaExitosa.html",contexto)
 
+@login_required(login_url='/login/')
+def MisReservas(request):
+    nombreCompleto=nombreUsuario(request)
+    contexto={
+        'nombre':nombreCompleto,
+    }
+    return render(request, "MiReservaDocente.html",contexto)
 
 def validar(request):
     

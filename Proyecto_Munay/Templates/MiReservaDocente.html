@@ -1,0 +1,151 @@
+{% extends 'BaseHeaderFooter.html' %} 
+{% block title %} 
+  MiReservaDocente 
+{%endblock %} 
+{% block content %} 
+{% load static %}
+
+<link rel="stylesheet" href="{% static '/css/FormularioReserva.css' %}" />
+
+<section class="BodyFont mx-4">
+  <div class="container col-sm-10 col-md-12 col-lg-11 col-xl-9 col-xxl-9 p-4">
+    <h4 class="text-center text-white">Mis Reservas</h4>
+
+
+    <div class="row  justify-content-center text-center">
+    
+      <div class="col-sm-3 m-3 cajaAmbiente" >
+        <div class="card-group" style="cursor: pointer;">
+          <div class="card" data-toggle="modal" data-target="#MiReserva1">
+            <div class="card-header">
+              Nombre materia
+            </div>
+            <div class="card-body text-start">
+              <label for="Fecha Reserva" >Fecha Reserva: {{Fecha}}</label>
+              <br>
+              <label for="Horario">Horario: {{Horario}}</label>
+              <br>
+              <label for="CantPeriodos">Cantidad de Periodos: {{CantPeriodos}}</label>
+              <br>
+              <label for="Grupo">Grupo: {{Grupo}}</label>
+            </div>
+            <div class="card-footer">
+              Ambiente
+            </div>
+          </div>
+        </div>
+      </div>
+
+        
+      <div class="col-sm-3 m-3 cajaAmbiente" >
+        <div class="card-group" style="cursor: pointer;">
+          <div class="card" data-toggle="modal" data-target="#MiReserva1">
+            <div class="card-header">
+              Nombre materia
+            </div>
+            <div class="card-body text-start">
+              <label for="Fecha Reserva" >Fecha Reserva: {{Fecha}}</label>
+              <br>
+              <label for="Horario">Horario: {{Horario}}</label>
+              <br>
+              <label for="CantPeriodos">Cantidad de Periodos: {{CantPeriodos}}</label>
+              <br>
+              <label for="Grupo">Grupo: {{Grupo}}</label>
+            </div>
+            <div class="card-footer">
+              Ambiente
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-3 m-3 cajaAmbiente" >
+        <div class="card-group" style="cursor: pointer;">
+          <div class="card" data-toggle="modal" data-target="#MiReserva1">
+            <div class="card-header">
+              Nombre materia
+            </div>
+            <div class="card-body text-start">
+              <label for="Fecha Reserva" >Fecha Reserva: {{Fecha}}</label>
+              <br>
+              <label for="Horario">Horario: {{Horario}}</label>
+              <br>
+              <label for="CantPeriodos">Cantidad de Periodos: {{CantPeriodos}}</label>
+              <br>
+              <label for="Grupo">Grupo: {{Grupo}}</label>
+            </div>
+            <div class="card-footer">
+              Ambiente
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-3 m-3 cajaAmbiente" >
+        <div class="card-group" style="cursor: pointer;">
+          <div class="card" data-toggle="modal" data-target="#MiReserva1">
+            <div class="card-header">
+              Nombre materia
+            </div>
+            <div class="card-body text-start">
+              <label for="Fecha Reserva" >Fecha Reserva: {{Fecha}}</label>
+              <br>
+              <label for="Horario">Horario: {{Horario}}</label>
+              <br>
+              <label for="CantPeriodos">Cantidad de Periodos: {{CantPeriodos}}</label>
+              <br>
+              <label for="Grupo">Grupo: {{Grupo}}</label>
+            </div>
+            <div class="card-footer">
+              Ambiente
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal" id="MiReserva1"  tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="CajaReservaE row col-11 m-3">
+
+                <label for="Docente" class="col-md-12 text-black"><strong>Nombre docente:</strong> {{nombre}}</label>
+                <label for="Materia" class="col-md-12 col-lg-6 text-black"><strong>Materia:</strong> {{Materia}}</label>
+                <label for="Grupo" class="col-lg-2 text-black"><strong>Grupo:</strong> {{Grupo}}</label>
+                <label for="Ambiente" class="col-lg-4 text-black"><strong>Ambiente:</strong> {{Ambiente}}</label>
+                <label for="FechaReserva" class="col-md-12 col-lg-6 text-black"><strong>Fecha de reserva:</strong> {{Fecha}}</label>
+                <label for="Horario" class="col-lg-2 text-black"><strong>Horario:</strong> {{Horario}}</label>
+                <label for="CantidadPeriodo" class="col-lg-4 text-black"><strong>Cantidad de Periodos:</strong> {{CantPeriodos}}</label>
+                <label for="Motivo" class="col-md-12 text-black"><strong>Motivo:</strong> {{Motivo}}</label>
+                <label for="Justificación" class="col-md-12 text-black"><strong>Justificación:</strong> </label>
+                <br>
+                <br>
+                <br>
+                <label for="FechaSolicitud" class="col-md-12 text-black"><strong>Fecha-Solicitud:</strong> {{FSol}} - {{HSol}}</label>
+        
+              </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+              <button type="button" id="Eliminar" class="btn btn-danger col-4">Eliminar</button>
+              <button type="button" class="btn btn-primary col-4" data-dismiss="modal">Aceptar</button>
+            </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+           
+        </div>
+    </div>
+
+
+  </div>
+</section>
+
+{% endblock %}

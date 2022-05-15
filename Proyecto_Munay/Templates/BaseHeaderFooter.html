@@ -183,5 +183,34 @@
           return '<span>' + chars.join('</span><span>') + '</span>';
       });
     </script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script type="text/javascript">
+  $("#Eliminar").click(function(){
+      Swal.fire({
+      title: 'Eliminar Reserva?',
+      //text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Eliminar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Eliminado!',
+          'Se eliminó la reserva',
+          'success'
+        )
+      }
+    })
+});
+</script>
+
+
+
+
 </body>
 </html>

@@ -1,17 +1,17 @@
-body{
+body {
   background: linear-gradient(to right, #1f379056, #16205376, #4310318a, #6c194f86), url(../imagenes/principal.jpg);
-  background-size:cover;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
 
 }
 
-.BodyFont{
+.BodyFont {
   margin: 240px 0;
 }
 
-.container{
+.container {
   background: rgba(22, 101, 111, 0.7);
   box-shadow: 0 5px 26px 0 rgba(68, 88, 144, 0.14);
   border-radius: 20px;
@@ -21,23 +21,25 @@ body{
   cursor: pointer;
 }
 
-.datepicker{
+.datepicker {
   padding: 20px;
 }
 
-.dow{
+.dow {
   padding-left: 10px;
   padding-right: 10px;
 }
 
-.day{
+.day {
   padding-left: 9px;
   padding-right: 9px;
 }
-.Carta :hover{
+
+.Carta :hover {
   background-color: orange;
 }
-.Carta:focus{
+
+.Carta:focus {
   background-color: orange;
   border-color: orange;
   box-shadow: 0px 0px 30px orange;
@@ -47,11 +49,11 @@ body{
   max-width: 40%;
 }
 
-.cajaAmbiente{
+.cajaAmbiente {
   min-width: 15rem;
 }
 
-.CajaReservaE{
+.CajaReservaE {
   background-color: rgb(255, 255, 255);
   border-radius: 12px;
   padding: 15px;
