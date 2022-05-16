@@ -149,10 +149,22 @@ def MisReservas(request):
     nombreCompleto=nombreUsuario(request)
     Cod_Doc= (Docente.objects.get(email=request.user.username)).id
     tarjetas = (Reserva.objects.filter(Cod_Docente_id=Cod_Doc))
+    now=datetime.now()
+    Fecha_actual = now.date()
+    Hora_actual = now.time()
+    
+    for i in tarjetas:
+      if(Fecha_actual > i.Fecha_Reserva):
+         i.delete()
 
+      if(Fecha_actual==i.Fecha_Reserva):
+          if(Hora_actual>i.Hora_Reserva):
+             i.delete()
+      
+    tarjetas2 = (Reserva.objects.filter(Cod_Docente_id=Cod_Doc))      
     contexto={
         'nombre':nombreCompleto,
-        'tarjetas' : tarjetas
+        'tarjetas' : tarjetas2
     }
     
     # for tupla in tarjetas:
