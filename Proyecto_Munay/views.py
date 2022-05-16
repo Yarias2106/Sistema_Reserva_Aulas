@@ -236,7 +236,9 @@ def pruebita(request):
     now=datetime.now()
     Cod_Doc= (Docente.objects.get(email=request.user.username)).id
     Codigo_Aula = (Aula.objects.get(Cod_Aula=filtroAmbiente)).id
-    
+    print(Mate)
+    print(Grupi)
+    print(Motivo)
     Save_Reserva = models.Reserva.objects.create(
         cant_Periodos = CantPeriodos,
         Hora_Reserva = Horario,
