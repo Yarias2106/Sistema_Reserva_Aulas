@@ -255,8 +255,8 @@ def pruebita(request):
     )
     Save_Reserva.save()
     
-    contexto = {'Motivo' : Motivo}
-    return render(request,"ReservaExitosa.html",contexto)
+    # contexto = {'Motivo' : Motivo}
+    return render(request,"ReservaExitosa.html")
 
 def buscarAmbienteDisponible(Ambientes,Fecha,Horario,CantPeriodos):
     print("funcionBuscar")
