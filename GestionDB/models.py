@@ -40,6 +40,7 @@ class Reserva(models.Model):
     Materia = models.CharField(max_length=120,null=True)
     Grupo = models.CharField(max_length=16,null=True)
     Cod_Ambiente = models.CharField(max_length=60,null=True)
+    Justificacion = models.CharField(max_length=256,null=True)
     def __str__(self):
         return self.motivo
 

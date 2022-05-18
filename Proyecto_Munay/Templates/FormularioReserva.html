@@ -154,12 +154,13 @@
 
       if(valorCheck === "Apagado"){
         document.getElementById("Crear").value = "Encendido"
-        crearJust.innerHTML= `<label for="validationTextarea" class="form-label text-white">Justificativo:</label>
-        <textarea class="form-control" placeholder="Justifique la urgencia de su reserva" id="Justificativo" name="Justificativo"></textarea>
+        crearJust.innerHTML= `
+        <label for="validationTextarea" class="form-label text-white">Justificativo:</label>
+        <textarea class="form-control" name="Justificacion" placeholder="Justifique la urgencia de su reserva" id="Justificativo" name="Justificativo"></textarea>
        
         <div class="invalid-feedback">
-          
-        </div>`;
+        </div>
+        `;
         crearJust.className = "mb-3";
         
         console.log(date);
@@ -333,14 +334,11 @@
       <div class="">
         <label for="validationTextarea" class="form-label text-white">Motivo:</label>
         <textarea class="form-control" placeholder="Describa el motivo de su reserva" id="Motivo" name="Motivo"></textarea>
-       
         <div class="invalid-feedback">
-          
         </div>
       </div>
 
-      <div class="" id="justCreate">
-        
+      <div class="" id="justCreate"> 
       </div>
 
       <input type="hidden" id="Crear" name="Crear" value="Apagado">

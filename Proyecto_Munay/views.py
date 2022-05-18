@@ -123,6 +123,7 @@ def ReservaExitosa(request):
     Cod_Doc= (Docente.objects.get(email=request.user.username)).id
     informe = Reserva.objects.filter(Cod_Docente_id=Cod_Doc).order_by("-id")
     Motivo=request.POST.get('Motivo','')
+    Justificacion=request.POST.get('Justificacion','')
     Materia = request.POST.get('Materia','')
     Grupo = request.POST.get('Grupo','')
     Alumno = request.POST.get('Alumno','')
@@ -136,6 +137,7 @@ def ReservaExitosa(request):
     
     contexto={
         'Motivo': Motivo,
+        'Justificacion': Justificacion,
         'Materia' : Materia,
         'Grupo' : Grupo,
         'Alumno' : Alumno,
@@ -189,6 +191,7 @@ def validar(request):
         Horario=request.POST.get('Horario','')
         CantPeriodos=request.POST.get('Periodo','')
         Motivo=request.POST.get('Motivo','')
+        Justificacion=request.POST.get('Justificacion','')
         Motivo=Motivo.strip()
 
         Ambientes_aula = Aula.objects.filter(Cant_Estudiante__gte=Alumno).filter(Tipo_Aula="AUC").order_by("Cant_Estudiante")
@@ -218,7 +221,8 @@ def validar(request):
             'Fecha' : Fecha,
             'Horario' : Horario,
             'CantPeriodos' : CantPeriodos,
-            'Motivo' : Motivo
+            'Motivo' : Motivo,
+            'Justificacion' : Justificacion
         }
     return render(request, "FormularioAmbiente.html",contexto)     
     #return redirect("/Reserva/")
@@ -243,8 +247,8 @@ def pruebita(request):
     Horario = request.GET.get('Horario', None)
     CantPeriodos = request.GET.get('CantPeriodos', None)
     Motivo = request.GET.get('Motivo', None)
+    Justify = request.GET.get('Justificacion', None)
     tipoAmbiente = request.GET.get('Ambiente', None)
-
     filtroAmbiente = aula
     if(tipoAmbiente == "Laboratorio"):
         filtroAmbiente = Laboratorio
@@ -255,9 +259,9 @@ def pruebita(request):
     now=datetime.now()
     Cod_Doc= (Docente.objects.get(email=request.user.username)).id
     Codigo_Aula = (Aula.objects.get(Cod_Aula=filtroAmbiente)).id
-    print(Mate)
-    print(Grupi)
-    print(Motivo)
+    # print(Mate)
+    # print(Grupi)
+    # print(Motivo)
     Save_Reserva = models.Reserva.objects.create(
         cant_Periodos = CantPeriodos,
         Hora_Reserva = Horario,
@@ -270,7 +274,8 @@ def pruebita(request):
         Hora_Solicitud_Res = now.time(),
         Materia = Mate,
         Grupo = Grupi,
-        Cod_Ambiente = filtroAmbiente
+        Cod_Ambiente = filtroAmbiente,
+        Justificacion = Justify
     )
     Save_Reserva.save()
     
@@ -330,13 +335,11 @@ def VistaAdmin(request):
     contexto={'nombre':nombreCompleto}
     return render(request,"VistaAdministrador.html",contexto)
 
-def ReservasAdmin(request):
-    return render(request,"ReservasAdmin.html")
-
 @login_required(login_url='/login/')
 def ReservasAdmin(request):
     nombreCompleto=request.user.first_name
-    tarjetas = (Reserva.objects.all())
+    tarjetas = (Reserva.objects.all().select_related('Cod_Docente'))
+    
     now=datetime.now()
     Fecha_actual = now.date()
     Hora_actual = now.time()

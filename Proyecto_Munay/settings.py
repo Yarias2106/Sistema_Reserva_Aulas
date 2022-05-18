@@ -92,27 +92,27 @@ WSGI_APPLICATION = 'Proyecto_Munay.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'munaydb',
-#         'USER' : 'root',
-#         'PASSWORD' : 'admin',
-#         'HOST' : 'localhost',
-#         'PORT' : ''
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'byvqqysvwnj4mhheimnp',
-        'USER' : 'ubcaqpori1dwb2yy',
-        'PASSWORD' : 'qwb8fnXQknrY8RuW82M4',
-        'HOST' : 'byvqqysvwnj4mhheimnp-mysql.services.clever-cloud.com',
+        'NAME': 'munaydb',
+        'USER' : 'root',
+        'PASSWORD' : 'admin',
+        'HOST' : 'localhost',
         'PORT' : ''
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'byvqqysvwnj4mhheimnp',
+#         'USER' : 'ubcaqpori1dwb2yy',
+#         'PASSWORD' : 'qwb8fnXQknrY8RuW82M4',
+#         'HOST' : 'byvqqysvwnj4mhheimnp-mysql.services.clever-cloud.com',
+#         'PORT' : ''
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

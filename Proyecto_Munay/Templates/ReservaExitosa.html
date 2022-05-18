@@ -30,7 +30,9 @@
         <label for="Horario" class="col-lg-2"><strong>Horario:</strong> {{Horario}}</label>
         <label for="CantidadPeriodo" class="col-lg-4"><strong>Cantidad de Periodos:</strong> {{CantPeriodos}}</label>
         <label for="Motivo" class="col-md-12"><strong>Motivo:</strong> {{Motivo}}</label>
-        <label for="Justificación" class="col-md-12"><strong>Justificación:</strong> </label>
+        {% if Justificacion %}
+        <label for="Justificación" class="col-md-12"><strong>Justificación:</strong> {{Justificacion}}</label>
+        {% endif %}
         <br>
         <br>
         <br>

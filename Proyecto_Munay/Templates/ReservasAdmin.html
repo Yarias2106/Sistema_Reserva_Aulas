@@ -24,11 +24,12 @@
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row  justify-content-center text-center">
                 {% for tupla in tarjetas %}
+                {% if not tupla.Justificacion %}
                 <div class="col-sm-3 m-3 cajaAmbiente" onclick="idTupla('{{tupla.id}}')">
                   <div class="card-group" style="cursor: pointer;">
                     <div class="card" data-toggle="modal" data-target="#{{tupla.id}}">
                       <div class="card-header">
-                        {{tupla.Materia}}
+                        {{tupla.Cod_Docente.nombre_Docente}} {{tupla.Cod_Docente.apellido_Docente}}
                       </div>
                       <div class="card-body text-start">
                         <label for="Materia" >Materia: {{tupla.Materia}}</label>
@@ -48,11 +49,41 @@
                   </div>
                   
                 </div>
+                {% endif %}
                 {% endfor %}
             </div>
         </div>
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            Soy nuevvvvvvvvvo
+          <div class="row  justify-content-center text-center">
+            {% for tupla in tarjetas %}
+            {% if tupla.Justificacion %}
+            <div class="col-sm-3 m-3 cajaAmbiente" onclick="idTupla('{{tupla.id}}')">
+              <div class="card-group" style="cursor: pointer;">
+                <div class="card" data-toggle="modal" data-target="#{{tupla.id}}">
+                  <div class="card-header">
+                    {{tupla.Cod_Docente.nombre_Docente}} {{tupla.Cod_Docente.apellido_Docente}}
+                  </div>
+                  <div class="card-body text-start">
+                    <label for="Materia" >Materia: {{tupla.Materia}}</label>
+                    <br>
+                    <label for="Fecha Reserva" >Fecha Reserva: {{tupla.Fecha_Reserva}}</label>
+                    <br>
+                    <label for="Horario">Horario: {{tupla.Hora_Reserva}}</label>
+                    <br>
+                    <label for="CantPeriodos">Cantidad de Periodos: {{tupla.cant_Periodos}}</label>
+                    <br>
+                    <label for="Grupo">Grupo: {{tupla.Grupo}}</label>
+                  </div>
+                  <div class="card-footer">
+                    {{tupla.Cod_Ambiente}}
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
         </div>
         
       </div>

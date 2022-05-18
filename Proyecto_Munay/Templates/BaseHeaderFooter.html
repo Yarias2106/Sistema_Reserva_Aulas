@@ -241,6 +241,7 @@ let Ambiente = "";
     let Horario =("{{Horario}}");
     let CantPeriodos =("{{CantPeriodos}}");
     let Motivo =("{{Motivo}}"); 
+    let Justificacion =("{{Justificacion}}"); 
     $.ajax({
         type: "GET",
         url: '/pruebita',
@@ -255,6 +256,7 @@ let Ambiente = "";
             'Horario' : Horario,
             'CantPeriodos' : CantPeriodos,
             'Motivo' : Motivo,
+            'Justificacion' : Justificacion,
             'Ambiente' : Ambiente,
         },
     });
