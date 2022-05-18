@@ -326,28 +326,11 @@ def mensaje(req,mensajeError):
 @login_required(login_url='/login/')
 def VistaAdmin(request):
     
-    nombreCompleto=nombreUsuario(request)
+    nombreCompleto=request.user.first_name
     contexto={'nombre':nombreCompleto}
-    return render(request,"VistaAdmin.html",contexto)
-    # return render(request,"VistaDocente.html")
+    return render(request,"VistaAdministrador.html",contexto)
 
-# @login_required(login_url='/login/')
-# def inicio_Doc(request): 
-#     if request.method=="POST":
-#         logout(request)
-#         return redirect("/login/")
-#     return render(request,"inicio_Doc.html")
-
-# correo=request.POST.get('email','')
-# contraseña=request.POST.get('contraseña','')
-# variable = Docente.objects.get(contraseña="lorem")
-# variable1 = Docente.objects.filter(contraseña="lorem")
-# print(variable1[0].telefono_Docente)
-# estudiante = Docente(nombre_Docente="rosemary",apellido_Docente="bascopes",telefono_Docente="76543210",email="elmail@okas",contraseña="123456789")
-# estudiante.save(
-# usuario = User.objects.create_user(username = "test",email = "correo",password="7d8Zggtt", first_name = "primarNombre")
-# usuario.save()
-# var=User.objects.get(username="test")
-# print(var.password)
+def ReservasAdmin(request):
+    return render(request,"ReservasAdmin.html")
 
 
