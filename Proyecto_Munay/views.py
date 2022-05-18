@@ -333,4 +333,30 @@ def VistaAdmin(request):
 def ReservasAdmin(request):
     return render(request,"ReservasAdmin.html")
 
+@login_required(login_url='/login/')
+def ReservasAdmin(request):
+    nombreCompleto=request.user.first_name
+    tarjetas = (Reserva.objects.all())
+    now=datetime.now()
+    Fecha_actual = now.date()
+    Hora_actual = now.time()
+    
+    for i in tarjetas:
+      if(Fecha_actual > i.Fecha_Reserva):
+         i.delete()
+
+      if(Fecha_actual==i.Fecha_Reserva):
+          if(Hora_actual>i.Hora_Reserva):
+             i.delete()
+      
+    tarjetas2 = (Reserva.objects.all())      
+    contexto={
+        'nombre':nombreCompleto,
+        'tarjetas' : tarjetas2
+    }
+    
+    # for tupla in tarjetas:
+    #     print(tupla.Cod_Aula_id)
+    return render(request,"ReservasAdmin.html",contexto)
+
 
