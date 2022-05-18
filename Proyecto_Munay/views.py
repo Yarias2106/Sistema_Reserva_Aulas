@@ -57,8 +57,15 @@ def loginPropio(request):
                     mensaje(request,"Error: contraseña incorrecta")
                     return res
             else:
-                mensaje(request,"Error: Usuario no registrado")
-                return res 
+                if(correo == "MunayAdmin"):
+                    usuario = authenticate(request, username=correo, password=passwod)
+                    if usuario is not None:
+                        login(request, usuario)
+                        return redirect('/VistaAdmin/')  
+                else:
+                    mensaje(request,"Error: Usuario no registrado")
+                    return res
+                
 
         return render(request,"login.html")
 
@@ -315,6 +322,14 @@ def buscarAmbienteDisponible(Ambientes,Fecha,Horario,CantPeriodos):
 def mensaje(req,mensajeError):  
     messages.add_message(request=req, level=messages.WARNING, message = mensajeError)
 
+
+@login_required(login_url='/login/')
+def VistaAdmin(request):
+    
+    nombreCompleto=nombreUsuario(request)
+    contexto={'nombre':nombreCompleto}
+    return render(request,"VistaAdmin.html",contexto)
+    # return render(request,"VistaDocente.html")
 
 # @login_required(login_url='/login/')
 # def inicio_Doc(request): 

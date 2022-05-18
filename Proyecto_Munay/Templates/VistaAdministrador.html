@@ -1,0 +1,47 @@
+{% extends 'BaseHeaderFooter.html' %}
+
+ {% block title %}
+     Vista Docente
+ {% endblock %}
+
+{% block content %}
+{% load static %}
+
+
+
+<section class="section">
+  <div class="container ">
+    <div class="row">
+      <div class="col-md-6 col-lg-6  ">
+        <div class="Caja">
+          <div class="Iconos">
+              <img src="{% static '/imagenes/Reservar1.png' %}" alt="Reservar">
+          </div>
+          <button type="button" class="col-3 btn text-white BtnReservar" onclick = "location.href='/Reserva/';" >Configurar parametros</button>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-6  ">
+        <div class="Caja">
+          <div class="Iconos">
+              <img src="{% static '/imagenes/MiReserva1.png' %}" alt="MiReserva">
+          </div>
+          <button type="button" class="col-3 btn text-white BtnMiReserva" onclick= "location.href='/MisReservas/';" >Ver reservas</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bienvenida Section -->
+
+<section id="Bienvenida">
+<div class="Bienvenida-container">
+  <h1>¡Bienvenido!</h1>
+  <h2 class="col-10 col-sm-8 col-lg-6">Ahora puedes acceder a tus reservas en cualquier momento, de forma más cómoda, desde cualquier dispositivo, ya sea para realizar una reserva de aula o visualizar tus reservas.</h2>
+</div>
+</section>
+
+<!-- End Bienvenida Section -->
+
+{% endblock %}
