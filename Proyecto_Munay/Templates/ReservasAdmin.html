@@ -111,7 +111,9 @@
                 <label for="Horario" class="col-lg-2 text-black"><strong>Horario:</strong> {{tupla.Hora_Reserva}}</label>
                 <label for="CantidadPeriodo" class="col-lg-4 text-black"><strong>Cantidad de Periodos:</strong> {{tupla.cant_Periodos}}</label>
                 <label for="Motivo" class="col-md-12 text-black"><strong>Motivo:</strong> {{tupla.motivo}}</label>
-                <label for="Justificación" class="col-md-12 text-black"><strong>Justificación:</strong> </label>
+                {% if tupla.Justificacion %}
+                <label for="Justificación" class="col-md-12 text-black"><strong>Justificación:</strong> {{tupla.Justificacion}}</label>
+                {% endif %}
                 <br>
                 <br>
                 <br>
