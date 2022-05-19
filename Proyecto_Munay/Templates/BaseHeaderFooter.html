@@ -57,7 +57,11 @@
           <div class="collapse navbar-collapse ms-lg-3 justify-content-center" id="navbarTogglerDemo03">
                   <ul class="navbar-nav me-auto mb-lg-0">
                       <li class="nav-item nav-justified">
-                          <a class="nav-link active  pe-2 mx-3" aria-current="page" href="/VistaDocente/">Inicio</a>
+                          {% if request.user.first_name %}
+                            <a class="nav-link active  pe-2 mx-3" aria-current="page" href="/VistaAdmin/">Inicio</a>
+                          {% else %}
+                            <a class="nav-link active  pe-2 mx-3" aria-current="page" href="/VistaDocente/">Inicio</a>
+                          {% endif %}
                       </li>
                       <li class="nav-item nav-justified">
                           <a class="nav-link active pe-2 mx-3" href="#" data-toggle="modal" data-target="#exampleModalCenter1">Acerca de </a>
