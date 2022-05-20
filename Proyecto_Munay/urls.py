@@ -24,7 +24,7 @@ urlpatterns = [
     path('login/',loginPropio),
     path('VistaDocente/',VistaDocente),
     path('salir/',salir),
-    path('Reserva/',Reserva_),
+    path('Reserva/<int:error>/',Reserva_),
     path('Ambiente/',Ambiente),
     path('ReservaExitosa/',ReservaExitosa),
     path('MisReservas/',MisReservas),

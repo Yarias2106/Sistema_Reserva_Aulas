@@ -70,17 +70,20 @@
         if (MateriaSelect===""||GrupoSelect ===""||alumno===""||Fecha ===""||Horario===""||Periodo===""){return true}
         if (Motivo === "") {
             //resultado.innerText = "El campo Motivo no puede estar Vacio"; 
-            swal("Error","El campo Motivo no puede estar Vacio","error",{button:"Entendido"});
-            return false  
+            //swal("Error","El campo Motivo no puede estar Vacio","error",{button:"Entendido"});
+            alert("El campo Motivo no puede estar Vacio");
+            return false;
          } else {
             if(Motivo.length < 10){
               //resultado.innerText = "El Motivo es muy corto"; 
-            swal("Error","El motivo es muy corto","error",{button:"Entendido"})
+            //swal("Error","El motivo es muy corto","error",{button:"Entendido"})
+            alert("El motivo es muy corto")
             return false};
 
             if(Motivo.length > 300){
             //resultado.innerText = "El Motivo es muy largo";
-            swal("Error","El Motivo es muy largo","error",{button:"Entendido"})
+            //swal("Error","El Motivo es muy largo","error",{button:"Entendido"})
+            alert("El motivo es muy largo")
             return false
           } else{
             // swal({title:"Solicitud exitosa",icon:"success",button:"Entendido"})
@@ -358,7 +361,21 @@
     </form>
   </div>
 </section>
+<script>
+  window.onload = function () {
+    //console.log("function called...");
+    //alert("automatico")
+    var limite = JSON.parse("{{error}}");
+    if (limite===2){
+      alert("Materia y Grupo ya registrado para este dia")
+    }
+    if (limite===3){
+      alert("Solo se permiten 2 reservas por Materia y Grupo")
+    }
 
+
+  }
+</script>
 <script src="{% static '/Js/fechaWeekend.js' %}"></script>
 <script src="{% static '/Js/fecha.js' %}"></script>
 <script src="{% static '/Js/CasosUrgencia.js' %}"></script>

@@ -1,6 +1,7 @@
 
 # from curses import savetty
 from cmath import inf
+from contextlib import ContextDecorator
 import email
 from operator import le
 from django import http
@@ -88,7 +89,7 @@ def nombreUsuario(request):
     return nombre+" "+apellido
 
 @login_required(login_url='/login/')
-def Reserva_(request):
+def Reserva_(request,error):
     nombreCompleto=nombreUsuario(request)
     Cod_Doc= (Docente.objects.get(email=request.user.username)).id
     Tupla_Grupo = Grupo.objects.filter(Cod_Docente=Cod_Doc)
@@ -102,7 +103,8 @@ def Reserva_(request):
     contexto={
         'nombre':nombreCompleto,
         'Tupla_Grupo' :Tupla_Grupo,
-        'tuplita' : Lista_Mat
+        'tuplita' : Lista_Mat,
+        'error' : error
         }
     return render(request, "FormularioReserva.html",contexto)
     
@@ -193,39 +195,62 @@ def validar(request):
         Motivo=request.POST.get('Motivo','')
         Justificacion=request.POST.get('Justificacion','')
         Motivo=Motivo.strip()
-
-        Ambientes_aula = Aula.objects.filter(Cant_Estudiante__gte=Alumno).filter(Tipo_Aula="AUC").order_by("Cant_Estudiante")
-        Ambientes_lab = Aula.objects.filter(Cant_Estudiante__gte=Alumno).filter(Tipo_Aula="LAB").order_by("Cant_Estudiante")
-        Ambientes_aud = Aula.objects.filter(Cant_Estudiante__gte=Alumno).filter(Tipo_Aula="AUD").order_by("Cant_Estudiante")
-   
-        aula=buscarAmbienteDisponible(Ambientes_aula,Fecha,Horario,CantPeriodos)
-        lab=buscarAmbienteDisponible(Ambientes_lab,Fecha,Horario,CantPeriodos)
-        alumno=int(Alumno)
-        cant_aud=Ambientes_aud[0].Cant_Estudiante/2
-        if(int(Alumno)>=cant_aud): 
-         aud=buscarAmbienteDisponible(Ambientes_aud,Fecha,Horario,CantPeriodos)
-        else:
-          aud="No encontre"  
-        #print("aula elegida es " + str(aula))
-        #print("laboratorio elegido es " + str(lab))
-        #print("auditorio elegido es " + str(aud) )
         nombreCompleto=nombreUsuario(request)
+        Cod_Doc= (Docente.objects.get(email=request.user.username)).id
+        
+        
+        Limite = limiteReserva(Grupo,Fecha,Materia,Cod_Doc)
         contexto ={
-            'nombre':nombreCompleto,
-            'Aula' : aula,
-            'Laboratorio' : lab,
-            'Auditorio' : aud,
-            'Materia' : Materia,
-            'Grupo' : Grupo,
-            'Alumno' : Alumno,
-            'Fecha' : Fecha,
-            'Horario' : Horario,
-            'CantPeriodos' : CantPeriodos,
-            'Motivo' : Motivo,
-            'Justificacion' : Justificacion
-        }
-    return render(request, "FormularioAmbiente.html",contexto)     
-    #return redirect("/Reserva/")
+                'nombre':nombreCompleto,
+                'Materia' : Materia,
+                'Grupo' : Grupo,
+                'Alumno' : Alumno,
+                'Fecha' : Fecha,
+                'Horario' : Horario,
+                'CantPeriodos' : CantPeriodos,
+                'Motivo' : Motivo,
+                'Justificacion' : Justificacion,
+                }
+
+        if Limite == 1:
+        
+            Ambientes_aula = Aula.objects.filter(Cant_Estudiante__gte=Alumno).filter(Tipo_Aula="AUC").order_by("Cant_Estudiante")
+            Ambientes_lab = Aula.objects.filter(Cant_Estudiante__gte=Alumno).filter(Tipo_Aula="LAB").order_by("Cant_Estudiante")
+            Ambientes_aud = Aula.objects.filter(Cant_Estudiante__gte=Alumno).filter(Tipo_Aula="AUD").order_by("Cant_Estudiante")
+    
+            aula=buscarAmbienteDisponible(Ambientes_aula,Fecha,Horario,CantPeriodos)
+            lab=buscarAmbienteDisponible(Ambientes_lab,Fecha,Horario,CantPeriodos)
+            cant_aud=Ambientes_aud[0].Cant_Estudiante/2
+            if(int(Alumno)>=cant_aud): 
+              aud=buscarAmbienteDisponible(Ambientes_aud,Fecha,Horario,CantPeriodos)
+            else:
+              aud="No encontre"  
+            
+            contexto['Aula']= aula
+            contexto['Laboratorio'] = lab
+            contexto['Auditorio'] = aud  
+            return render(request, "FormularioAmbiente.html",contexto)  
+        else: 
+           dir = "/Reserva/" + str(Limite) + "/"
+           #return render(request, "FormularioReserva.html",contexto)     
+           return redirect(dir)
+
+def limiteReserva(grupo,fecha,materia,cod_doc):
+ #respuesta = "Todo bien"
+ respuesta = 1
+ #now=datetime.now()
+ #fecha_actual = now.date()
+ filtro = Reserva.objects.filter(Grupo=grupo).filter( Cod_Docente=cod_doc).filter(Materia=materia).filter(Fecha_Reserva=fecha)
+ if (len(filtro)>0):
+  #respuesta = "Materia y Grupo ya registrado para este dia"
+  respuesta = 2
+ filtro_2 = Reserva.objects.filter(Grupo=grupo).filter( Cod_Docente=cod_doc).filter(Materia=materia)
+ if(len(filtro_2)>=2):
+  #respuesta = "Solo se permiten 2 reservas por Materia y Grupo"
+  respuesta = 3
+ 
+ return respuesta
+
 def Eliminar(request):
     Codigo =  request.GET.get('Codigo', None)
     print("este es el codigo espero no de bugs")
