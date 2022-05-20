@@ -387,4 +387,5 @@ def ReservasAdmin(request):
     #     print(tupla.Cod_Aula_id)
     return render(request,"ReservasAdmin.html",contexto)
 
-
+def AmbientesAdmin(request):
+    return render(request,"Ambientes.html")
