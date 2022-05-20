@@ -198,7 +198,7 @@
   };
  function eliminar(){
       Swal.fire({
-      title: 'Eliminar Reserva?',
+      title: '¿Eliminar reserva?',
       //text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
@@ -217,11 +217,11 @@
           },
         });
         Swal.fire({
-        title: 'Eliminado!',
+        title: '¡Eliminado!',
         icon: 'success',
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'ok'
+        confirmButtonText: 'Ok'
         }).then((result) => {if (result.isConfirmed) {location.reload()}})
       }
     })
