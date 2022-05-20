@@ -234,3 +234,8 @@ transition: color .3s ease;
 color: rgb(116, 111, 111);
 
 }
+
+.cajaReserva {
+  min-width: 15rem;
+  min-height: 13rem;
+}
