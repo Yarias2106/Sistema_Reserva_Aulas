@@ -29,7 +29,10 @@ def loginPropio(request):
     #     return redirect('/VistaDocente/')
     # except:
     if(len(request.user.username)>0):
-       return redirect('/VistaDocente/')
+        if(request.user.first_name == "Administrador"):
+           return redirect('/VistaAdmin/')
+        else:
+            return redirect('/VistaDocente/')
     else:
         if request.method=="POST":
             correo=request.POST.get('email','')
@@ -72,10 +75,12 @@ def loginPropio(request):
 
 @login_required(login_url='/login/')
 def VistaDocente(request):
-    
-    nombreCompleto=nombreUsuario(request)
-    contexto={'nombre':nombreCompleto}
-    return render(request,"VistaDocente.html",contexto)
+    if(request.user.first_name == "Administrador"):
+        return redirect('/VistaAdmin/')
+    else:
+        nombreCompleto=nombreUsuario(request)
+        contexto={'nombre':nombreCompleto}
+        return render(request,"VistaDocente.html",contexto)
     # return render(request,"VistaDocente.html")
 
 def salir(request):
