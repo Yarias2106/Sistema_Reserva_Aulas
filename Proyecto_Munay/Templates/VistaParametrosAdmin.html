@@ -1,0 +1,37 @@
+{% extends 'BaseHeaderFooter.html' %}
+
+ {% block title %}
+     Vista Docente
+ {% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static '/css/FormularioReserva.css' %}">
+
+<section class="BodyFont mx-4">
+    <div class="container formReserva col-md-6">
+        <div class="row px-4">
+            <h4 class="text-center text-white pt-3 col-12">Parametrización</h4>
+            <h6 class="text-white col-12 pt-2">Rango de fechas límite de reserva de ambiente</h6>
+        </div>
+        <form action="#" method="POST" class="row g-3 p-4 justify-content-center">
+        {% csrf_token %} 
+
+            <div class="col-lg-6 col-md-12 col-sm-12 col-12" style="display: flex; align-items: center;">
+            <label for="input-label" class="form-label text-white me-3">Mínimo de reserva (dias) </label>
+            <input type="number" name="min" id="min" class="form-control" min="1" max="7" style="width:4rem;">
+            </div>
+    
+            <div class="col-lg-6 col-md-12 col-sm-12 col-12" style="display: flex; align-items: center;">
+            <label for="inputState" class="form-label text-white me-3">Máximo de reserva (dias) </label>
+            <input type="number" name="max" id="max" class="form-control" min="7" max="30" style="width:4rem;">
+            </div>
+    
+            <div class="col-12">
+            <center><input type="submit" class="btn btn-primary" value="Guardar"></input></center>
+            </div>
+         </form>
+    </div>
+  </section>
+
+{% endblock %}

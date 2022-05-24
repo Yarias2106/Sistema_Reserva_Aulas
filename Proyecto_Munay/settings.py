@@ -94,14 +94,14 @@ WSGI_APPLICATION = 'Proyecto_Munay.wsgi.application'
 
 # DATABASES = {
 #      'default': {
-#          'ENGINE': 'django.db.backends.mysql',
-#          'NAME': 'munaydb',
-#          'USER' : 'root',
-#          'PASSWORD' : 'admin',
-#          'HOST' : 'localhost',
-#          'PORT' : ''
-#      }
-#  }
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'munaydb',
+#         'USER' : 'root',
+#         'PASSWORD' : 'admin',
+#         'HOST' : 'localhost',
+#         'PORT' : ''
+#     }
+# }
 
 DATABASES = {
     'default': {

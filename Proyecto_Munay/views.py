@@ -392,5 +392,24 @@ def ReservasAdmin(request):
     #     print(tupla.Cod_Aula_id)
     return render(request,"ReservasAdmin.html",contexto)
 
-def AmbientesAdmin(request):
-    return render(request,"Ambientes.html")
+def VistaAmbientesAdmin(request):
+    nombreCompleto=request.user.first_name
+    contexto={'nombre':nombreCompleto}
+    return render(request,"VistaAmbientesAdmin.html",contexto)
+
+def VistaDocentesAdmin(request):
+    nombreCompleto=request.user.first_name
+    contexto={'nombre':nombreCompleto}
+    return render(request,"VistaDocentesAdmin.html",contexto)
+
+def VistaParametrosAdmin(request):
+    nombreCompleto=request.user.first_name
+    contexto={'nombre':nombreCompleto}
+    return render(request,"VistaParametrosAdmin.html",contexto)
+
+def VistaAmbientesDocente(request):
+    nombreCompleto=nombreCompleto(request)
+    contexto={'nombre':nombreCompleto}
+    return render(request,"VistaAmbientesDocente.html",contexto)
+
+
