@@ -411,10 +411,15 @@ def VistaDocentesAdmin(request):
 @login_required(login_url='/login/')
 def VistaParametrosAdmin(request):
     nombreCompleto=request.user.first_name
-    contexto={'nombre':nombreCompleto}
-    if request.method=="POST":
-        min = request.POST.get('min','')
-        max = request.POST.get('max','')
+    rango = Parametro.objects.last()
+    contexto={
+        'nombre': nombreCompleto,
+        'rango' : rango
+        }
+    if request.method=="GET" and request.GET.get('min', None):
+        min = request.GET.get('min', None)
+        max = request.GET.get('max', None)
+        
         rango = models.Parametro.objects.create(Minimo=min,Maximo=max,MaximoReservas=2)
         rango.save()
 

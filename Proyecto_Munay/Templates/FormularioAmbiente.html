@@ -86,3 +86,47 @@
 </section>
 
 {% endblock %}
+
+{% block scripts %}
+<script>
+  let Ambiente = "";
+  function getAmbiente( tipoAmbiente, elAmbiente ){
+    document.querySelector(".tipoAmbiente").value = elAmbiente; 
+    Ambiente = tipoAmbiente;
+    console.log(Ambiente);
+    document.getElementById('res').disabled = false; 
+  };
+  function test(){
+    // console.log("Si esta entrando a la funcion     adsfadfadf");
+    let Aula =("{{Aula}}");
+    let Laboratorio =("{{Laboratorio}}");
+    let Auditorio =("{{Auditorio}}");
+    let Materia =("{{Materia}}");
+    let Grupo =("{{Grupo}}");
+    let Alumno =("{{Alumno}}");
+    let Fecha =("{{Fecha}}");
+    let Horario =("{{Horario}}");
+    let CantPeriodos =("{{CantPeriodos}}");
+    let Motivo =("{{Motivo}}"); 
+    let Justificacion =("{{Justificacion}}"); 
+    $.ajax({
+        type: "GET",
+        url: '/pruebita',
+        data: {
+            'Aula' : Aula,
+            'Laboratorio' : Laboratorio,
+            'Auditorio' : Auditorio,
+            'Materia' : Materia,
+            'Grupo' : Grupo,
+            'Alumno' : Alumno,
+            'Fecha' : Fecha,
+            'Horario' : Horario,
+            'CantPeriodos' : CantPeriodos,
+            'Motivo' : Motivo,
+            'Justificacion' : Justificacion,
+            'Ambiente' : Ambiente,
+        },
+    });
+  };
+</script>
+{% endblock %}

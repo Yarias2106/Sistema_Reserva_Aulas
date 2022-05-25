@@ -88,6 +88,11 @@
   </div>
 </section>
 
+
+
+{% endblock %}
+
+{% block scripts %}
 <script>
   let existeN = document.getElementById("normal");
   if(existeN){
@@ -96,5 +101,41 @@
     vacio.textContent = "No hay reservas";
   }
 </script>
-
+<script>
+    let valor=''
+  function idTupla(dato){
+    valor=dato
+    console.log(valor)
+  };
+ function eliminar(){
+      Swal.fire({
+      title: '¿Eliminar reserva?',
+      //text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Eliminar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log(valor)
+        $.ajax({
+        type: "GET",
+        url: '/Eliminar',
+        data: {
+            'Codigo' : valor
+          },
+        });
+        Swal.fire({
+        title: '¡Eliminado!',
+        icon: 'success',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok'
+        }).then((result) => {if (result.isConfirmed) {location.reload()}})
+      }
+    })
+};
+</script>
 {% endblock %}
