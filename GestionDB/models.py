@@ -4,6 +4,7 @@ from pyexpat import model
 from statistics import mode
 from django.db import models
 from django.db.models.deletion import CASCADE
+from django.forms import IntegerField
 # Create your models here.
 class Docente(models.Model):
     # El id de Docente se genera automaticamente
@@ -68,6 +69,14 @@ class Grupo(models.Model):
     Cant_Inscritos = models.IntegerField(null=True)
     Cod_Grupo= models.CharField(max_length=60,null=True)
     
-    
     def __str__(self):
         return self.Cod_Docente
+
+class Parametro(models.Model):
+    # El id se genera automaticamente
+    Minimo = models.IntegerField()
+    Maximo = models.IntegerField()
+    MaximoReservas = models.IntegerField(null=True)
+
+    def __str__(self):
+        return self.Minimo
