@@ -12,22 +12,62 @@ var parseDate = function(date){
     return fdate;
   }
 
-let fch = sumDays("13-1-2022", 30);
-let fchDay = fch.getDate();
-let fchMonth = fch.getMonth() + 1;
-let fchYear = fch.getFullYear();
+  function limite(lim){
 
-console.log(fch);
-console.log(fchDay);
-console.log(fchMonth);
-console.log(fchYear);
+    let dateN = new Date();
+    let day = dateN.getDate();
+    let month = dateN.getMonth() + 1;
+    let year = dateN.getFullYear();
 
-let fechaFinal = new Date();
+    if(month < 10){
+      if(day<10){
+        dateN = `0${day}-0${month}-${year}`;
+      }else{
+        dateN = `${day}-0${month}-${year}`;
+      }
+    }else{
+      if(day<10){
+        dateN = `0${day}-${month}-${year}`;
+      }else{
+        dateN = `${day}-${month}-${year}`;
+      }
+    }
 
-if(fchMonth < 10){
-    fechaFinal = `${fchYear}-0${fchMonth}-${fchDay}`;
-}else{
-    fechaFinal = `${fchYear}-${fchMonth}-${fchDay}`;
-}
+    let fch = sumDays(dateN, lim);
+    let fchDay = fch.getDate();
+    let fchMonth = fch.getMonth() + 1;
+    let fchYear = fch.getFullYear();
 
-console.log(fechaFinal);
+    let fechaFinal = new Date();
+
+    if(fchMonth < 10){
+      if(fchDay<10){
+        fechaFinal = `${fchYear}-0${fchMonth}-0${fchDay}`;
+      }else{
+        fechaFinal = `${fchYear}-0${fchMonth}-${fchDay}`;
+      }
+    }else{
+      if(fchDay<10){
+        fechaFinal = `${fchYear}-${fchMonth}-0${fchDay}`;
+      }else{
+        fechaFinal = `${fchYear}-${fchMonth}-${fchDay}`;
+      }
+    }
+
+    return fechaFinal;
+  }
+
+//Limites de fecha
+
+let fechaOr = document.getElementById('Fecha');
+let minimo = 10;
+let maximo = 20;
+
+let fechaMin = new Date();
+let fechaMax = new Date();
+
+fechaMin = limite(minimo);
+fechaMax = limite(maximo);
+
+fechaOr.min = fechaMin;
+fechaOr.max = fechaMax;
