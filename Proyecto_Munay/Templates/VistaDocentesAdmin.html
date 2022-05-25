@@ -1,11 +1,73 @@
 {% extends 'BaseHeaderFooter.html' %}
 
  {% block title %}
-     Vista Docente
+     Vista DocenteAdmin
  {% endblock %}
 
 {% block content %}
 {% load static %}
+<link rel="stylesheet" href="{% static '/css/FormularioReserva.css' %}">
+
+
+
+<section class="section ">
+<div class="container formReserva col-md-7">
+      
+    <h3 class="text-center text-white pt-3">Docentes</h3>
+      
+    <input class="form-control align-items-center" style="max-width:70%; margin: auto;"  id="myInput" type="text" placeholder="Buscar docente..">
+    <br>
+    <table class="table table-light mb-5" style="max-width:70%; margin: auto;">
+        <thead class="table-secondary">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Correo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Apellido 1</td>
+              <td>Nombre 1</td>
+              <td>Correo 1</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Apellido 2</td>
+              <td>Nombre 2</td>
+              <td>Correo 2</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Apellido 3</td>
+              <td>Nombre 3</td>
+              <td>Correo 3</td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td>Apellido 4</td>
+                <td>Nombre 4</td>
+                <td>Correo 4</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Apellido 5</td>
+                <td>Nombre 5</td>
+                <td>Correo 5</td>
+              </tr>
+          </tbody>
+    </table>
+  
+</div>
+</section>
+ 
+  </body>
+
+
+
+  </html>
 
 
 {% endblock %}

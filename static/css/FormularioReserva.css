@@ -61,3 +61,7 @@ body {
   flex-direction: row;
   text-align: start;
 }
+
+.iconEdit{
+  border-radius: 5px;
+}
