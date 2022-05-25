@@ -278,8 +278,21 @@
     </div>  
 
     <form action="/validar/" method="POST" class="row g-3 p-4">
+      
+      <div class="form-check my-0 ms-2">
+        <input class="form-check-input" type="checkbox" value="" id="CheckUrgente" onchange=crearJustificativo()>
+        <label class="form-check-label text-white" for="flexCheckDefault">
+          Urgencia(*)
+        </label>
+      </div>
+
+      <!-- <div class="col-md-5 mb-3">
+        <label for="formFile" class="form-label text-white"></label>
+        <input class="form-control" type="file" id="formFile">
+      </div> -->
+
       {% csrf_token %} 
-      <div class="col-md-9">
+      <div class="col-md-9 mt-3">
         <label for="inputState" class="form-label text-white">Materia:</label>
         <select id="selector" class="form-select" required name="Materia" onchange=cambiar()>
           <option disabled selected value="">Selecione la Materia</option>
@@ -345,15 +358,6 @@
       </div>
 
       <input type="hidden" id="Crear" name="Crear" value="Apagado">
-
-
-      <div class="form-check my-0 ms-2">
-        <input class="form-check-input" type="checkbox" value="" id="CheckUrgente" onchange=crearJustificativo()>
-        <label class="form-check-label text-white" for="flexCheckDefault">
-          Urgencia
-        </label>
-      </div>
-
       
       <div class="col-12">
         <center><input type="submit" class="btn btn-primary" value="Solicitar reserva" onclick = 'return tester()'></input></center>
