@@ -163,7 +163,10 @@
   </ul>
 </footer>
 
+<!-- Codigos de javascript -->
+{% block scripts %}
 
+{% endblock %}
 
 <!-- JavaScript Bundle with Popper -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
@@ -234,7 +237,7 @@ let Ambiente = "";
     document.getElementById('res').disabled = false; 
   };
   function test(){
-    console.log("Si esta entrando a la funcion     adsfadfadf");
+    // console.log("Si esta entrando a la funcion     adsfadfadf");
     let Aula =("{{Aula}}");
     let Laboratorio =("{{Laboratorio}}");
     let Auditorio =("{{Auditorio}}");
@@ -267,5 +270,6 @@ let Ambiente = "";
   };
   
 </script>
+
 </body>
 </html>

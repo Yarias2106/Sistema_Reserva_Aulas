@@ -422,8 +422,8 @@ def VistaParametrosAdmin(request):
 
 @login_required(login_url='/login/')
 def VistaAmbientesDocente(request):
-    nombreCompleto=nombreCompleto(request)
-    contexto={'nombre':nombreCompleto}
+    nombreCompleto=nombreUsuario(request)
+    contexto={ 'nombre': nombreCompleto }
     return render(request,"VistaAmbientesDocente.html",contexto)
 
 
