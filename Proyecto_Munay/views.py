@@ -4,12 +4,13 @@ from cmath import inf
 from contextlib import ContextDecorator
 import email
 from operator import le
+from pyexpat import model
 from django import http
 from django.shortcuts import render,redirect
 from django.template import Template,context
 from django.http import request, HttpResponse
 from django.template.loader import get_template
-from GestionDB.models import Docente, Grupo, Reserva, Materia, Aula
+from GestionDB.models import Docente, Grupo, Parametro, Reserva, Materia, Aula
 from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
@@ -105,11 +106,14 @@ def Reserva_(request,error):
         if(mat) not in Lista_Mat:           
             Lista_Mat.append(mat)
 
+    rango = Parametro.objects.last()
+
     contexto={
         'nombre':nombreCompleto,
         'Tupla_Grupo' :Tupla_Grupo,
         'tuplita' : Lista_Mat,
-        'error' : error
+        'error' : error,
+        'rango' : rango
         }
     return render(request, "FormularioReserva.html",contexto)
     
@@ -392,21 +396,31 @@ def ReservasAdmin(request):
     #     print(tupla.Cod_Aula_id)
     return render(request,"ReservasAdmin.html",contexto)
 
+@login_required(login_url='/login/')
 def VistaAmbientesAdmin(request):
     nombreCompleto=request.user.first_name
     contexto={'nombre':nombreCompleto}
     return render(request,"VistaAmbientesAdmin.html",contexto)
 
+@login_required(login_url='/login/')
 def VistaDocentesAdmin(request):
     nombreCompleto=request.user.first_name
     contexto={'nombre':nombreCompleto}
     return render(request,"VistaDocentesAdmin.html",contexto)
 
+@login_required(login_url='/login/')
 def VistaParametrosAdmin(request):
     nombreCompleto=request.user.first_name
     contexto={'nombre':nombreCompleto}
+    if request.method=="POST":
+        min = request.POST.get('min','')
+        max = request.POST.get('max','')
+        rango = models.Parametro.objects.create(Minimo=min,Maximo=max,MaximoReservas=2)
+        rango.save()
+
     return render(request,"VistaParametrosAdmin.html",contexto)
 
+@login_required(login_url='/login/')
 def VistaAmbientesDocente(request):
     nombreCompleto=nombreCompleto(request)
     contexto={'nombre':nombreCompleto}
