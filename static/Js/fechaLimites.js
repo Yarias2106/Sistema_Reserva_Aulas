@@ -60,10 +60,10 @@ var parseDate = function(date){
 //Limites de fecha
 
 let fechaOr = document.getElementById('Fecha');
-let minimo = 10;
-let maximo = 20;
-// let minimo = ("{{rango.Minimo}}");
-// let maximo = ("{{rango.Maximo}}");
+let minimo = parseInt(document.getElementById("minimoD").value);
+let maximo = parseInt(document.getElementById("maximoD").value);
+console.log(minimo);
+console.log(maximo);
 
 let fechaMin = new Date();
 let fechaMax = new Date();
