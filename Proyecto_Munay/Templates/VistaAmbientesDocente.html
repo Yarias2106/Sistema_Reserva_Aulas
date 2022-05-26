@@ -35,7 +35,7 @@
               <th scope="col">#</th>
               <th scope="col">Nombre</th>
               <th scope="col">Tipo</th>
-              <th scope="col">Capacidad</th>
+              <th scope="col"><center>Capacidad</center></th>
             </tr>
           </thead>
           <tbody id="Lista">
@@ -44,7 +44,7 @@
                 <th scope="row">{{ forloop.counter }}</th>
                 <td>{{tupla.Cod_Aula}}</td>
                 <td>{{tupla.Tipo_Aula}}</td>
-                <td>{{tupla.Cant_Estudiante}}</td>
+                <td><center>{{tupla.Cant_Estudiante}}</center></td>
               </tr>
               {% endfor %}
           </tbody>
