@@ -20,10 +20,10 @@
     <table id="myTable" class="table table-light mb-5" style="max-width:70%; margin: auto;">
         <thead class="table-secondary">
             <tr>
-              <th onclick="sortTable(0, 'int')" scope="col">#</th>
-              <th onclick="sortTable(1, 'str')" scope="col">Apellido</th>
-              <th onclick="sortTable(2, 'str')" scope="col">Nombre</th>
-              <th onclick="sortTable(3, 'str')" scope="col">Correo</th>
+              <th onclick="sortTable(0, 'int')" scope="col" style="cursor: pointer;">#</th>
+              <th onclick="sortTable(1, 'str')" scope="col" style="cursor: pointer;">Apellido</th>
+              <th onclick="sortTable(2, 'str')" scope="col" style="cursor: pointer;">Nombre</th>
+              <th onclick="sortTable(3, 'str')" scope="col" style="cursor: pointer;">Correo</th>
             </tr>
           </thead>
           <tbody id="Lista">
@@ -64,5 +64,6 @@
         });
     });
   </script>
+  
   <script src="{% static '/Js/funcionSortTable.js' %}"></script>
 {% endblock %}

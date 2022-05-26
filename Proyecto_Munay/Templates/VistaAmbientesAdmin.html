@@ -32,10 +32,10 @@
     <table id="myTable" class="table table-light mb-5" style="max-width:70%; margin: auto;">
         <thead class="table-secondary">
             <tr>
-              <th onclick="sortTable(0, 'int')" scope="col">#</th>
-              <th onclick="sortTable(1, 'str')" scope="col">Nombre</th>
-              <th onclick="sortTable(2, 'str')" scope="col">Tipo</th>
-              <th onclick="sortTable(3, 'int')" scope="col">Capacidad</th>
+              <th onclick="sortTable(0, 'int')" scope="col" style="cursor: pointer;">#</th>
+              <th onclick="sortTable(1, 'str')" scope="col" style="cursor: pointer;">Nombre</th>
+              <th onclick="sortTable(2, 'str')" scope="col" style="cursor: pointer;">Tipo</th>
+              <th onclick="sortTable(3, 'int')" scope="col" class="text-center" style="cursor: pointer;">Capacidad</th>
               <th scope="col">Editar</th>
             </tr>
           </thead>
@@ -45,7 +45,7 @@
                 <td scope="row" style="font-weight: bold;">{{ forloop.counter }}</td>
                 <td>{{tupla.Cod_Aula}}</td>
                 <td>{{tupla.Tipo_Aula}}</td>
-                <td><center>{{tupla.Cant_Estudiante}}</center></td>
+                <td class="text-center">{{tupla.Cant_Estudiante}}</td>
                 <td><button class="bi bi-pencil-square iconEdit " data-toggle="modal" data-target="#modalAmbientes"></button></td>
               </tr>
               {% endfor %}
