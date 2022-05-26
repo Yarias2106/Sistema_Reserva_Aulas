@@ -398,14 +398,22 @@ def ReservasAdmin(request):
 
 @login_required(login_url='/login/')
 def VistaAmbientesAdmin(request):
+    Ambientes = Aula.objects.all().order_by('Cod_Aula')
     nombreCompleto=request.user.first_name
-    contexto={'nombre':nombreCompleto}
+    contexto={
+        'nombre':nombreCompleto,
+        'Ambientes' : Ambientes
+        }
     return render(request,"VistaAmbientesAdmin.html",contexto)
 
 @login_required(login_url='/login/')
 def VistaDocentesAdmin(request):
+    Docentes = Docente.objects.all().order_by('apellido_Docente')
     nombreCompleto=request.user.first_name
-    contexto={'nombre':nombreCompleto}
+    contexto={
+        'nombre':nombreCompleto,
+        'Docentes' : Docentes
+        }
     return render(request,"VistaDocentesAdmin.html",contexto)
 
 @login_required(login_url='/login/')
@@ -427,8 +435,12 @@ def VistaParametrosAdmin(request):
 
 @login_required(login_url='/login/')
 def VistaAmbientesDocente(request):
+    Ambientes = Aula.objects.all().order_by("Cod_Aula")
     nombreCompleto=nombreUsuario(request)
-    contexto={ 'nombre': nombreCompleto }
+    contexto={ 
+        'nombre': nombreCompleto,
+        'Ambientes' : Ambientes
+        }
     return render(request,"VistaAmbientesDocente.html",contexto)
 
 

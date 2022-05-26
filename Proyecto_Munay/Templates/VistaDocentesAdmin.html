@@ -15,7 +15,7 @@
       
     <h3 class="text-center text-white pt-3">Docentes</h3>
       
-    <input class="form-control align-items-center" style="max-width:70%; margin: auto;"  id="myInput" type="text" placeholder="Buscar docente..">
+    <input class="form-control align-items-center" style="max-width:70%; margin: auto;"  id="BuscarDoc" type="text" placeholder="Buscar docente..">
     <br>
     <table class="table table-light mb-5" style="max-width:70%; margin: auto;">
         <thead class="table-secondary">
@@ -26,37 +26,16 @@
               <th scope="col">Correo</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Apellido 1</td>
-              <td>Nombre 1</td>
-              <td>Correo 1</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Apellido 2</td>
-              <td>Nombre 2</td>
-              <td>Correo 2</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Apellido 3</td>
-              <td>Nombre 3</td>
-              <td>Correo 3</td>
-            </tr>
-            <tr>
-                <th scope="row">4</th>
-                <td>Apellido 4</td>
-                <td>Nombre 4</td>
-                <td>Correo 4</td>
-              </tr>
+          <tbody id="Lista">
+
+            {% for tupla in Docentes %}
               <tr>
-                <th scope="row">5</th>
-                <td>Apellido 5</td>
-                <td>Nombre 5</td>
-                <td>Correo 5</td>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{tupla.apellido_Docente}}</td>
+                <td>{{tupla.nombre_Docente}}</td>
+                <td>{{tupla.email}}</td>
               </tr>
+            {% endfor %}
           </tbody>
     </table>
   
@@ -70,4 +49,19 @@
   </html>
 
 
+{% endblock %}
+
+{% block scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#BuscarDoc").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#Lista tr").filter(function() {
+                $(this).toggle($(this).text()
+                .toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+  </script>
 {% endblock %}

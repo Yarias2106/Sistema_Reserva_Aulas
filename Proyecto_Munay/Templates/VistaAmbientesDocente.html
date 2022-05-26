@@ -1,11 +1,92 @@
 {% extends 'BaseHeaderFooter.html' %}
 
  {% block title %}
-     Vista Docente
+     Vista AdminAmbientes
  {% endblock %}
 
 {% block content %}
 {% load static %}
 
+<link rel="stylesheet" href="{% static '/css/FormularioReserva.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
+
+<section class="section ">
+<div class="container formReserva col-md-7">
+      
+    <h3 class="text-center text-white mt-3">Ambientes</h3>
+<div class="row justify-content-center align-items-center mb-4">
+    <div class="col-md-4">
+      <select class="form-select mb-4" id="filtro" onclick="buscador()">
+        <option disabled selected value>Filtrar por:</option>
+        <option value="AUD">Auditorio</option>
+        <option value="LAB">Laboratorio</option>
+        <option value="AUC">Aula</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+        <input class="form-control"  id="BuscarAmb" type="text" placeholder="Buscar Ambiente">
+    </div>
+    
+</div>
+    <table class="table table-light mb-5" style="max-width:70%; margin: auto;">
+        <thead class="table-secondary">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Capacidad</th>
+            </tr>
+          </thead>
+          <tbody id="Lista">
+              {% for tupla in Ambientes %}
+              <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{tupla.Cod_Aula}}</td>
+                <td>{{tupla.Tipo_Aula}}</td>
+                <td>{{tupla.Cant_Estudiante}}</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+    </table>
+  
+</div>
+  
+</section>
+
+
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"></script>
+<script>
+    function buscador() {
+        
+        var select = document.getElementById('filtro');
+        var value = select.options[select.selectedIndex].value; 
+        if(value === 'AUC' || value === 'LAB' || value === 'AUD'){
+            document.getElementById('BuscarAmb').value = '';
+            value = value.toLowerCase();
+            $("#Lista tr").filter(function() {
+                $(this).toggle($(this).text()
+                .toLowerCase().indexOf(value) > -1)
+            });
+        }
+        
+    }
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#BuscarAmb").on("keyup", function() {
+            document.getElementById('filtro').getElementsByTagName('option')[0].selected = 'selected';
+            var value = $(this).val().toLowerCase();
+            $("#Lista tr").filter(function() {
+                $(this).toggle($(this).text()
+                .toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+  </script>
+  
 {% endblock %}
