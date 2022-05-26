@@ -62,8 +62,6 @@ var parseDate = function(date){
 let fechaOr = document.getElementById('Fecha');
 let minimo = parseInt(document.getElementById("minimoD").value);
 let maximo = parseInt(document.getElementById("maximoD").value);
-console.log(minimo);
-console.log(maximo);
 
 let fechaMin = new Date();
 let fechaMax = new Date();
