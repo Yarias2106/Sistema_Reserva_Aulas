@@ -17,20 +17,20 @@
       
     <input class="form-control align-items-center" style="max-width:70%; margin: auto;"  id="BuscarDoc" type="text" placeholder="Buscar docente..">
     <br>
-    <table class="table table-light mb-5" style="max-width:70%; margin: auto;">
+    <table id="myTable" class="table table-light mb-5" style="max-width:70%; margin: auto;">
         <thead class="table-secondary">
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Apellido</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Correo</th>
+              <th onclick="sortTable(0, 'int')" scope="col">#</th>
+              <th onclick="sortTable(1, 'str')" scope="col">Apellido</th>
+              <th onclick="sortTable(2, 'str')" scope="col">Nombre</th>
+              <th onclick="sortTable(3, 'str')" scope="col">Correo</th>
             </tr>
           </thead>
           <tbody id="Lista">
 
             {% for tupla in Docentes %}
               <tr>
-                <th scope="row">{{ forloop.counter }}</th>
+                <td scope="row" style="font-weight: bold;">{{ forloop.counter }}</td>
                 <td>{{tupla.apellido_Docente}}</td>
                 <td>{{tupla.nombre_Docente}}</td>
                 <td>{{tupla.email}}</td>
@@ -64,4 +64,5 @@
         });
     });
   </script>
+  <script src="{% static '/Js/funcionSortTable.js' %}"></script>
 {% endblock %}
