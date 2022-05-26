@@ -29,19 +29,19 @@
     </div>
     
 </div>
-    <table class="table table-light mb-5" style="max-width:70%; margin: auto;">
+    <table id="myTable" class="table table-light mb-5" style="max-width:70%; margin: auto;">
         <thead class="table-secondary">
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Tipo</th>
-              <th scope="col">Capacidad</th>
+              <th onclick="sortTable(0, 'int')" scope="col">#</th>
+              <th onclick="sortTable(1, 'str')" scope="col">Nombre</th>
+              <th onclick="sortTable(2, 'str')" scope="col">Tipo</th>
+              <th onclick="sortTable(3, 'int')" scope="col">Capacidad</th>
             </tr>
           </thead>
           <tbody id="Lista">
               {% for tupla in Ambientes %}
               <tr>
-                <th scope="row">{{ forloop.counter }}</th>
+                <td scope="row" style="font-weight: bold;">{{ forloop.counter }}</td>
                 <td>{{tupla.Cod_Aula}}</td>
                 <td>{{tupla.Tipo_Aula}}</td>
                 <td>{{tupla.Cant_Estudiante}}</td>
@@ -89,4 +89,5 @@
     });
   </script>
   
+  <script src="{% static '/Js/funcionSortTable.js' %}"></script>
 {% endblock %}
