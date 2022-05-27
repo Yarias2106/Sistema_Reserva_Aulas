@@ -5,6 +5,7 @@ from contextlib import ContextDecorator
 import email
 from operator import le
 from pyexpat import model
+from turtle import update
 from django import http
 from django.shortcuts import render,redirect
 from django.template import Template,context
@@ -442,5 +443,27 @@ def VistaAmbientesDocente(request):
         'Ambientes' : Ambientes
         }
     return render(request,"VistaAmbientesDocente.html",contexto)
+
+@login_required(login_url='/login/')
+def editarAmbiente(request):
+    ident =  request.GET.get('id', None)
+    ambiente =  request.GET.get('ambiente', None)
+    tipo =  request.GET.get('tipo', None)
+    size =  request.GET.get('size', None)
+    print("estos son los dato")
+    print(ident)
+    print(ambiente)
+    print(tipo)
+    print(size)
+    # cantidad = int(size)
+    # dato = Aula.objects.get(id = ident)
+    # dato.Cant_Estudiante = cantidad
+    # dato.Cod_Aula = ambiente
+    # dato.Tipo_Aula = tipo
+    # dato.save()
+    # test = models.Aula.objects.update()
+    # obj.refresh_from_db()
+    (Aula.objects.filter(id=ident)).update(Cant_Estudiante = int(size),Cod_Aula = ambiente,Tipo_Aula = tipo)
+    return redirect("/Ambientes/")
 
 
