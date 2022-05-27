@@ -57,18 +57,60 @@
   
 </div>
 
+<!-- MODAL ! -->
 <div class="modal fade px-5" id="modalAmbientes" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered " role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle1"></h5>
+          <h5 class="modal-title" >Editar ambiente</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <p> </p>
+
+          <div class="mb-3 row">
+
+            <div class="row g-3 align-items-center">
+              <div class="col-md-4">
+                <label for="EditarAmbientes" class="col-form-label">Ambientes:</label>
+              </div>
+              <div class="col-md-5">
+                <input type="text" id="EditarAmbientes" class="form-control">
+              </div>
+            </div>
+          
+
+            <div class="row g-3">
+              <div class="col-md-4">
+                <label for="EditarTipo" class="col-form-label">Tipo:</label>
+              </div>
+              <div class="col-md-5">
+                <select class="form-select" id="EditarTipo">
+                  <option disabled selected value>Seleccionar tipo:</option>
+                  <option value="1">AUC</option>
+                  <option value="2">LAB</option>
+                  <option value="3">AUD</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row g-3 align-items-center">
+              <div class="col-md-4">
+                <label for="EditarCapacidad" class="col-form-label">Capacidad:</label>
+              </div>
+              <div class="col-md-5">
+                <input type="number" min="0" id="EditarCapacidad" class="form-control">
+              </div>
+            </div>
+          </div>
         </div>
+
+        <div class="modal-footer justify-content-center">
+          <button type="button" id="cancelar" class="btn btn-secondary col-4" data-dismiss="modal" >Cancelar</button>
+          <button type="button" class="btn btn-primary col-4" data-dismiss="modal">Guardar</button>
+        </div>
+
       </div>
     </div>
   </div>
