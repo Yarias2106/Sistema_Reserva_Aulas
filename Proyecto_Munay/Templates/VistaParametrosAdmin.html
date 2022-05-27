@@ -12,6 +12,11 @@
     <div class="container formReserva col-md-6">
         <div class="row px-4">
             <h4 class="text-center text-white pt-3 col-12">Parametrización</h4>
+            <center>
+              <div id="ventana">
+                <!-- Aqui van los mensajes -->
+              </div>
+            </center>
             <h6 class="text-white col-12 pt-2">Rango de fechas límite de reserva de ambiente</h6>
         </div>
         <!-- <form action="/ConfigurarParametros/" method="POST" class="row g-3 p-4"> -->
@@ -41,6 +46,16 @@
     function guardar(){
     let minimo = parseInt(document.getElementById('min').value);
     let maximo = parseInt(document.getElementById('max').value);
+    
+    if(minimo < 1){
+      crearMensaje("El valor del rango mínimo no puede ser menor a 1");
+    }
+    if(maximo < 1){
+      crearMensaje("El valor del rango máximo no puede ser menor a 1");
+    }
+    if(minimo > maximo){
+      crearMensaje("El valor del rango máximo debe ser mayor al rango mínimo");
+    }
     if((minimo >= 1) && (maximo <= 30) && (minimo < maximo)){
         console.log("si esta entrando")
         let rutaActual = location.href
@@ -83,5 +98,13 @@
         })
     };
 };
+function crearMensaje(mensaje){
+    let ventana = document.getElementById('ventana');
+    ventana.innerHTML = `<div id="VentanaHijo" class="alert alert-danger alert-dismissible fade show alertaCol"     role="alert">${mensaje}</div>`;
+    setTimeout(() => {
+          document.getElementById('VentanaHijo').remove();
+    },3000);         
+};
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 {% endblock %}
