@@ -62,6 +62,32 @@ body {
   text-align: start;
 }
 
-.iconEdit{
+.iconEdit {
   border-radius: 5px;
+}
+
+.IconSearch {
+
+  position: absolute;
+  right: 9%;
+  top: 21%;
+  transform: translateY(-15%);
+  color: #030303;
+  font-size: 20px;
+  opacity: 0.4;
+}
+
+.IconSearch1 {
+
+  position: absolute;
+  right: 16%;
+  top: 21%;
+  transform: translateY(-15%);
+  color: #030303;
+  font-size: 20px;
+  opacity: 0.4;
+}
+
+.campoSearch {
+  position: relative;
 }
