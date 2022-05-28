@@ -54,7 +54,10 @@
       crearMensaje("El valor del rango máximo no puede ser menor a 1");
     }
     if(minimo > maximo){
-      crearMensaje("El valor del rango máximo debe ser mayor al rango mínimo");
+      crearMensaje("El valor del rango mínimo no puede ser mayor al rango máximo");
+    }
+    if(minimo === maximo){
+      crearMensaje("El valor del rango mínimo y máximo no pueden ser iguales");
     }
     if((minimo >= 1) && (maximo <= 30) && (minimo < maximo)){
         console.log("si esta entrando")
@@ -103,7 +106,7 @@ function crearMensaje(mensaje){
     ventana.innerHTML = `<div id="VentanaHijo" class="alert alert-danger alert-dismissible fade show alertaCol"     role="alert">${mensaje}</div>`;
     setTimeout(() => {
           document.getElementById('VentanaHijo').remove();
-    },3000);         
+    },4000);         
 };
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

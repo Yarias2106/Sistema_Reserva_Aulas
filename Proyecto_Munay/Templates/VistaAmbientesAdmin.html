@@ -17,7 +17,7 @@
       
     <h3 class="text-center text-white mt-3">Ambientes</h3>
 <div class="row justify-content-center align-items-center mb-4">
-    <div class="col-md-4">
+    <div class="col-lg-4 col-md-7 col-sm-7 campoFiltrar">
       <select class="form-select mb-4" id="filtro" onclick="buscador()">
         <option disabled selected value>Filtrar por:</option>
         <option value="AUD">Auditorio</option>
@@ -25,21 +25,21 @@
         <option value="AUC">Aula</option>
       </select>
     </div>
-    <div class="col-md-3 campoSearch">
+    <div class="col-lg-4 col-md-7 col-sm-7 campoSearch">
        
         <input class="form-control"  id="BuscarAmbiente" type="text" placeholder="Buscar Ambiente" >
         <span class="bi bi-search IconSearch" ></span>
     </div>
     
 </div>
-    <table id="myTable" class="table table-light mb-5" style="max-width:70%; margin: auto;">
+    <table id="myTable" class="table table-light mb-5 TablaMedia" style="max-width:70%; margin: auto;">
         <thead class="table-secondary">
             <tr>
-              <th onclick="sortTable(0, 'int')" scope="col" class="hoverTitulo" id="iconRow" style="cursor: pointer;"># <i id="icon" class="bi bi-arrow-down"></i></th>
-              <th onclick="sortTable(1, 'str')" scope="col" class="hoverTitulo" id="iconRow1" style="cursor: pointer;">Nombre <i id="icon1" class="bi bi-arrow-down"></i></th>
-              <th onclick="sortTable(2, 'str')" scope="col" class="hoverTitulo" id="iconRow2" style="cursor: pointer;">Tipo <i id="icon2" class="bi bi-arrow-down"></i></th>
-              <th onclick="sortTable(3, 'int')" scope="col" class="text-center hoverTitulo" id="iconRow3" style="cursor: pointer;">Capacidad <i id="icon3" class="bi bi-arrow-down"></i></th>
-              <th scope="col">Editar</th>
+              <th onclick="sortTable(0, 'int')" scope="col" class="hoverTitulo col-sm-1" id="iconRow" style="cursor: pointer;"># <i id="icon" class="bi bi-arrow-down position-absolute"></i></th>
+              <th onclick="sortTable(1, 'str')" scope="col" class="hoverTitulo col-sm-2" id="iconRow1" style="cursor: pointer;">Nombre <i id="icon1" class="bi bi-arrow-down position-absolute"></i></th>
+              <th onclick="sortTable(2, 'str')" scope="col" class="hoverTitulo col-sm-1" id="iconRow2" style="cursor: pointer;">Tipo <i id="icon2" class="bi bi-arrow-down position-absolute"></i></th>
+              <th onclick="sortTable(3, 'int')" scope="col" class="text-center hoverTitulo col-sm-1" id="iconRow3" style="cursor: pointer;">Capacidad <i id="icon3" class="bi bi-arrow-down position-absolute"></i></th>
+              <th scope="col" class=" hoverTitulo col-sm-1">Editar</th>
             </tr>
           </thead>
           <tbody id="Listita">
@@ -116,6 +116,8 @@
   </div>
     
 </section>
+
+
 
 {% endblock %}
 
