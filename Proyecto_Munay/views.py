@@ -466,4 +466,30 @@ def editarAmbiente(request):
     (Aula.objects.filter(id=ident)).update(Cant_Estudiante = int(size),Cod_Aula = ambiente,Tipo_Aula = tipo)
     return redirect("/Ambientes/")
 
+@login_required(login_url='/login/')
+def MatGrupoDocente(request,pk):
+    nombreCompleto=request.user.first_name
+    Datos = Grupo.objects.filter(Cod_Docente_id = pk).distinct()
+    TuplaDocente = Docente.objects.get(id = pk)
+    lista = []
+    for tupla in Datos:
+        temp = []
+        temp.append(tupla.Cod_Materia.Nombre)
+        temp.append(tupla.Cod_Grupo)
+        temp.append(tupla.Cant_Inscritos)
+        lista.append(temp)
+
+    resultList = []
+    for element in lista:
+        if element not in resultList:
+            resultList.append(element)
+
+    print(resultList)
+    resultList.sort(reverse = False) 
+    contexto={
+        'nombre':nombreCompleto,
+        'Datos' : resultList,
+        'TuplaDocente' : TuplaDocente
+        }
+    return render(request,"MatGrupoDocente.html",contexto)
 
