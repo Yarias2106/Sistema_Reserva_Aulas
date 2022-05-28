@@ -1,6 +1,5 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
-from django.forms import IntegerField
 # Create your models here.
 class Docente(models.Model):
     # El id de Docente se genera automaticamente

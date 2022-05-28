@@ -1,12 +1,5 @@
 
 # from curses import savetty
-from cmath import inf
-from contextlib import ContextDecorator
-import email
-from operator import le
-from pyexpat import model
-from turtle import update
-from django import http
 from django.shortcuts import render,redirect
 from django.template import Template,context
 from django.http import request, HttpResponse
