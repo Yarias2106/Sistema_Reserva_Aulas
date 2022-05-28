@@ -91,3 +91,43 @@ body {
 .campoSearch {
   position: relative;
 }
+
+@media (max-width: 576px) {
+
+  .campoSearch {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+
+  .campoFiltrar {
+    width: 70%;
+  }
+}
+
+@media (max-width: 576px) {
+
+  .formReserva {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 389px) {
+
+  .formReserva {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 900px) {
+
+  .table-secondary,
+  .TextoTam {
+    font-size: 12px;
+  }
+}
