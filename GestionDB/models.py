@@ -1,7 +1,3 @@
-from operator import truediv
-from pickle import TRUE
-from pyexpat import model
-from statistics import mode
 from django.db import models
 from django.db.models.deletion import CASCADE
 from django.forms import IntegerField
