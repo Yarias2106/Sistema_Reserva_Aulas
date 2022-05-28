@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from pydoc import visiblename
+
 from django.contrib import admin
 from django.urls import path
 from Proyecto_Munay.views import loginPropio,VistaDocente,salir,Reserva_,validar,Ambiente,ReservaExitosa,MisReservas,pruebita,Eliminar,VistaAdmin, ReservasAdmin,VistaAmbientesAdmin,VistaAmbientesDocente,VistaDocentesAdmin,VistaParametrosAdmin,editarAmbiente,MatGrupoDocente
