@@ -19,14 +19,14 @@
     <span class="bi bi-search IconSearch1" ></span>  
   </div></center>
     <br>
-    <table id="myTable" class="table table-light mb-5" style="max-width:70%; margin: auto;">
+    <table id="myTable" class="table table-light mb-5" style="max-width:75%; margin: auto;">
         <thead class="table-secondary">
             <tr>
-              <th onclick="sortTable(0, 'int')" scope="col" class="hoverTitulo " id="iconRow" style="cursor: pointer;"># <i id="icon" class="bi bi-arrow-down position-absolute"></i></th>
+              <th onclick="sortTable(0, 'int')" scope="col" class="hoverTitulo" id="iconRow" style="cursor: pointer;"># <i id="icon" class="bi bi-arrow-down position-absolute"></i></th>
               <th onclick="sortTable(1, 'str')" scope="col" class="hoverTitulo " id="iconRow1" style="cursor: pointer;">Apellido <i id="icon1" class="bi bi-arrow-down position-absolute"></i></th>
               <th onclick="sortTable(2, 'str')" scope="col" class="hoverTitulo " id="iconRow2" style="cursor: pointer;">Nombre <i id="icon2" class="bi bi-arrow-down position-absolute"></i></th>
-              <th onclick="sortTable(3, 'str')" scope="col" class="hoverTitulo" id="iconRow3" style="cursor: pointer;">Correo <i id="icon3" class="bi bi-arrow-down position-absolute"></i></th>
-              <th scope="col">Ver Más</th>
+              <th onclick="sortTable(3, 'str')" scope="col" class="hoverTitulo px-4" id="iconRow3" style="cursor: pointer;">Correo <i id="icon3" class="bi bi-arrow-down position-absolute"></i></th>
+              <th scope="col" style="white-space: nowrap;">Ver Más</th>
             </tr>
           </thead>
           <tbody class="TextoTam" id="Lista">
@@ -36,8 +36,8 @@
                 <td scope="row" style="font-weight: bold;">{{ forloop.counter }}</td>
                 <td>{{tupla.apellido_Docente}}</td>
                 <td>{{tupla.nombre_Docente}}</td>
-                <td>{{tupla.email}}</td>
-                <td><form action="/MatGrupoDocente/{{tupla.id}}"><button class="bi bi-arrow-right-circle iconEdit"></form></td>
+                <td style="word-break:break-all;"> {{tupla.email}}</td>
+                <center><td><form  action="/MatGrupoDocente/{{tupla.id}}"><button class="bi bi-arrow-right-circle iconEdit"></form></td></center>
               </tr>
             {% endfor %}
           </tbody>

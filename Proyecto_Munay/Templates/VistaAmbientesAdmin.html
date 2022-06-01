@@ -39,7 +39,7 @@
               <th onclick="sortTable(1, 'str')" scope="col" class="hoverTitulo col-sm-2" id="iconRow1" style="cursor: pointer;">Nombre <i id="icon1" class="bi bi-arrow-down position-absolute"></i></th>
               <th onclick="sortTable(2, 'str')" scope="col" class="hoverTitulo col-sm-1" id="iconRow2" style="cursor: pointer;">Tipo <i id="icon2" class="bi bi-arrow-down position-absolute"></i></th>
               <th onclick="sortTable(3, 'int')" scope="col" class="text-center hoverTitulo col-sm-1" id="iconRow3" style="cursor: pointer;">Capacidad <i id="icon3" class="bi bi-arrow-down position-absolute"></i></th>
-              <th scope="col" class=" hoverTitulo col-sm-1">Editar</th>
+              <th scope="col" class="col-sm-1">Editar</th>
             </tr>
           </thead>
           <tbody id="Listita">
@@ -172,7 +172,7 @@
       let TipoAmb = document.getElementById('EditarTipo').value
      if(Ambiente != '' && Capacidad != ''){
           Swal.fire({
-          title: '¿Esta seguro de guardar los cambios?',
+          title: '¿Está seguro de guardar los cambios?',
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
