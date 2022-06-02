@@ -20,6 +20,7 @@
     <div class="col-lg-4 col-md-7 col-sm-7 campoFiltrar">
       <select class="form-select mb-4" id="filtro" onclick="buscador()">
         <option disabled selected value>Filtrar por:</option>
+        <option value="A">Todos</option>
         <option value="AUD">Auditorio</option>
         <option value="LAB">Laboratorio</option>
         <option value="AUC">Aula</option>
@@ -129,15 +130,14 @@
   function buscador() {    
         var select = document.getElementById('filtro');
         var value = select.options[select.selectedIndex].value; 
-        if(value === 'AUC' || value === 'LAB' || value === 'AUD'){
+        if(value === 'AUC' || value === 'LAB' || value === 'AUD' || value === 'A'){
             document.getElementById('BuscarAmbiente').value = '';
             value = value.toLowerCase();
             $("#Listita tr").filter(function() {
                 $(this).toggle($(this).text()
                 .toLowerCase().indexOf(value) > -1)
             });
-        } 
-    }
+    };
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
