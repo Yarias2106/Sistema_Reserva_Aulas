@@ -68,6 +68,31 @@
         });
     });
   </script>
+      <script>
+        let focusId = document.getElementById("iconRow");
+        let focusMateria = document.getElementById("iconRow1");
+        let focusGrupo = document.getElementById("iconRow2");
+        let focusInscritos = document.getElementById("iconRow3");
+        
+        pintar(focusId,focusMateria,focusGrupo,focusInscritos);
+        pintar(focusMateria,focusId,focusGrupo,focusInscritos);
+        pintar(focusGrupo,focusMateria,focusId,focusInscritos);
+        pintar(focusInscritos,focusGrupo,focusMateria,focusId);
+    
+        function pintar(pintado1,pintado2,pintado3,pintado4){
+          pintado1.addEventListener("click",()=>{
+          if(pintado1.style.cssText === "cursor: pointer;"){
+            pintado1.style = "cursor: pointer; color:#ce591a";
+            pintado2.style = "cursor: pointer;";
+            pintado3.style = "cursor: pointer;";
+            pintado4.style = "cursor: pointer;";
+          }else{
+            pintado1.style = "cursor: pointer;";
+          }
+    
+        });
+        }
+      </script>
   <script src="{% static '/Js/flechasFiltrar.js' %}"></script>
   <script src="{% static '/Js/funcionSortTable.js' %}"></script>
 {% endblock %}
