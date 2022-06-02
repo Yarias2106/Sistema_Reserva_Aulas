@@ -73,21 +73,28 @@
       let focusApellido = document.getElementById("iconRow1");
       let focusNombre = document.getElementById("iconRow2");
       let focusCorreo = document.getElementById("iconRow3");
+      let iconofocus1 = document.getElementById("icon");
+      let iconofocus2 = document.getElementById("icon1");
+      let iconofocus3 = document.getElementById("icon2");
+      let iconofocus4 = document.getElementById("icon3");
       
-      pintar(focusId,focusApellido,focusNombre,focusCorreo);
-      pintar(focusApellido,focusId,focusNombre,focusCorreo);
-      pintar(focusNombre,focusApellido,focusId,focusCorreo);
-      pintar(focusCorreo,focusNombre,focusApellido,focusId);
+      pintar(focusId,focusApellido,focusNombre,focusCorreo,iconofocus1,iconofocus4,iconofocus3,iconofocus2);
+      pintar(focusApellido,focusId,focusNombre,focusCorreo,iconofocus2,iconofocus1,iconofocus4,iconofocus3);
+      pintar(focusNombre,focusApellido,focusId,focusCorreo,iconofocus3,iconofocus2,iconofocus1,iconofocus4);
+      pintar(focusCorreo,focusNombre,focusApellido,focusId,iconofocus4,iconofocus3,iconofocus2,iconofocus1);
   
-      function pintar(pintado1,pintado2,pintado3,pintado4){
+      function pintar(pintado1,pintado2,pintado3,pintado4,focus1,focus2,focus3,focus4){
         pintado1.addEventListener("click",()=>{
         if(pintado1.style.cssText === "cursor: pointer;"){
           pintado1.style = "cursor: pointer; color:#ce591a";
           pintado2.style = "cursor: pointer;";
           pintado3.style = "cursor: pointer;";
           pintado4.style = "cursor: pointer;";
+          focus2.className = "bi bi-arrow-down position-absolute";
+          focus3.className = "bi bi-arrow-down position-absolute";
+          focus4.className = "bi bi-arrow-down position-absolute";
         }else{
-          pintado1.style = "cursor: pointer;";
+          pintado1.style = "cursor: pointer;";        
         }
   
       });
