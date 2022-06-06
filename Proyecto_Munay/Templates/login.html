@@ -20,7 +20,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+
     <link rel="icon" href="{% static '/imagenes/Logo.png' %}">
     <link rel="stylesheet" href="{% static '/css/stilos.css' %}">
     <link rel="stylesheet" href="{% static '/css/efectofooter.css' %}">
@@ -116,7 +117,7 @@
                     </h1>
                 </div>
 
-                <div class="col-12">
+                <div class="col-12 pb-4">
                     <p class="pb-lg-1 mt-4 mb-4 text-start colorP">
                         En donde podrás reservar aulas para la toma de exámenes presenciales de la Facultad de Ciencias y Tecnología de la Universidad Mayor de San Simón
                     </p>
@@ -139,24 +140,35 @@
 
                 <form action="/login/" method="POST" class="row">
                     {% csrf_token %}     
-                    
-                    
 
-
-                    <div class="col-md-12 col-lg-6 col-sm-12 col-xl-5 mb-3">
-                        <input type="text" class="form-control textInp" id="email" name="email"placeholder="Correo electrónico"/>
+                <div class="input-group ">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xl-4 col-12 me-4 mb-3">
+                        
+                        <input type="email" class="form-control textInp" id="email" name="email"placeholder="Correo electrónico"/>
+                        <label class="labelEmail" for="email">
+                            <span class="iconEmail"><i class="bi bi-envelope"></i></span>
+                        Correo electrónico:
+                        </label>
                     </div>
-                    <div class="col-md-12 col-lg-6 col-sm-12 col-xl-4 mb-3 CampoContraseña">
+                
+                    <div class="col-md-12 mt-4 mt-xl-0 col-lg-12 col-sm-12 col-xl-4 col-12 mb-3 CampoContraseña">
                         <span class="material-icons-outlined IconEye" id="Eye">visibility</span>
                         <input type="password" class="form-control textInp" id="contraseña" name="contraseña" placeholder="Contraseña" />
-                        
+                        <label class="labelContraseña" for="password">
+                            <span class="iconContraseña"><i class="bi bi-lock"></i></span>
+                        Contraseña:
+                        </label>
                     </div>
-
-                    <div class="col-lg-12 col-xl-3" >
+                    <div class="col-md-12 col-sm-12 col-lg-12 col-xl-3 col-12" >
                         <center>
                             <input type="submit" class="btn w-75 btnCol" value="Ingresar">
                         </center>
                     </div>  
+                </div>
+                
+
+                    
+                
                 </form>
             </div>
         </div>
@@ -199,6 +211,8 @@
             
         </div>
     </footer>
+
+    <div class="flip-horizontal-bottom"></div>
 
     <!-- <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script> -->
     <!--
