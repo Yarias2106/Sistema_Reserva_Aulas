@@ -309,7 +309,6 @@
 #contraseña::placeholder,
 #email::placeholder {
    color: #b9b9b9;
-   opacity: 0.6;
 }
 
 input:focus+.labelEmail {
