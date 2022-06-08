@@ -1,5 +1,7 @@
 
 # from curses import savetty
+from cmath import log
+import re
 from django.shortcuts import render,redirect
 from django.template import Template,context
 from django.http import request, HttpResponse
@@ -414,15 +416,24 @@ def VistaDocentesAdmin(request):
 def VistaParametrosAdmin(request):
     nombreCompleto=request.user.first_name
     rango = Parametro.objects.last()
+    logs = Parametro.objects.all()
     contexto={
         'nombre': nombreCompleto,
-        'rango' : rango
+        'rango' : rango,
+        'logs' : logs
         }
     if request.method=="GET" and request.GET.get('min', None):
         min = request.GET.get('min', None)
         max = request.GET.get('max', None)
-        
-        rango = models.Parametro.objects.create(Minimo=min,Maximo=max,MaximoReservas=2)
+        motivo = request.GET.get('Motivo', None)
+        print(motivo)
+        print(motivo)
+        print(motivo)
+        print(motivo)
+        now=datetime.now()
+        Fecha_Motivo = now.date()
+        Hora_Motivo = now.time()
+        rango = models.Parametro.objects.create(Minimo=min,Maximo=max,MaximoReservas=2,Motivo=motivo,FechaModificacion=Fecha_Motivo, HoraModificacion=Hora_Motivo)
         rango.save()
 
     return render(request,"VistaParametrosAdmin.html",contexto)

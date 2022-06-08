@@ -1,3 +1,4 @@
+from operator import truediv
 from django.db import models
 from django.db.models.deletion import CASCADE
 # Create your models here.
@@ -72,6 +73,9 @@ class Parametro(models.Model):
     Minimo = models.IntegerField()
     Maximo = models.IntegerField()
     MaximoReservas = models.IntegerField(null=True)
+    Motivo = models.CharField(max_length=240,null=True)
+    FechaModificacion = models.DateField(null=True)
+    HoraModificacion = models.TimeField(null=True)
 
     def __str__(self):
         return self.Minimo
