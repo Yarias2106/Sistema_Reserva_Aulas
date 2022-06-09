@@ -40,7 +40,7 @@
               <th onclick="sortTable(1, 'str')" scope="col" class="hoverTitulo col-sm-2" id="iconRow1" style="cursor: pointer;">Nombre <i id="icon1" class="bi bi-arrow-down position-absolute"></i></th>
               <th onclick="sortTable(2, 'str')" scope="col" class="hoverTitulo col-sm-1" id="iconRow2" style="cursor: pointer;">Tipo <i id="icon2" class="bi bi-arrow-down position-absolute"></i></th>
               <th onclick="sortTable(3, 'int')" scope="col" class="text-center hoverTitulo col-sm-1" id="iconRow3" style="cursor: pointer;">Capacidad <i id="icon3" class="bi bi-arrow-down position-absolute"></i></th>
-              <th scope="col" class="col-sm-1">Editar</th>
+              <th scope="col" class="col-sm-1 text-center">Editar</th>
             </tr>
           </thead>
           <tbody id="Listita">
@@ -50,7 +50,7 @@
                 <td>{{tupla.Cod_Aula}}</td>
                 <td>{{tupla.Tipo_Aula}}</td>
                 <td class="text-center">{{tupla.Cant_Estudiante}}</td>
-                <td><button class="bi bi-pencil-square iconEdit " data-toggle="modal" data-target="#modalAmbientes" onclick="setId('{{tupla.id}}','{{tupla.Cod_Aula}}','{{tupla.Tipo_Aula}}','{{tupla.Cant_Estudiante}}')"></button></td>
+                <td class="text-center"><button class="bi bi-pencil-square iconEdit " data-toggle="modal" data-target="#modalAmbientes" onclick="setId('{{tupla.id}}','{{tupla.Cod_Aula}}','{{tupla.Tipo_Aula}}','{{tupla.Cant_Estudiante}}')"></button></td>
               </tr>
               {% endfor %}
           </tbody>
