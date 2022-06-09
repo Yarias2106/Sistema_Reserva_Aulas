@@ -49,7 +49,7 @@
                 <td scope="row" style="font-weight: bold;">{{ forloop.counter }}</td>
                 <td>{{tupla.Cod_Aula}}</td>
                 <td>{{tupla.Tipo_Aula}}</td>
-                <td class="text-center">{{tupla.Cant_Estudiante}}</td>
+                <td class="text-center" id="">{{tupla.Cant_Estudiante}}</td>
                 <td class="text-center"><button class="bi bi-pencil-square iconEdit " data-toggle="modal" data-target="#modalAmbientes" onclick="setId('{{tupla.id}}','{{tupla.Cod_Aula}}','{{tupla.Tipo_Aula}}','{{tupla.Cant_Estudiante}}')"></button></td>
               </tr>
               {% endfor %}

@@ -52,8 +52,7 @@
                 <th onclick="sortTable(0, 'int')" scope="col" class="hoverTitulo" id="iconRow" style="cursor: pointer;"># <i id="icon" class="bi bi-arrow-down position-absolute"></i></th>
                 <th onclick="sortTable(1, 'str')" scope="col" class="hoverTitulo text-center" id="iconRow1" style="cursor: pointer;">Mínimo <i id="icon1" class="bi bi-arrow-down position-absolute"></i></th>
                 <th onclick="sortTable(2, 'str')" scope="col" class="hoverTitulo text-center" id="iconRow2" style="cursor: pointer;">Máximo <i id="icon2" class="bi bi-arrow-down position-absolute"></i></th>
-                <th onclick="sortTable(3, 'int')" scope="col" class="text-center hoverTitulo" id="iconRow3" style="cursor: pointer;">Fecha <i id="icon3" class="bi bi-arrow-down position-absolute"></i></th>
-                <th scope="col" class="col-sm-1">Motivo</th>
+                <th scope="col" class="col-sm-1">Detalles</th>
               </tr>
             </thead>
             <tbody id="Lista">
@@ -62,8 +61,7 @@
                   <td scope="row" style="font-weight: bold;">{{ forloop.counter }}</td>
                   <td class="text-center">{{tupla.Minimo}}</td>
                   <td class="text-center">{{tupla.Maximo}}</td>
-                  <td class="text-center">{{tupla.FechaModificacion}}</td>
-                  <td class="text-center"><button class="bi bi-three-dots iconEdit " data-toggle="modal" data-target="#modalAmbientes" onclick="setMotivo('{{tupla.Motivo}}')"></button></td>
+                  <td class="text-center"><button class="bi bi-three-dots iconEdit " data-toggle="modal" data-target="#modalAmbientes" onclick="setMotivo('{{tupla.Motivo}}', '{{tupla.FechaModificacion}}', '{{tupla.HoraModificacion}}')"></button></td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -75,7 +73,7 @@
   <div class="modal-dialog modal-dialog-centered " role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" >Motivo</h5>
+        <h5 class="modal-title" >Detalles</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -83,7 +81,7 @@
       <div class="modal-body">
         <div class="mb-3 row">
           <div class="row g-3">
-            <textarea name="AreaMotivo" id="AreaMotivo" cols="40" rows="5" style="border-radius: 8px;" readonly></textarea>
+            <textarea name="AreaMotivo" id="AreaMotivo" cols="50" rows="5" style="border-radius: 8px;" readonly></textarea>
           </div>
         </div>
       </div>
@@ -175,9 +173,11 @@ function crearMensaje(mensaje){
 };
 </script>
 <script>
-  function setMotivo(mot){
+  function setMotivo(mot, fecha, hora){
       elMotivo = mot;
-      document.getElementById('AreaMotivo').textContent = elMotivo;
+      elFecha = fecha;
+      elHora = hora;
+      document.getElementById('AreaMotivo').textContent = elMotivo+"\n\n\nFecha de modificación:\n"+elFecha+" - "+elHora;
     };
 </script>
 
