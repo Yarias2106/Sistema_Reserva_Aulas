@@ -247,6 +247,43 @@
 
   }
 </script>
+<script>
+function horarioActual() {
+  horarioActual1();
+  const datos =  `{%for item in Tupla_Grupo%}{{item.Cod_Grupo}};{{item.Cod_Materia}};{{item.Dia_Horarios}}#{%endfor%}`;
+  //console.log(datos)
+  let data = datos.split("#");
+  //console.log(dividido)
+  //console.log(data)
+  const dataArr = new Set(data);
+  let dividido = [...dataArr];
+  console.log(dividido)
+  //console.log(dividido[0])
+  let MateriaSelect = document.getElementById("selector").value;
+  let GrupoSelect = document.getElementById("Grupi").value;
+  let fchValor = document.getElementById('Fecha').value;
+  let laFecha = new Date(fchValor);
+  let elDia = laFecha.getDay()+1
+
+  for( i in dividido){
+    if(dividido[i].includes(MateriaSelect) && dividido[i].includes(GrupoSelect)){
+      let temp = dividido[i].split(";")
+      console.log(temp[2])
+      if(temp[2].includes(elDia+"-")){
+        let posicion = temp[2].indexOf(elDia+"-")+2;
+        let res = temp[2].substring(posicion,posicion+5);
+        console.log(res);
+        let ArregloHorarios = ["06:45", "08:15", "09:45", "11:15", "12:45", "14:15", "15:45", "17:15", "18:45", "20:15"];
+        let laPos = ArregloHorarios.indexOf(res);
+        let HoraClase = document.getElementById("Horario");
+        HoraClase.getElementsByTagName('option')[laPos+1].selected = 'selected';
+      }
+    };
+  }
+  
+}
+</script>
+
 <script src="{% static '/Js/fechaWeekend.js' %}"></script>
 <script src="{% static '/Js/fechaLimites.js' %}"></script>
 <script src="{% static '/Js/fechaUrgencia.js' %}"></script>

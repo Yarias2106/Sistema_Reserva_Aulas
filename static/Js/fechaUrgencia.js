@@ -57,7 +57,7 @@ function crearJustificativo(datoMin) {
 
 };
 
-function horarioActual() {
+function horarioActual1() {
 
   let date = new Date();
 
@@ -96,6 +96,7 @@ function horarioActual() {
       }
     }
   }
+
 };
 
 function getDiaActual() {
