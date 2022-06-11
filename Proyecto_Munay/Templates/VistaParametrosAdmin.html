@@ -52,6 +52,7 @@
                 <th onclick="sortTable(0, 'int')" scope="col" class="hoverTitulo" id="iconRow" style="cursor: pointer;"># <i id="icon" class="bi bi-arrow-down position-absolute"></i></th>
                 <th onclick="sortTable(1, 'str')" scope="col" class="hoverTitulo text-center" id="iconRow1" style="cursor: pointer;">Mínimo <i id="icon1" class="bi bi-arrow-down position-absolute"></i></th>
                 <th onclick="sortTable(2, 'str')" scope="col" class="hoverTitulo text-center" id="iconRow2" style="cursor: pointer;">Máximo <i id="icon2" class="bi bi-arrow-down position-absolute"></i></th>
+                <th onclick="sortTable(3, 'str')" scope="col" class="hoverTitulo text-center" id="iconRow3" style="cursor: pointer;">Fecha <i id="icon3" class="bi bi-arrow-down position-absolute"></i></th>
                 <th scope="col" class="col-sm-1">Detalles</th>
               </tr>
             </thead>
@@ -61,6 +62,7 @@
                   <td scope="row" style="font-weight: bold;">{{ forloop.counter }}</td>
                   <td class="text-center">{{tupla.Minimo}}</td>
                   <td class="text-center">{{tupla.Maximo}}</td>
+                  <td class="text-center">{{tupla.FechaModificacion}} {{tupla.HoraModificacion}}</td>
                   <td class="text-center"><button class="bi bi-three-dots iconEdit " data-toggle="modal" data-target="#modalAmbientes" onclick="setMotivo('{{tupla.Motivo}}', '{{tupla.FechaModificacion}}', '{{tupla.HoraModificacion}}')"></button></td>
                 </tr>
                 {% endfor %}
