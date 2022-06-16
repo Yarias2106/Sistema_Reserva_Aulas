@@ -481,6 +481,7 @@ def MatGrupoDocente(request,pk):
         temp.append(tupla.Cod_Materia.Nombre)
         temp.append(tupla.Cod_Grupo)
         temp.append(tupla.Cant_Inscritos)
+        temp.append(tupla.Dia_Horarios)
         lista.append(temp)
 
     resultList = []

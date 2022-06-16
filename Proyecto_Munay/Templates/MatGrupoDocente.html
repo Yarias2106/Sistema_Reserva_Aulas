@@ -32,7 +32,7 @@
               <th onclick="sortTable(1, 'str')" scope="col" class="hoverTitulo" id="iconRow1" style="cursor: pointer;">Materia(s) <i id="icon1" class="bi bi-arrow-down"></i></th>
               <th onclick="sortTable(2, 'str')" scope="col" class="hoverTitulo" id="iconRow2" style="cursor: pointer;">Grupo(s) <i id="icon2" class="bi bi-arrow-down"></i></th>
               <th onclick="sortTable(3, 'int')" scope="col" class="text-center hoverTitulo" id="iconRow3" style="cursor: pointer;">Inscritos <i id="icon3" class="bi bi-arrow-down"></i></th>
-              
+              <th scope="col" class="col-sm-1">Horario</th>
             </tr>
           </thead>
           <tbody id="Lista">
@@ -42,14 +42,38 @@
                 <td>{{tupla.0}}</td>
                 <td class="text-center">{{tupla.1}}</td>
                 <td class="text-center">{{tupla.2}}</td>
-                
+                <td class="text-center"><button class="bi bi-three-dots iconEdit " data-toggle="modal" data-target="#modalAmbientes" onclick="setHorario('{{tupla.3}}')"></button></td>
               </tr>
               {% endfor %}
           </tbody>
     </table>
   
 </div>
-  
+      <!-- MODAL ! -->
+<div class="modal fade px-5" id="modalAmbientes" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >Horarios</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3 row">
+          <div class="row g-3">
+            <textarea name="AreaHorario" id="AreaHorario" cols="50" rows="5" style="border-radius: 8px;" readonly></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer justify-content-center">
+        <button type="button" id="aceptar" class="btn btn-primary col-4" data-dismiss="modal" >Aceptar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 </section>
 
 
@@ -100,6 +124,22 @@
         });
         }
       </script>
+  <script>
+  function setHorario(dato){
+      let list = ['Domingo:','Lunes:','Martes:','Miercoles:','Jueves:','Viernes:','Sabado:'];
+      let Horas = dato.split(',');
+      let imprimir = 'Horarios:\n';
+      Horas.map((valor)=>{
+        let dividido = valor.split('-');
+        let pos = parseInt((dividido[0]));
+        let dia = list[pos];
+        let horario = dividido[1];
+        imprimir = imprimir+`${dia} ${horario}\n`;
+      })
+      ;
+      document.getElementById('AreaHorario').textContent = imprimir;
+  };
+  </script>
   <script src="{% static '/Js/flechasFiltrar.js' %}"></script>
   <script src="{% static '/Js/funcionSortTable.js' %}"></script>
 {% endblock %}
