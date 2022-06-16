@@ -31,8 +31,8 @@
       </select>
     </div>
     <div class="col-lg-4 col-md-7 col-sm-7 campoSearch">
-        <input class="form-control "  id="BuscarAmb" type="text" placeholder="Buscar Ambiente">
-        <span class="bi bi-search IconSearch" ></span>
+        <input class="form-control "  id="BuscarAmb" type="text" placeholder="Buscar por capacidad" onkeyup="hola2()">
+        <span class="bi bi-search IconSearch" onclick="holass()"></span>
     </div>
     
 </div>
@@ -52,7 +52,7 @@
                 <td scope="row" style="font-weight: bold;">{{ forloop.counter }}</td>
                 <td>{{tupla.Cod_Aula}}</td>
                 <td>{{tupla.Tipo_Aula}}</td>
-                <td class="text-center">{{tupla.Cant_Estudiante}}</td>
+                <td class="text-center" id="{{ forloop.counter }}">{{tupla.Cant_Estudiante}}</td>
               </tr>
               {% endfor %}
           </tbody>
@@ -83,6 +83,7 @@
 {% endblock %}
 {% block scripts %}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
     function buscador() {
         
@@ -99,19 +100,35 @@
         
     }
 </script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $("#BuscarAmb").on("keyup", function() {
-            document.getElementById('filtro').getElementsByTagName('option')[0].selected = 'selected';
-            var value = $(this).val().toLowerCase();
-            $("#Lista tr").filter(function() {
-                $(this).toggle($(this).text()
-                .toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
+  function holass() {
+        // $("#Listita tr").filter(function() {
+        //     $(this).toggle($(this).text().toLowerCase().indexOf('A') > -1);
+        // });
+
+       document.getElementById('filtro').getElementsByTagName('option')[0].selected = 'selected';
+         let value = document.getElementById('BuscarAmb').value;
+         
+         
+         value = parseInt(value);
+         let cont = 1;
+         $("#Lista tr").filter(function() {
+            let capa = parseInt(document.getElementById(cont).textContent);
+            //console.log(`Cont: ${cont} , Capa: ${capa}`);
+             $(this).toggle(capa >= value);
+             cont = cont + 1;
+         });
+         sortTable(3, 'int');
+     };
+     
+    function hola2(){
+      let value = document.getElementById('BuscarAmb').value;
+      console.log(value)
+      if(value === ''){
+        location.reload();
+      }
+    }
+
   </script>
 
 <script>

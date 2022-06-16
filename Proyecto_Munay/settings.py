@@ -102,6 +102,9 @@ WSGI_APPLICATION = 'Proyecto_Munay.wsgi.application'
 #         'PORT' : ''
 #     }
 # }
+
+#Base Ivan
+
 DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -112,6 +115,8 @@ DATABASES = {
         'PORT' : ''
     }
 }
+
+#Base Harold
 
 # DATABASES = {
 #     'default': {
