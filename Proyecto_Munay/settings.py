@@ -92,13 +92,23 @@ WSGI_APPLICATION = 'Proyecto_Munay.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#      'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'munaydb',
+#         'USER' : 'root',
+#         'PASSWORD' : 'admin',
+#         'HOST' : 'localhost',
+#         'PORT' : ''
+#     }
+# }
 DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'munaydb',
-        'USER' : 'root',
-        'PASSWORD' : 'admin',
-        'HOST' : 'localhost',
+        'NAME': 'bw7dnhjwp8jrgolwgf5f',
+        'USER' : 'ulcftpz8b8cdvtmb',
+        'PASSWORD' : 'TYqYQgomSpmXCBdmy4pL',
+        'HOST' : 'bw7dnhjwp8jrgolwgf5f-mysql.services.clever-cloud.com',
         'PORT' : ''
     }
 }
