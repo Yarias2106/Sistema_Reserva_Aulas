@@ -90,6 +90,7 @@
         var select = document.getElementById('filtro');
         var value = select.options[select.selectedIndex].value; 
         if(value === 'AUC' || value === 'LAB' || value === 'AUD' || value === 'A'){
+            limpiar();
             document.getElementById('BuscarAmb').value = '';
             value = value.toLowerCase();
             $("#Lista tr").filter(function() {
@@ -97,7 +98,6 @@
                 .toLowerCase().indexOf(value) > -1)
             });
         };
-        limpiar();
         
     }
 </script>
