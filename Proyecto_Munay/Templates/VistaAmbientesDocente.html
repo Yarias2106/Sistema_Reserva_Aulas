@@ -31,8 +31,8 @@
       </select>
     </div>
     <div class="col-lg-4 col-md-7 col-sm-7 campoSearch">
-        <input class="form-control "  id="BuscarAmb" type="text" placeholder="Buscar por capacidad" onkeyup="hola2()">
-        <span class="bi bi-search IconSearch" onclick="holass()"></span>
+        <input class="form-control "  id="BuscarAmb" type="text" placeholder="Buscar por capacidad">
+        <span class="bi bi-search IconSearch" onclick="buscarCapacidad()"></span>
     </div>
     
 </div>
@@ -86,7 +86,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
     function buscador() {
-        
+        reset(0, 'int');
         var select = document.getElementById('filtro');
         var value = select.options[select.selectedIndex].value; 
         if(value === 'AUC' || value === 'LAB' || value === 'AUD' || value === 'A'){
@@ -96,39 +96,66 @@
                 $(this).toggle($(this).text()
                 .toLowerCase().indexOf(value) > -1)
             });
-        }
+        };
+        limpiar();
         
     }
 </script>
 <script>
-  function holass() {
-        // $("#Listita tr").filter(function() {
-        //     $(this).toggle($(this).text().toLowerCase().indexOf('A') > -1);
-        // });
-
-       document.getElementById('filtro').getElementsByTagName('option')[0].selected = 'selected';
-         let value = document.getElementById('BuscarAmb').value;
-         
-         
-         value = parseInt(value);
-         let cont = 1;
-         $("#Lista tr").filter(function() {
-            let capa = parseInt(document.getElementById(cont).textContent);
-            //console.log(`Cont: ${cont} , Capa: ${capa}`);
-             $(this).toggle(capa >= value);
-             cont = cont + 1;
-         });
-         sortTable(3, 'int');
-     };
+function reset(n,type) {
+      var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
      
-    function hola2(){
-      let value = document.getElementById('BuscarAmb').value;
-      console.log(value)
-      if(value === ''){
-        location.reload();
+      table = document.getElementById("myTable");
+      switching = true;
+      dir = "asc";
+     
+      while (switching) {
+        switching = false;
+        rows = table.rows;
+        for (i = 1; i < (rows.length - 1); i++) {
+          shouldSwitch = false;
+          x = rows[i].getElementsByTagName("TD")[n];
+          y = rows[i + 1].getElementsByTagName("TD")[n];
+          if (dir == "asc") {
+            if ((type=="str" && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) || (type=="int" && parseFloat(x.innerHTML) > parseFloat(y.innerHTML))) {
+              shouldSwitch= true;
+              break;
+            }
+          } else if (dir == "desc") {
+            if ((type=="str" && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) || (type=="int" && parseFloat(x.innerHTML) < parseFloat(y.innerHTML))) {
+              shouldSwitch = true;
+              break;
+            }
+          }
+        }
+        if (shouldSwitch) {
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+          switchcount ++;
+        } else {
+          if (switchcount == 0 && dir == "asc") {
+            dir = "asc";
+            switching = false;
+          }
+        }
       }
-    }
+    };
 
+function buscarCapacidad() {
+  document.getElementById('filtro').getElementsByTagName('option')[0].selected = 'selected';
+  reset(0, 'int');
+  let valorBuscador = document.getElementById('BuscarAmb').value;
+  valorBuscador = parseInt(valorBuscador);
+  let cont = 1;
+  $("#Lista tr").filter(function() {
+     let capa = parseInt(document.getElementById(cont).textContent);
+      $(this).toggle(capa >= valorBuscador);
+      cont = cont + 1;
+  });
+  cont = 1;
+  sortTable(3, 'int');
+  limpiar();
+};
   </script>
 
 <script>
@@ -183,7 +210,17 @@
     }
 
   });
-  }
+  };
+  function limpiar(){
+        focusId.style = "cursor: pointer;";
+        iconofocus1.className = "bi bi-arrow-down position-absolute";
+        focusNombre.style = "cursor: pointer;";
+        iconofocus2.className = "bi bi-arrow-down position-absolute";
+        focusTipo.style = "cursor: pointer;";
+        iconofocus3.className = "bi bi-arrow-down position-absolute";
+        focusCapacidad.style = "cursor: pointer;";
+        iconofocus4.className = "bi bi-arrow-down position-absolute";
+    };
 </script>
 
   <script src="{% static '/Js/ScrollTop.js' %}"></script> 
