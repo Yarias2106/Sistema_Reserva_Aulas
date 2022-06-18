@@ -20,7 +20,7 @@
         <h5>Docente: {{TuplaDocente.nombre_Docente}} {{TuplaDocente.apellido_Docente}}</h2>
         <h5>Correo: {{TuplaDocente.email}}</h2>
     </div>
-     <div class="campoSearch">
+     <div class="campoSearch" style="width: 100%;">
     <input class="form-control align-items-center" style="max-width:70%;  margin: auto;"  id="BuscarDoc" type="text" placeholder="Buscar ...">
     <span class="bi bi-search IconSearch1" ></span>  
     </div>
@@ -28,10 +28,10 @@
     <table id="myTable" class="table table-light mb-5" style="max-width:70%; margin: auto;">
         <thead class="table-secondary">
             <tr>
-              <th onclick="sortTable(0, 'int')" scope="col" class="hoverTitulo" id="iconRow" style="cursor: pointer;"># <i id="icon" class="bi bi-arrow-down"></i></th>
-              <th onclick="sortTable(1, 'str')" scope="col" class="hoverTitulo" id="iconRow1" style="cursor: pointer;">Materia(s) <i id="icon1" class="bi bi-arrow-down"></i></th>
-              <th onclick="sortTable(2, 'str')" scope="col" class="hoverTitulo" id="iconRow2" style="cursor: pointer;">Grupo(s) <i id="icon2" class="bi bi-arrow-down"></i></th>
-              <th onclick="sortTable(3, 'int')" scope="col" class="text-center hoverTitulo" id="iconRow3" style="cursor: pointer;">Inscritos <i id="icon3" class="bi bi-arrow-down"></i></th>
+              <th onclick="sortTable(0, 'int')" scope="col" class="hoverTitulo" id="iconRow" style="cursor: pointer;"># <i id="icon" class="bi bi-arrow-down position-absolute"></i></th>
+              <th onclick="sortTable(1, 'str')" scope="col" class="hoverTitulo" id="iconRow1" style="cursor: pointer;">Materia(s) <i id="icon1" class="bi bi-arrow-down position-absolute"></i></th>
+              <th onclick="sortTable(2, 'str')" scope="col" class="hoverTitulo" id="iconRow2" style="cursor: pointer;">Grupo(s) <i id="icon2" class="bi bi-arrow-down position-absolute"></i></th>
+              <th onclick="sortTable(3, 'int')" scope="col" class="text-center hoverTitulo" id="iconRow3" style="cursor: pointer;">Inscritos <i id="icon3" class="bi bi-arrow-down position-absolute"></i></th>
               <th scope="col" class="col-sm-1">Horario</th>
             </tr>
           </thead>

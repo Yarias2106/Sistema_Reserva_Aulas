@@ -53,6 +53,8 @@ body {
   min-width: 15rem;
 }
 
+
+
 .CajaReservaE {
   background-color: rgb(255, 255, 255);
   border-radius: 12px;
@@ -87,6 +89,7 @@ body {
   color: #030303;
   font-size: 20px;
   opacity: 0.4;
+  transition: 0.3s;
 }
 
 .campoSearch {
@@ -157,7 +160,8 @@ body {
 
 }
 
-.IconSearch:hover {
+.IconSearch:hover,
+.IconSearch1:hover {
   cursor: pointer;
   opacity: 1;
   color: rgb(50, 122, 221);
