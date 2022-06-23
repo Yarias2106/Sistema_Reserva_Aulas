@@ -31,8 +31,8 @@
       </select>
     </div>
     <div class="col-lg-4 col-md-7 col-sm-7 campoSearch">
-        <input class="form-control "  id="BuscarAmb" type="text" placeholder="Buscar por capacidad">
-        <span class="bi bi-search IconSearch" onclick="buscarCapacidad()"></span>
+        <input class="form-control" id="BuscarAmb" type="text" placeholder="Buscar por capacidad">
+        <span class="bi bi-search IconSearch" onclick="buscarCapacidad()" onk></span>
     </div>
     
 </div>
@@ -221,6 +221,14 @@ function buscarCapacidad() {
         focusCapacidad.style = "cursor: pointer;";
         iconofocus4.className = "bi bi-arrow-down position-absolute";
     };
+</script>
+<script>
+  let wage = document.getElementById("BuscarAmb");
+  wage.addEventListener("keydown", function (e) {
+      if (e.code === "Enter") {
+          buscarCapacidad();
+      }
+});
 </script>
 
   <script src="{% static '/Js/ScrollTop.js' %}"></script> 

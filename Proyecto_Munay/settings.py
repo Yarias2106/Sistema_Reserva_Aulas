@@ -92,29 +92,29 @@ WSGI_APPLICATION = 'Proyecto_Munay.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#      'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'munaydb',
-#         'USER' : 'root',
-#         'PASSWORD' : 'admin',
-#         'HOST' : 'localhost',
-#         'PORT' : ''
-#     }
-# }
-
-#Base Ivan
-
 DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bw7dnhjwp8jrgolwgf5f',
-        'USER' : 'ulcftpz8b8cdvtmb',
-        'PASSWORD' : 'TYqYQgomSpmXCBdmy4pL',
-        'HOST' : 'bw7dnhjwp8jrgolwgf5f-mysql.services.clever-cloud.com',
+        'NAME': 'munaydb',
+        'USER' : 'root',
+        'PASSWORD' : 'admin',
+        'HOST' : 'localhost',
         'PORT' : ''
     }
 }
+
+#Base Ivan
+
+# DATABASES = {
+#      'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'bw7dnhjwp8jrgolwgf5f',
+#         'USER' : 'ulcftpz8b8cdvtmb',
+#         'PASSWORD' : 'TYqYQgomSpmXCBdmy4pL',
+#         'HOST' : 'bw7dnhjwp8jrgolwgf5f-mysql.services.clever-cloud.com',
+#         'PORT' : ''
+#     }
+# }
 
 #Base Harold
 
