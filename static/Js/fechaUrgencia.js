@@ -18,7 +18,7 @@ function crearJustificativo(datoMin) {
     valorCheck.value = "Encendido"
     crearJust.innerHTML = `
       <label for="validationTextarea" class="form-label text-white">Justificativo:</label>
-      <textarea class="form-control" name="Justificacion" placeholder="Justifique la urgencia de su reserva" id="Justificativo" name="Justificativo"></textarea>
+      <textarea class="form-control" name="Justificacion" placeholder="Justifique la urgencia de su reserva" id="Justificativo" name="Justificativo" required></textarea>
      
       <div class="invalid-feedback">
       </div>
