@@ -16,7 +16,7 @@
     <div class="row  justify-content-center text-center">
       {% for tupla in tarjetas %}
       <div class="col-sm-3 m-3 cajaAmbiente" id="normal" onclick="idTupla('{{tupla.id}}')">
-        <div class="card-group" style="cursor: pointer;">
+        <div class="card-group" style="cursor: pointer; height: 100%;">
           <div class="card" data-toggle="modal" data-target="#{{tupla.id}}">
             <div class="card-header"  style="min-height: 4rem; display: flex; align-items: center; justify-content: center;">
               {{tupla.Materia}}

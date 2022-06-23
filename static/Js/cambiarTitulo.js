@@ -24,13 +24,13 @@ function cambiarTitulo1(){
 }
 
 function cambiarTitulo2(){
-    titleR.textContent = "Reservas por Urgencia";
+    titleR.textContent = "Reservas por Emergencia";
     reserT.className = "nav-link text-white";
     UrgenT.className = "nav-link active";
 
     if(existeU){
         vacio.textContent = "";
     }else{
-        vacio.textContent = "No hay reservas de urgencia";
+        vacio.textContent = "No hay reservas de Emergencia";
     }
 }

@@ -107,6 +107,9 @@
     let maximo = parseInt(document.getElementById('max').value);
     let motivoCambio = document.getElementById('Motivo').value;
     //console.log(motivo)
+    if(!minimo || !maximo){
+      	crearMensaje("Por favor, ingrese todos los campos");
+    }
     if(minimo < 1){
       crearMensaje("El valor del rango mínimo no puede ser menor a 1");
     }
