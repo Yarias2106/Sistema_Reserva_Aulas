@@ -62,7 +62,7 @@ function horarioActual1() {
   let date = new Date();
 
   let horaA = date.getHours();
-  let ArregloOpciones = [6, 8, 9, 11, 12, 14, 15, 17, 18, 20];
+  let ArregloOpciones = [645, 815, 945, 1115, 1245, 1415, 1545, 1715, 1845, 2015];
   let ArregloHorarios = ["06:45", "08:15", "09:45", "11:15", "12:45", "14:15", "15:45", "17:15", "18:45", "20:15"];
   let horUrgencia = document.getElementById("Horario");
   let diasemana = date.getDay();
@@ -80,10 +80,12 @@ function horarioActual1() {
     } else {
       eliminarHorarios();
 
+      if( minutosAct < 10){minutosAct = '0'+minutosAct}
       let posAr = -1;
-
+      let horaInteger = parseInt(horaA+''+minutosAct);
+      
       for (pos in ArregloOpciones) {
-        if (ArregloOpciones[pos] >= horaA) {
+        if (ArregloOpciones[pos] >= (horaInteger+15)) {
           posAr = pos;
           break;
         }
