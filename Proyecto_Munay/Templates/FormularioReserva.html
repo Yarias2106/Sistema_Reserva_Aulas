@@ -277,6 +277,7 @@ function horarioActual() {
         let laPos = ArregloHorarios.indexOf(res);
         let HoraClase = document.getElementById("Horario");
         HoraClase.getElementsByTagName('option')[laPos+1].selected = 'selected';
+        ControlHortario();
       }
     };
   }
