@@ -30,7 +30,8 @@
             <div class="card Carta" tabindex="1">
               <div class="card-body">
                 <h4>Aula</h4>
-                <h5>{{Aula}}</h5>
+                <h5>{{Aula.Cod_Aula}}</h5>
+                <h5>{{Aula.Cant_Estudiante}}</h5>
                 <img src="{% static '/imagenes/aula.jpeg' %}" class="card-img-top"  alt="">
               </div>
               </div>
@@ -42,7 +43,8 @@
               <div class="card Carta" tabindex="1">
                 <div class="card-body">
                   <h4>Laboratorio</h4>
-                  <h5>{{Laboratorio}}</h5>
+                  <h5>{{Laboratorio.Cod_Aula}}</h5>
+                  <h5>{{Laboratorio.Cant_Estudiante}}</h5>
                   <img src="{% static '/imagenes/laboratorio.jpeg' %}" class="card-img-top"  alt="">
                 </div>
                 </div>
@@ -54,7 +56,8 @@
                 <div class="card Carta" tabindex="1">
                   <div class="card-body">
                     <h4>Auditorio</h4>
-                    <h5>{{Auditorio}}</h5>
+                    <h5>{{Auditorio.Cod_Aula}}</h5>
+                    <h5>{{Auditorio.Cant_Estudiante}}</h5>
                     <img src="{% static '/imagenes/auditorio.jpeg' %}" class="card-img-top"  alt="">
                   </div>
                   </div>
@@ -98,9 +101,9 @@
   };
   function test(){
     // console.log("Si esta entrando a la funcion     adsfadfadf");
-    let Aula =("{{Aula}}");
-    let Laboratorio =("{{Laboratorio}}");
-    let Auditorio =("{{Auditorio}}");
+    let Aula =("{{Aula.Cod_Aula}}");
+    let Laboratorio =("{{Laboratorio.Cod_Aula}}");
+    let Auditorio =("{{Auditorio.Cod_Aula}}");
     let Materia =("{{Materia}}");
     let Grupo =("{{Grupo}}");
     let Alumno =("{{Alumno}}");
@@ -111,7 +114,7 @@
     let Justificacion =("{{Justificacion}}"); 
     $.ajax({
         type: "GET",
-        url: '/pruebita',
+        url: '/Guardar',
         data: {
             'Aula' : Aula,
             'Laboratorio' : Laboratorio,

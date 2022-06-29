@@ -16,10 +16,11 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from Proyecto_Munay.views import loginPropio,VistaDocente,salir,Reserva_,validar,Ambiente,ReservaExitosa,MisReservas,pruebita,Eliminar,VistaAdmin, ReservasAdmin,VistaAmbientesAdmin,VistaAmbientesDocente,VistaDocentesAdmin,VistaParametrosAdmin,editarAmbiente,MatGrupoDocente
+from Proyecto_Munay.views import inicio,loginPropio,VistaDocente,salir,Reserva_,validar,Ambiente,ReservaExitosa,MisReservas,Guardar,Eliminar,VistaAdmin, ReservasAdmin,VistaAmbientesAdmin,VistaAmbientesDocente,VistaDocentesAdmin,VistaParametrosAdmin,editarAmbiente,MatGrupoDocente
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',inicio),
     path('login/',loginPropio),
     path('VistaDocente/',VistaDocente),
     path('salir/',salir),
@@ -28,7 +29,7 @@ urlpatterns = [
     path('ReservaExitosa/',ReservaExitosa),
     path('MisReservas/',MisReservas),
     path('validar/',validar),
-    path('pruebita/', pruebita, name='pruebita'),
+    path('Guardar/', Guardar, name='Guardar'),
     path('Eliminar/', Eliminar, name='Eliminar'),
     path('VistaAdmin/',VistaAdmin),
     path('ReservasAdmin/', ReservasAdmin ),

@@ -19,7 +19,9 @@ from json import dumps
 from GestionDB import models
 from datetime import datetime
 
-
+def inicio(request):
+    return redirect("/login/")
+    
 def loginPropio(request):
     # try:
     #     print(request.user.username)
@@ -219,9 +221,9 @@ def validar(request):
 
         if Limite == 1:
         
-            Ambientes_aula = Aula.objects.filter(Cant_Estudiante__gte=Alumno).filter(Tipo_Aula="AUC").order_by("Cant_Estudiante")
-            Ambientes_lab = Aula.objects.filter(Cant_Estudiante__gte=Alumno).filter(Tipo_Aula="LAB").order_by("Cant_Estudiante")
-            Ambientes_aud = Aula.objects.filter(Cant_Estudiante__gte=Alumno).filter(Tipo_Aula="AUD").order_by("Cant_Estudiante")
+            Ambientes_aula = Aula.objects.filter(Cant_Estudiante__gte=Alumno).filter(Tipo_Aula="AUC").order_by("Cant_Estudiante","Cod_Aula")
+            Ambientes_lab = Aula.objects.filter(Cant_Estudiante__gte=Alumno).filter(Tipo_Aula="LAB").order_by("Cant_Estudiante","Cod_Aula")
+            Ambientes_aud = Aula.objects.filter(Cant_Estudiante__gte=Alumno).filter(Tipo_Aula="AUD").order_by("Cant_Estudiante","Cod_Aula")
     
             aula=buscarAmbienteDisponible(Ambientes_aula,Fecha,Horario,CantPeriodos)
             lab=buscarAmbienteDisponible(Ambientes_lab,Fecha,Horario,CantPeriodos)
@@ -231,9 +233,14 @@ def validar(request):
             else:
               aud="No encontre"  
             
-            contexto['Aula']= aula
+            # contexto['Aula']= aula
+            # contexto['Laboratorio'] = lab
+            # contexto['Auditorio'] = aud  
+            
+            contexto['Aula'] = aula
             contexto['Laboratorio'] = lab
-            contexto['Auditorio'] = aud  
+            contexto['Auditorio'] = aud
+           
             return render(request, "FormularioAmbiente.html",contexto)  
         else: 
            dir = "/Reserva/" + str(Limite) + "/"
@@ -264,7 +271,7 @@ def Eliminar(request):
     Tupla.delete()
     return redirect("/MisReservas/")
 
-def pruebita(request):
+def Guardar(request):
     
     aula = request.GET.get('Aula', None)
     Laboratorio = request.GET.get('Laboratorio', None)
@@ -348,7 +355,7 @@ def buscarAmbienteDisponible(Ambientes,Fecha,Horario,CantPeriodos):
            ocupadoAux2 = Reserva.objects.filter(Fecha_Reserva=Fecha).filter(Hora_Reserva=HorarioPosterior).filter(Cod_Aula=id_Aula) 
  
         if (len(ocupado)==0 and len(ocupadoAux) == 0 and len(ocupadoAux2) == 0):
-           ambiente_elegido=i.Cod_Aula
+           ambiente_elegido=i
            print(ambiente_elegido)
            break
 
