@@ -32,7 +32,7 @@
     }
     $select.innerHTML="<option disabled selected value>Seleccione un Grupo</option>"
     for( i in dividido){
-      if(dividido[i].includes(test)){
+      if((dividido[i].split(","))[1].localeCompare(test) == 0){
       const option = document.createElement('option');
       id_Grupo = dividido[i].split(",");
       
