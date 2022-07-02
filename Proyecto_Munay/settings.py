@@ -103,7 +103,7 @@ WSGI_APPLICATION = 'Proyecto_Munay.wsgi.application'
 #     }
 # }
 
-#Base de Ivan
+#Base Ivan
 
 DATABASES = {
      'default': {
@@ -116,7 +116,7 @@ DATABASES = {
     }
 }
 
-#Base de Harold
+#Base Harold
 
 # DATABASES = {
 #     'default': {
